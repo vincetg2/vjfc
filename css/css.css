@@ -1,0 +1,94 @@
+@font-face { font-family: theanoDidot; src: url('TheanoDidot-Regular.ttf'); }
+@font-face { font-family: monsieurLaDoulaise; src: url('MonsieurLaDoulaise-Regular.ttf'); }
+
+body { background-color: #f1f0eb; }
+
+a,
+a:hover,
+a:visited,
+a:active { color: rgb(0, 0, 238); }
+
+a,
+a:visited,
+a:active { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.hi { background-color: yellow; }
+.lo { background-color: red; }
+
+.slide { text-align: center; }
+
+#menu
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 70;
+}
+
+#menu ul { margin: 0; padding: 0; }
+
+#menu li
+{
+    display: inline-block;
+    padding: 9px 18px;
+    margin: 10px;
+    background: white;
+    background: rgba(255, 255, 255, 0.5);
+    color: black;
+    border-radius: 10px;
+}
+#menu li.active
+{
+    background: #666;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+#menu li:hover,
+#menu li.active:hover { background: rgba(255, 255, 255, 0.8); }
+#menu li.active:hover { color: black; }
+
+#img
+{
+    margin: 0 auto;
+    text-align: center;
+    width: 500px; height: 500px;
+    background-image: url('sutro.jpg');
+    font-family: "Times New Roman", serif; font-weight: 100;
+    color: rgb(255, 255, 255);
+    box-shadow: 1px 1px 8px #777777;
+}
+
+.nice_block_font { font-family: theanoDidot, "Times New Roman", serif; font-weight: 100; font-size: 0.95em; }
+
+.post_letter_spacing { letter-spacing: 35px; }
+.bigtext { font-size: 70px; line-height: 90px; }
+.uppercase { text-transform: uppercase; }
+.cursive { font-family: monsieurLaDoulaise, theanoDidot, "Times New Roman", serif; }
+.cursive .post_letter_spacing { letter-spacing: 15px; }
+
+.littleline { line-height: 1em; }
+.normaltext { letter-spacing: 2px; line-height: 2.5em; }
+
+/* iPhone */
+@media only screen
+and (min-device-width : 320px) 
+and (max-device-width : 568px)
+{
+    #img { width: 600px; height: 600px; background-image: url('sutro.600.jpg'); }
+    .bigtext {  font-size: 95px; line-height: 106px; }
+    .littleline { line-height: 2em; }
+    .normaltext { letter-spacing: 4px; line-height: 3em; }
+}
+
+/* iPad */
+@media only screen
+and (min-device-width : 768px) 
+and (max-device-width : 1024px)
+{
+    #img { width: 1000px; height: 1000px; background-image: url('sutro.1000.jpg'); }
+    .bigtext { font-size: 190px; line-height: 174px; }
+    .cursive .post_letter_spacing { letter-spacing: 20px; }
+    .littleline { line-height: 4em; }
+    .normaltext { font-size: 25px; letter-spacing: 7px; line-height: 3em; }
+}
