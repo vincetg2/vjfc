@@ -6,11 +6,7 @@ String.prototype.decodeHTML = function()
     return $('<div>', {html: '' + this}).html();
 };
 
-function activateNavItem(url)
-{
-    $('#menu li').removeClass('active');
-    $('#menu a[href="' + url + '"] li').addClass('active');
-}
+var activateNavItem = function() {};
 
 // This is set to false temporarily when
 //   the slide movement is BECAUSE of a history change
@@ -51,6 +47,14 @@ var slideMoveFunction = function(anchorLink, index, prevSlideIndex, slideIndex, 
 
 $(function()
 {
+    // Overwrites previously defined function
+    var allMenuItems = $('#menu li');
+    activateNavItem = function(url)
+    {
+        $('#menu li').removeClass('active');
+        $('#menu a[href="' + url + '"] li').addClass('active');
+    };
+    
     // Sets up fullPage slide scrolling
     $('#fullpage').fullpage
     ({
