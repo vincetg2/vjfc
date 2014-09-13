@@ -19,8 +19,8 @@
         <title>Save The Date! - Vincent &amp; Jacklin's Wedding</title>
         
         <style>
-            @font-face { font-family: theanoDidot; src: url('TheanoDidot-Regular.ttf'); }
-            @font-face { font-family: monsieurLaDoulaise; src: url('MonsieurLaDoulaise-Regular.ttf'); }
+            @font-face { font-family: theanoDidot; src: url('fonts/TheanoDidot-Regular.ttf'); }
+            @font-face { font-family: monsieurLaDoulaise; src: url('fonts/MonsieurLaDoulaise-Regular.ttf'); }
             
             body { background-color: #f1f0eb; }
             
