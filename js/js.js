@@ -51,7 +51,7 @@ $(function()
     var allMenuItems = $('#menu li');
     activateNavItem = function(url)
     {
-        $('#menu li').removeClass('active');
+        allMenuItems.removeClass('active');
         $('#menu a[href="' + url + '"] li').addClass('active');
     };
     

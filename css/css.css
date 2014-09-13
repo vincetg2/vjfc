@@ -79,6 +79,14 @@ and (max-device-width : 568px)
     .bigtext {  font-size: 95px; line-height: 106px; }
     .littleline { line-height: 2em; }
     .normaltext { letter-spacing: 4px; line-height: 3em; }
+    
+    #menu li
+    {
+        padding: 4px 9px;
+        margin: 5px;
+        border-radius: 5px;
+        font-size: 10px;
+    }
 }
 
 /* iPad */
