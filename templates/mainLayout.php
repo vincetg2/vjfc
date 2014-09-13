@@ -24,12 +24,12 @@
     <body>
         <nav id="menu"><ul>
             <?php foreach(array(
-                array('url' => 'home',      'text' => 'Home'),
-                array('url' => 'wtf',       'text' => 'About Us'),
-                array('url' => 'letsparty', 'text' => 'Wedding Party'),
-                array('url' => 'mawwige',   'text' => 'Venue'),
-                array('url' => 'sosleepy',  'text' => 'Accommodations'),
-                array('url' => 'presence',  'text' => 'Registry'),
+                array('url' => 'headliners', 'text' => 'Headliners'),
+                array('url' => 'tour',       'text' => 'Tour'),
+                array('url' => 'openers',    'text' => 'Openers'),
+                array('url' => 'venue',      'text' => 'Venue'),
+                array('url' => 'sosleepy',   'text' => 'Accommodations'),
+                array('url' => 'merch',      'text' => 'Merch'),
             ) as $menuItem) { ?>
                 <a href="<?php echo $menuItem['url']; ?>"><!--
                     --><li<?php if($menuItem['url'] == $url) { ?> class="active"<?php } ?>><!--
@@ -39,19 +39,19 @@
             <?php } ?>
         </ul></nav>
         <main id="fullpage"><div class="section">
-            <div class="slide" data-index="0" data-url="home" id="slide0">
-                home
+            <div class="slide" data-index="0" data-url="headliners" id="slide0">
+                headliners
             </div>
             
-            <div class="slide" data-index="1" data-url="wtf" id="slide1">
-                about us
+            <div class="slide" data-index="1" data-url="tour" id="slide1">
+                tour
             </div>
             
-            <div class="slide" data-index="2" data-url="letsparty" id="slide2">
-                wedding party
+            <div class="slide" data-index="2" data-url="openers" id="slide2">
+                openers
             </div>
             
-            <div class="slide" data-index="3" data-url="mawwige" id="slide3">
+            <div class="slide" data-index="3" data-url="venue" id="slide3">
                 venue
             </div>
             
@@ -59,8 +59,8 @@
                 accommodations
             </div>
             
-            <div class="slide" data-index="5" data-url="presence" id="slide5">
-                registry
+            <div class="slide" data-index="5" data-url="merch" id="slide5">
+                merch
             </div>
         </div></main>
     </body>
