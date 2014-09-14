@@ -58,7 +58,7 @@ $(function()
     // Sets up fullPage slide scrolling
     $('#fullpage').fullpage
     ({
-        sectionsColor: ['#8FB98B'],
+        //sectionsColor: ['#8FB98B'],
         slidesNavigation: true,
         verticalCentered: true,
         onSlideLeave: slideMoveFunction,

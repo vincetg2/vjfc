@@ -23,43 +23,60 @@
     
     <body>
         <nav id="menu"><ul>
-            <?php foreach(array(
-                array('url' => 'headliners', 'text' => 'Headliners'),
-                array('url' => 'tour',       'text' => 'Tour'),
-                array('url' => 'openers',    'text' => 'Openers'),
-                array('url' => 'venue',      'text' => 'Venue'),
-                array('url' => 'sosleepy',   'text' => 'Accommodations'),
-                array('url' => 'merch',      'text' => 'Merch'),
-            ) as $menuItem) { ?>
-                <a href="<?php echo $menuItem['url']; ?>"><!--
-                    --><li<?php if($menuItem['url'] == $url) { ?> class="active"<?php } ?>><!--
-                        --><?php echo $menuItem['text']; ?><!--
+            <?php
+                $slideInfos = array
+                (
+                    array('url' => 'headliners', 'navtext' => 'Headliners',    ),
+                    array('url' => 'tour',       'navtext' => 'Tour',          ),
+                    array('url' => 'openers',    'navtext' => 'Openers',       ),
+                    array('url' => 'venue',      'navtext' => 'Venue',         ),
+                    array('url' => 'sosleepy',   'navtext' => 'Accommodations',),
+                    array('url' => 'merch',      'navtext' => 'Merch',         ),
+                );
+                foreach($slideInfos as $key => &$slideInfo)
+                {
+                    $slideInfo['index']  = $key;
+                    $slideInfo['id']     = "slide$key";
+                    $slideInfo['active'] = $slideInfo['url'] == $url;
+                }
+                unset($slideInfo); // safety net
+            ?>
+            <?php foreach($slideInfos as $slideInfo) { ?>
+                <a href="<?php echo $slideInfo['url']; ?>"><!--
+                    --><li<?php if($slideInfo['active']) { ?> class="active"<?php } ?>><!--
+                        --><?php echo $slideInfo['navtext']; ?><!--
                     --></li><!--
                 --></a>
             <?php } ?>
         </ul></nav>
         <main id="fullpage"><div class="section">
-            <div class="slide" data-index="0" data-url="headliners" id="slide0">
-                headliners
+            <?php $slideInfo = reset($slideInfos); ?>
+            <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
+                <div id="headimg" />
             </div>
             
-            <div class="slide" data-index="1" data-url="tour" id="slide1">
+            <?php $slideInfo = next($slideInfos); ?>
+            <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
                 tour
             </div>
             
-            <div class="slide" data-index="2" data-url="openers" id="slide2">
+            <?php $slideInfo = next($slideInfos); ?>
+            <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
                 openers
             </div>
             
-            <div class="slide" data-index="3" data-url="venue" id="slide3">
+            <?php $slideInfo = next($slideInfos); ?>
+            <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
                 venue
             </div>
             
-            <div class="slide" data-index="4" data-url="sosleepy" id="slide4">
+            <?php $slideInfo = next($slideInfos); ?>
+            <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
                 accommodations
             </div>
             
-            <div class="slide" data-index="5" data-url="merch" id="slide5">
+            <?php $slideInfo = next($slideInfos); ?>
+            <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
                 merch
             </div>
         </div></main>
