@@ -6,10 +6,11 @@
         <meta name="description" content="Vincent Garcia and Jacklin Sammis' wedding website" />
         <meta name="author"      content="Vincent Garcia" />
         
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
         <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="stylesheet" href="/css/css.css" />
         <link rel="stylesheet" href="/css/jquery.fullPage.css" />
+        <link rel="stylesheet" href="/css/jquery.fullPage.css" />
+        <link rel="stylesheet" href="/css/css.css" />
         
         <title><?php echo $title; ?></title>
         
@@ -49,7 +50,7 @@
                 --></a>
             <?php } ?>
         </ul></nav>
-        <main id="fullpage"><div class="section">
+        <div id="fullpage"><div class="section">
             <?php $slideInfo = reset($slideInfos); ?>
             <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
                 <div id="headimg" />
@@ -57,28 +58,125 @@
             
             <?php $slideInfo = next($slideInfos); ?>
             <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
-                tour
+                <div id="tour" class="maincontain">
+                    <div class="incontain">
+                        <main>
+                            <h1>Tour</h1>
+                            <?php
+                                $dateInfos = array
+                                (
+                                    array
+                                    (
+                                        'date'  => array('month' => 'Aug', 'day' => 10),
+                                        'city'  => 'San Francisco, CA',
+                                        'place' => 'Outside Lands Music Festival',
+                                    ),
+                                    array
+                                    (
+                                        'date'  => array('month' => 'Aug', 'day' => 11),
+                                        'city'  => 'San Francisco, CA',
+                                        'place' => 'Outside Lands Music Festival',
+                                    ),
+                                    array
+                                    (
+                                        'date'  => array('month' => 'Aug', 'day' => 12),
+                                        'city'  => 'San Francisco, CA',
+                                        'place' => 'Outside Lands Music Festival',
+                                    ),
+                                    array
+                                    (
+                                        'date'  => array('month' => 'Aug', 'day' => 13),
+                                        'city'  => 'San Francisco, CA',
+                                        'place' => 'Outside Lands Music Festival',
+                                    ),
+                                    array
+                                    (
+                                        'date'  => array('month' => 'Aug', 'day' => 14),
+                                        'city'  => 'San Francisco, CA',
+                                        'place' => 'Outside Lands Music Festival',
+                                    ),
+                                    array
+                                    (
+                                        'date'  => array('month' => 'Aug', 'day' => 15),
+                                        'city'  => 'San Francisco, CA',
+                                        'place' => 'Outside Lands Music Festival',
+                                    ),
+                                    array
+                                    (
+                                        'date'  => array('month' => 'Aug', 'day' => 16),
+                                        'city'  => 'San Francisco, CA',
+                                        'place' => 'Outside Lands Music Festival',
+                                    ),
+                                    array
+                                    (
+                                        'date'  => array('month' => 'Aug', 'day' => 17),
+                                        'city'  => 'San Francisco, CA',
+                                        'place' => 'Outside Lands Music Festival',
+                                    ),
+                                );
+                            ?>
+                            <?php foreach($dateInfos as $dateInfo) { ?>
+                                <div class="row">
+                                    <div class="date col">
+                                        <div class="indate">
+                                            <div class="month"><?php echo $dateInfo['date']['month']; ?></div>
+                                            <div class="day"><?php   echo $dateInfo['date']['day'];   ?></div>
+                                        </div>
+                                    </div>
+                                    <div class="location col">
+                                        <div class="city"><?php  echo $dateInfo['city'];  ?></div>
+                                        <div class="place"><?php echo $dateInfo['place']; ?></div>
+                                    </div>
+                                    <div class="tickets col">More Info</div>
+                                </div>
+                            <?php } ?>
+                        </main>
+                    </div><!-- .incontent -->
+                </div><!-- #tour.maincontent -->
             </div>
             
             <?php $slideInfo = next($slideInfos); ?>
             <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
-                openers
+                <div id="openers" class="maincontain">
+                    <div id="tmain" style="-webkit-overflow-scrolling: touch; height: 200px; border: 1px solid white; overflow: scroll;">
+                        openers<br />
+                        openers<br />
+                        openers<br />
+                        openers<br />
+                        openers<br />
+                        openers<br />
+                        openers<br />
+                        openers<br />
+                        openers<br />
+                        openers<br />
+                        openers<br />
+                        openers<br />
+                        openers<br />
+                        openers<br />
+                    </div>
+                </div>
             </div>
             
             <?php $slideInfo = next($slideInfos); ?>
             <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
-                venue
+                <div id="venuw" class="maincontain">
+                    venue
+                </div>
             </div>
             
             <?php $slideInfo = next($slideInfos); ?>
             <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
-                accommodations
+                <div id="accommodations" class="maincontain">
+                    accommodations
+                </div>
             </div>
             
             <?php $slideInfo = next($slideInfos); ?>
             <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
-                merch
+                <div id="merch" class="maincontain">
+                    merch
+                </div>
             </div>
-        </div></main>
+        </div>
     </body>
 </html>

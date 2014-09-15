@@ -200,6 +200,26 @@
 			}
 
 			$(this).css('height', windowsHeight + 'px');
+            
+            // Adjusts main elements by .maincontain properties
+            var extraHeight = 0;
+            var heights = $(this).find('.maincontain').css(
+                ['margin-top',  'margin-bottom', 'padding-top', 'padding-bottom']);
+            $.each(heights, function(property, value)
+                { extraHeight += Number(value.substring(0, value.length - 2)); });
+            var heights = $(this).find('.incontain').css(
+                ['margin-top',  'margin-bottom', 'padding-top', 'padding-bottom']);
+            $.each(heights, function(property, value)
+                { extraHeight += Number(value.substring(0, value.length - 2)); });
+            var newHeight = windowsHeight - extraHeight;
+            var children = $(this).find('main').children();
+            console.log(children);
+            var childrenHeight = 0;
+            $.each(children, function()
+                { childrenHeight += $(this).outerHeight(true); });
+            if(childrenHeight < newHeight) newHeight = childrenHeight;
+            $(this).find('main').css('height', newHeight + 'px');
+            $(this).find('.slimScrollDiv').css('height', newHeight + 'px');
 
 			if(options.paddingTop || options.paddingBottom){
 				$(this).css('padding', options.paddingTop  + ' 0 ' + options.paddingBottom + ' 0');
@@ -441,14 +461,9 @@
 		function touchMoveHandler(event){
 			var e = event.originalEvent;
 
-			if(options.autoScrolling){
-				//preventing the easing on iOS devices
-				event.preventDefault();
-			}
-
 			// additional: if one of the normalScrollElements isn't within options.normalScrollElementTouchThreshold hops up the DOM chain
-			if (!checkParentForNormalScrollElement(event.target)) {
-
+			if (true) {
+                
 				var touchMoved = false;
 				var activeSection = $('.fp-section.active');
 				var scrollable;
@@ -472,7 +487,14 @@
 					}
 
 					//vertical scrolling (only when autoScrolling is enabled)
-					else if(options.autoScrolling){
+					else if(options.autoScrolling &&
+                            !checkParentForNormalScrollElement(event.target) &&
+                            !$(event.target).is(options.normalScrollElements)){
+                        
+                        if(options.autoScrolling){
+                            //preventing the easing on iOS devices
+                            event.preventDefault();
+                        }
 
 						//if there are landscape slides, we check if the scrolling bar is in the current one or not
 						if(activeSection.find('.fp-slides').length){
@@ -1088,6 +1110,19 @@
 				}
 
 				$(this).css('height', windowsHeight + 'px');
+                
+                // Adjusts main elements by .maincontain properties
+                var extraHeight = 0;
+                var heights = $(this).find('.maincontain').css(
+                    ['margin-top',  'margin-bottom', 'padding-top', 'padding-bottom']);
+                $.each(heights, function(property, value)
+                    { extraHeight += Number(value.substring(0, value.length - 2)); });
+                var heights = $(this).find('.incontain').css(
+                    ['margin-top',  'margin-bottom', 'padding-top', 'padding-bottom']);
+                $.each(heights, function(property, value)
+                    { extraHeight += Number(value.substring(0, value.length - 2)); });
+			    $(this).find('main').css('height', windowsHeight - extraHeight + 'px');
+			    $(this).find('.slimScrollDiv').css('height', windowsHeight - extraHeight + 'px');
 
 				//resizing the scrolling divs
 				if(options.scrollOverflow){

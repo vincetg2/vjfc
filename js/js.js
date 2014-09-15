@@ -55,13 +55,52 @@ $(function()
         $('#menu a[href="' + url + '"] li').addClass('active');
     };
     
-    // Sets up fullPage slide scrolling
+    var scrollables = 'main, #tmain';
+    
+    // Slide framework
     $('#fullpage').fullpage
     ({
-        //sectionsColor: ['#8FB98B'],
         slidesNavigation: true,
-        verticalCentered: true,
+        verticalCentered: false,
         onSlideLeave: slideMoveFunction,
+        normalScrollElements: scrollables
+    });
+    
+    // Nicer scrollbars for non-iOS browsers
+    if(!navigator.userAgent.match(/(iPod|iPhone|iPad)/i))
+    {
+        $('main').slimScroll(
+        {
+            height: 'auto',
+            distance: '3px'
+        });
+    }
+    
+    // Prevents rubber-banding on vertical scrolling of scrollable elements
+    // http://stackoverflow.com/questions/10357844/how-to-disable-rubber-band-in-ios-web-apps/17767943#17767943
+    var INITIAL_Y = 0; // Tracks initial Y position, needed to kill Safari bounce effect
+    $(document).on('touchstart',function(e)
+        { INITIAL_Y = e.originalEvent.touches[0].clientY; });
+    $(document).on('touchmove',function(e)
+    {
+        // Get scrollable ancestor if one exists
+        var scrollable_ancestor = $( e.target ).closest(scrollables)[0];
+        
+        // Nothing scrollable? Block move.
+        if(!scrollable_ancestor)
+        {
+            e.preventDefault();
+            return;
+        }
+        
+        // If here, prevent move if at scrollable boundaries.
+        var scroll_delta = INITIAL_Y - e.originalEvent.touches[0].clientY;
+        var scroll_pos   = scrollable_ancestor.scrollTop;         
+        var at_bottom = (scroll_pos + $(scrollable_ancestor).height()) ==
+            scrollable_ancestor.scrollHeight;
+        
+        if(scroll_delta < 0 && scroll_pos == 0 || scroll_delta > 0 && at_bottom)
+            e.preventDefault();
     });
     
     // Scrolls when a navigation menu item is pressed
