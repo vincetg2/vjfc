@@ -358,3 +358,12 @@ a:hover { text-decoration: underline; }
     /* tour */
     #tour .story { padding-left: 0; }
 }
+
+
+@media (min-aspect-ratio: 1/1)
+{
+    #headimg
+    {
+        background: url('../images/fox-sign-crop.jpg') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;
+    }
+}
