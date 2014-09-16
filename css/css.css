@@ -76,14 +76,14 @@ a:hover { text-decoration: underline; }
 {
     width: 100%;
     height: 100%;
-    background: url('../images/fox-sign-crop.jpg') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;
+    background: url('../images/fox-sign-getlow.jpg') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;
 }
 
 .maincontain
 {
     margin: 56px auto 0;
     /*border: 1px solid white;*/
-    padding: 15px 18px 48px;
+    padding: 15px 18px 35px;
     width: 1140px;
 }
 .incontain
@@ -125,20 +125,39 @@ a:hover { text-decoration: underline; }
 }
 #tour .col { float: left; }
 
-#tour .col.date { width: 16%; }
-#tour .indate { display: inline-block; }
-#tour .indate div { text-align: center; }
+#tour .date { width: 16%; }
+#tour .indate { display: inline-block; text-align: center; }
 #tour .month { font-size: 13px; }
 #tour .day   { font-size: 30px; }
+#tour .year  { font-size: 13px; }
 
-#tour .col.location { width: 65%; }
+#tour .location { width: 65%; }
 #tour .city  { width: 50%; float: left; }
 #tour .place { width: 50%; float: left; }
+#tour .storycontain
+{
+    display: none;
+    clear: both;
+    border-top: 1px solid black;
+    padding-top: 9px;
+}
+#tour .story
+{
+    text-transform: none;
+    max-width: 600px;
+    padding-left: 50px;
+}
 
-#tour .col.tickets
+#tour .tickets
 {
     float: right;
     color: #da4a18;
+}
+#tour .tickets:hover
+{
+    color: #953310;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
 }
 
 
@@ -166,74 +185,80 @@ a:hover { text-decoration: underline; }
 .littleline { line-height: 1em; }
 .normaltext { letter-spacing: 2px; line-height: 2.5em; }
 
-@media (max-width: 767px) {
+@media (max-width: 767px)
+{
+    /* std */
     #img { width: 600px; height: 600px; background-image: url('images/sutro.600.jpg'); }
     .bigtext {  font-size: 95px; line-height: 106px; }
     .littleline { line-height: 2em; }
     .normaltext { letter-spacing: 4px; line-height: 3em; }
     
-    #menu
-    {
-        display: none;
-    }
+    /* menu */
+    #menu { display: none; }
     
     /* fullPage navigation */
     .fp-controlArrow { display: none; }
     .fp-slidesNav.bottom
     {
         display: block;
+        width: 100%;
+        left: auto;
         bottom: 9px;
+        text-align: center;
     }
     .fp-slidesNav ul
     {
+        display: inline-block;
         margin: 0;
         padding: 0 7px;
         height: 28px;
         background-color: rgba(255, 255, 255, 0.5);
         border-radius: 10px;
     }
-    .fp-slidesNav li { height: 9px; }
-    .fp-slidesNav         span { border-color:     rgba(0, 0, 0, 0.8); }
+    .fp-slidesNav a { display: inline-block; }
+    .fp-slidesNav li
+    {
+        display: block;
+        width: auto;
+        height: auto;
+        margin: 0;
+        padding: 9px;
+    }
+    .fp-slidesNav span
+    {
+        display: block;
+        margin: 0;
+        position: static;
+        border-color: rgba(0, 0, 0, 0.8);
+    }
     .fp-slidesNav .active span { background-color: rgba(0, 0, 0, 0.8); }
     
+    /* main */
     .maincontain
     {
         margin: 0;
         padding-left: 0;
         padding-right: 0;
+        padding-bottom: 48px;
         width: 100%;
     }
     
-    #tour h1
-    {
-        /*
-        margin: 0 36px 31px;
-        border-bottom: 1px solid black;
-        padding: 43px 0 12px;
-        font-size: 16px;
-        text-transform: uppercase;
-        */
-        margin: 0 18px 18px;
-        padding: 18px 0 0;
-    }
-    #tour .row
-    {
-        /*
-        padding: 11px 36px;
-        overflow: auto;
-        clear: both;
-        text-transform: uppercase;
-        */
-        padding-left: 18px;
-        padding-right: 18px;
-    }
+    /* tour */
+    #tour h1 { margin: 0 18px 18px; padding: 18px 0 0; }
+    #tour .row { padding-left: 18px; padding-right: 18px; }
     #tour .col.location { width: 50%; }
     #tour .city  { width: 100%; float: none; }
     #tour .place { width: 100%; float: none; }
+    #tour .storycontain { max-width: 420px; width: 158%; }
+    #tour .story { padding-left: 0; }
+    
+    #venue img { width: 200px; }
+    #merch img { width: 200px; }
 }
 
 @media (min-width: 768px) and (max-width: 844px)
 {
+    /* std */
     #img { width: 1000px; height: 1000px; background-image: url('images/sutro.1000.jpg'); }
     .bigtext { font-size: 190px; line-height: 174px; }
     .cursive .post_letter_spacing { letter-spacing: 20px; }
@@ -241,72 +266,95 @@ a:hover { text-decoration: underline; }
     .normaltext { font-size: 25px; letter-spacing: 7px; line-height: 3em; }
     
     /* fullPage navigation */
-    .fp-controlArrow.fp-prev { left:  4px; border-width: 22.5px 13px 22.5px 0; }
-    .fp-controlArrow.fp-next { right: 4px; border-width: 22.5px 0 22.5px 13px; }
+    .fp-controlArrow { display: none; }
     .fp-slidesNav.bottom
     {
         display: block;
+        width: 100%;
+        left: auto;
         bottom: 9px;
+        text-align: center;
     }
     .fp-slidesNav ul
     {
+        display: inline-block;
         margin: 0;
         padding: 0 7px;
         height: 28px;
         background-color: rgba(255, 255, 255, 0.5);
         border-radius: 10px;
     }
-    .fp-slidesNav li { height: 9px; }
-    .fp-slidesNav         span { border-color:     rgba(0, 0, 0, 0.8); }
+    .fp-slidesNav a { display: inline-block; }
+    .fp-slidesNav li
+    {
+        display: block;
+        width: auto;
+        height: auto;
+        margin: 0;
+        padding: 9px;
+    }
+    .fp-slidesNav span
+    {
+        display: block;
+        margin: 0;
+        position: static;
+        border-color: rgba(0, 0, 0, 0.8);
+    }
     .fp-slidesNav .active span { background-color: rgba(0, 0, 0, 0.8); }
     
-    .maincontain
-    {
-        width: 720px;
-    }
+    /* main */
+    .maincontain { width: 720px; padding-bottom: 48px; }
+    
+    /* tour */
+    #tour .story { padding-left: 0; }
 }
 
 @media (min-width: 845px) and (max-width: 991px)
 {
+    /* std */
     #img { width: 1000px; height: 1000px; background-image: url('images/sutro.1000.jpg'); }
     .bigtext { font-size: 190px; line-height: 174px; }
     .cursive .post_letter_spacing { letter-spacing: 20px; }
     .littleline { line-height: 4em; }
     .normaltext { font-size: 25px; letter-spacing: 7px; line-height: 3em; }
     
-    .maincontain
-    {
-        width: 720px;
-    }
+    /* main */
+    .maincontain { width: 720px; }
     
+    /* tour */
     #tour .col.date { width: 16%; }
     #tour .col.city { width: 33%; }
+    #tour .story { padding-left: 0; }
 }
 
 @media (min-width: 992px) and (max-width: 1079px)
 {
+    /* std */
     #img { width: 1000px; height: 1000px; background-image: url('images/sutro.1000.jpg'); }
     .bigtext { font-size: 190px; line-height: 174px; }
     .cursive .post_letter_spacing { letter-spacing: 20px; }
     .littleline { line-height: 4em; }
     .normaltext { font-size: 25px; letter-spacing: 7px; line-height: 3em; }
     
-    .maincontain
-    {
-        width: 840px;
-    }
+    /* main */
+    .maincontain { width: 840px; }
+    
+    /* tour */
+    #tour .story { padding-left: 0; }
 }
 
 @media (min-width: 1080px) and (max-width: 1259px)
 {
+    /* std */
     #img { width: 1000px; height: 1000px; background-image: url('images/sutro.1000.jpg'); }
     .bigtext { font-size: 190px; line-height: 174px; }
     .cursive .post_letter_spacing { letter-spacing: 20px; }
     .littleline { line-height: 4em; }
     .normaltext { font-size: 25px; letter-spacing: 7px; line-height: 3em; }
     
-    .maincontain
-    {
-        width: 940px;
-    }
+    /* main */
+    .maincontain { width: 940px; }
+    
+    /* tour */
+    #tour .story { padding-left: 0; }
 }

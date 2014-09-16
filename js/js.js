@@ -129,4 +129,14 @@ $(function()
         $.fn.fullpage.moveTo(1, $('[data-url="' + url + '"]').data('index'));
         slideMovesAddToHistory = true;
     });
+    
+    // Toggles tour stories
+    $('#tour .row').on('click', function(e)
+    {
+        $(this).find('.storycontain').animate(
+        {
+            height: "toggle",
+            opacity: "toggle"
+        });
+    });
 });

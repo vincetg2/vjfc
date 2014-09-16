@@ -67,49 +67,49 @@
                                 (
                                     array
                                     (
-                                        'date'  => array('month' => 'Aug', 'day' => 10),
+                                        'date'  => array('month' => 'Aug', 'day' => 10, 'year' => 2011),
                                         'city'  => 'San Francisco, CA',
                                         'place' => 'Outside Lands Music Festival',
                                     ),
                                     array
                                     (
-                                        'date'  => array('month' => 'Aug', 'day' => 11),
+                                        'date'  => array('month' => 'Aug', 'day' => 11, 'year' => 2011),
                                         'city'  => 'San Francisco, CA',
                                         'place' => 'Outside Lands Music Festival',
                                     ),
                                     array
                                     (
-                                        'date'  => array('month' => 'Aug', 'day' => 12),
+                                        'date'  => array('month' => 'Aug', 'day' => 12, 'year' => 2011),
                                         'city'  => 'San Francisco, CA',
                                         'place' => 'Outside Lands Music Festival',
                                     ),
                                     array
                                     (
-                                        'date'  => array('month' => 'Aug', 'day' => 13),
+                                        'date'  => array('month' => 'Aug', 'day' => 13, 'year' => 2011),
                                         'city'  => 'San Francisco, CA',
                                         'place' => 'Outside Lands Music Festival',
                                     ),
                                     array
                                     (
-                                        'date'  => array('month' => 'Aug', 'day' => 14),
+                                        'date'  => array('month' => 'Aug', 'day' => 14, 'year' => 2011),
                                         'city'  => 'San Francisco, CA',
                                         'place' => 'Outside Lands Music Festival',
                                     ),
                                     array
                                     (
-                                        'date'  => array('month' => 'Aug', 'day' => 15),
+                                        'date'  => array('month' => 'Aug', 'day' => 15, 'year' => 2011),
                                         'city'  => 'San Francisco, CA',
                                         'place' => 'Outside Lands Music Festival',
                                     ),
                                     array
                                     (
-                                        'date'  => array('month' => 'Aug', 'day' => 16),
+                                        'date'  => array('month' => 'Aug', 'day' => 16, 'year' => 2011),
                                         'city'  => 'San Francisco, CA',
                                         'place' => 'Outside Lands Music Festival',
                                     ),
                                     array
                                     (
-                                        'date'  => array('month' => 'Aug', 'day' => 17),
+                                        'date'  => array('month' => 'Aug', 'day' => 17, 'year' => 2011),
                                         'city'  => 'San Francisco, CA',
                                         'place' => 'Outside Lands Music Festival',
                                     ),
@@ -121,11 +121,13 @@
                                         <div class="indate">
                                             <div class="month"><?php echo $dateInfo['date']['month']; ?></div>
                                             <div class="day"><?php   echo $dateInfo['date']['day'];   ?></div>
+                                            <div class="year"><?php  echo $dateInfo['date']['year'];  ?></div>
                                         </div>
                                     </div>
                                     <div class="location col">
                                         <div class="city"><?php  echo $dateInfo['city'];  ?></div>
                                         <div class="place"><?php echo $dateInfo['place']; ?></div>
+                                        <div class="storycontain"><div class="story">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div></div>
                                     </div>
                                     <div class="tickets col">More Info</div>
                                 </div>
@@ -159,8 +161,9 @@
             
             <?php $slideInfo = next($slideInfos); ?>
             <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
-                <div id="venuw" class="maincontain">
-                    venue
+                <div id="venue" class="maincontain">
+                    venue<br />
+                    <img src="images/hecker-pass-4.jpg" />
                 </div>
             </div>
             
@@ -174,7 +177,9 @@
             <?php $slideInfo = next($slideInfos); ?>
             <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
                 <div id="merch" class="maincontain">
-                    merch
+                    merch<br />
+                    <a href="https://www.bedbathandbeyond.com:443/store/giftregistry/view_registry_guest.jsp?registryId=541530851&eventType=Wedding" target="_blank"><img src="images/merch-table-bbb.jpg" /></a><br />
+                    <a href="http://www.amazon.com/registry/wedding/1ZHJUPNCOM84Y" target="_blank"><img src="images/merch-booth-2-azc.jpg" /></a>
                 </div>
             </div>
         </div>

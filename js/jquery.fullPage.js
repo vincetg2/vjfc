@@ -285,7 +285,10 @@
 						silentLandscapeScroll(startingSlide);
 					}
 
-					$(this).css('width', slideWidth + '%');
+                    if(index == numSlides - 1)
+					    $(this).css('width', (Math.round(slideWidth * 10) - 5) / 10 + '%');
+                    else
+					    $(this).css('width', Math.round(slideWidth * 10) / 10 + '%');
 
 					if(options.verticalCentered){
 						addTableClass($(this));
@@ -1066,7 +1069,7 @@
 			}
 
 			slidesNav.find('.active').removeClass('active');
-			slidesNav.find('li').eq(slideIndex).find('a').addClass('active');
+			slidesNav.find('li').eq(slideIndex).addClass('active');
 		}
 
 
@@ -1121,8 +1124,15 @@
                     ['margin-top',  'margin-bottom', 'padding-top', 'padding-bottom']);
                 $.each(heights, function(property, value)
                     { extraHeight += Number(value.substring(0, value.length - 2)); });
-			    $(this).find('main').css('height', windowsHeight - extraHeight + 'px');
-			    $(this).find('.slimScrollDiv').css('height', windowsHeight - extraHeight + 'px');
+                var newHeight = windowsHeight - extraHeight;
+                var children = $(this).find('main').children();
+                console.log(children);
+                var childrenHeight = 0;
+                $.each(children, function()
+                    { childrenHeight += $(this).outerHeight(true); });
+                if(childrenHeight < newHeight) newHeight = childrenHeight;
+                $(this).find('main').css('height', newHeight + 'px');
+                $(this).find('.slimScrollDiv').css('height', newHeight + 'px');
 
 				//resizing the scrolling divs
 				if(options.scrollOverflow){
@@ -1407,11 +1417,11 @@
 			nav.addClass(options.slidesNavPosition);
 
 			for(var i=0; i< numSlides; i++){
-				nav.find('ul').append('<li><a href="#"><span></span></a></li>');
+				nav.find('ul').append('<a href="#"><li><span></span></li></a>');
 			}
 
 			//centering it
-			nav.css('margin-left', '-' + (nav.width()/2) + 'px');
+			//nav.css('margin-left', '-' + (nav.width()/2) + 'px');
 
 			nav.find('li').first().find('a').addClass('active');
 		}
@@ -1458,7 +1468,7 @@
 		$(document).on('click', '.fp-slidesNav a', function(e){
 			e.preventDefault();
 			var slides = $(this).closest('.fp-section').find('.fp-slides');
-			var destiny = slides.find('.fp-slide').eq($(this).closest('li').index());
+			var destiny = slides.find('.fp-slide').eq($(this).index());
 
 			landscapeScroll(slides, destiny);
 		});
