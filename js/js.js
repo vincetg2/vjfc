@@ -1,27 +1,26 @@
-var originalPageLoad = true;
-
 // http://rosspenman.com/pushstate-jquery/
 String.prototype.decodeHTML = function()
-{
-    return $('<div>', {html: '' + this}).html();
-};
+{ return $('<div>', {html: '' + this}).html(); };
 
-var activateNavItem = function() {};
+// Elements whose contents are allowed to scroll
+var scrollables = 'main, #tmain';
 
-// This is set to false temporarily when
-//   the slide movement is BECAUSE of a history change
-var slideMovesAddToHistory = true;
+// Declared here so that it can be used in updatePageAndHistory
+//   Defined in ready() so it can re-use a reference to the DOM
+var activateMenuItem = function() {};
 
 // Gets run onSlideLeave (arrow key press, moveTo(), etc)
-var slideMoveFunction = function(anchorLink, index, prevSlideIndex, slideIndex, direction)
+var pageUpdatesModifyHistory = true;
+var popstatesMoveToSlide     = false;
+var updatePageAndHistory = function(anchorLink, index, prevSlideIndex, slideIndex, direction)
 {
-    // Does nothing on first load
+    // If this is just the page being loaded for the first time, does nothing
     if(direction == 'none') return;
     
     // Adds the current slide url to the history stack
     //   unless the slide movement is BECAUSE of a history movement
     var url = $('#slide' + slideIndex).data('url');
-    if(slideMovesAddToHistory)
+    if(pageUpdatesModifyHistory)
     {
         console.log('adding history state: ' + url);
         history.pushState({}, '', url);
@@ -37,34 +36,41 @@ var slideMoveFunction = function(anchorLink, index, prevSlideIndex, slideIndex, 
             .trim()
             .decodeHTML();
             
-        activateNavItem(html
+        // Sets the specified menu item as active, and the rest as inactive
+        activateMenuItem(html
             .match(/href="(.*?)"><li class="active"/)[1]
             .decodeHTML());
         
-        originalPageLoad = false;
+        //// comment this better
+        popstatesMoveToSlide = true;
     });
 };
 
+// Once the dom has loaded
 $(function()
 {
-    // Overwrites previously defined function
+    // Defines function that sets the specified menu item as active,
+    //   and the rest of them as inactive
     var allMenuItems = $('#menu li');
-    activateNavItem = function(url)
+    activateMenuItem = function(url)
     {
         allMenuItems.removeClass('active');
         $('#menu a[href="' + url + '"] li').addClass('active');
     };
     
-    var scrollables = 'main, #tmain';
-    
-    // Slide framework
-    $('#fullpage').fullpage
+    // Initializes slide framework
+    var fp = $('#fullpage');
+    fp.fullpage
     ({
         slidesNavigation: true,
         verticalCentered: false,
-        onSlideLeave: slideMoveFunction,
+        onSlideLeave: updatePageAndHistory,
         normalScrollElements: scrollables
     });
+    // Fixes fullpage.js' full-page background image issues
+    fp.css('background', fp.css('background'));
+    var hi = $('#headimg');
+    hi.css('background', hi.css('background'));
     
     // Nicer scrollbars for non-iOS browsers
     if(!navigator.userAgent.match(/(iPod|iPhone|iPad)/i))
@@ -76,39 +82,41 @@ $(function()
         });
     }
     
-    // Prevents rubber-banding on vertical scrolling of scrollable elements
+    // Prevents bouncing on scrolling past top/bottom of scrollable elements
     // http://stackoverflow.com/questions/10357844/how-to-disable-rubber-band-in-ios-web-apps/17767943#17767943
-    var INITIAL_Y = 0; // Tracks initial Y position, needed to kill Safari bounce effect
+    // Tracks initial Y position
+    var touchStartY = 0;
     $(document).on('touchstart',function(e)
-        { INITIAL_Y = e.originalEvent.touches[0].clientY; });
+        { touchStartY = e.originalEvent.touches[0].clientY; });
     $(document).on('touchmove',function(e)
     {
-        // Get scrollable ancestor if one exists
-        var scrollable_ancestor = $( e.target ).closest(scrollables)[0];
+        // Gets scrollable ancestor if possible
+        var scrollableAncestor = $(e.target).closest(scrollables)[0];
         
-        // Nothing scrollable? Block move.
-        if(!scrollable_ancestor)
+        // If the touch was not within a scrollable ancestor,
+        //   prevents the scroll of the element
+        if(!scrollableAncestor)
         {
             e.preventDefault();
             return;
         }
         
-        // If here, prevent move if at scrollable boundaries.
-        var scroll_delta = INITIAL_Y - e.originalEvent.touches[0].clientY;
-        var scroll_pos   = scrollable_ancestor.scrollTop;         
-        var at_bottom = (scroll_pos + $(scrollable_ancestor).height()) ==
-            scrollable_ancestor.scrollHeight;
-        
-        if(scroll_delta < 0 && scroll_pos == 0 || scroll_delta > 0 && at_bottom)
+        // If a scroll past the top/bottom of a scrollable element is attempted,
+        //   prevent the scroll of the element
+        var scrollDelta = touchStartY - e.originalEvent.touches[0].clientY;
+        var scrollPos   = scrollableAncestor.scrollTop;         
+        var atBottom = (scrollPos + $(scrollableAncestor).height()) ==
+            scrollableAncestor.scrollHeight;
+        if(scrollDelta < 0 && scrollPos == 0 || scrollDelta > 0 && atBottom)
             e.preventDefault();
     });
     
-    // Scrolls when a navigation menu item is pressed
+    // Moves to slide when a navigation menu item is pressed
     $('#menu a').click(function()
     {
         // Moves to slide specified by the href
         var url = $(this).attr('href');
-        console.log('nav move to: ' + url);
+        console.log('menu move to: ' + url);
         $.fn.fullpage.moveTo(1, $('[data-url="' + url + '"]').data('index'));
         
         // Cancels the normal anchor operation
@@ -119,18 +127,19 @@ $(function()
     // Scrolls when the back/forward buttons are pressed
     $(window).on('popstate', function(e)
     {
-        if(originalPageLoad) return;
-        var url = location.href.match(/vincejacklinforever\.com\/(.*?)$/)[1];
-        console.log('history move to: ' + url);
+        if(!popstatesMoveToSlide) return;
         
         // Moves to slide specified by data-url
-        //   without manually modifying the history stack
-        slideMovesAddToHistory = false;
+        //   without performing history stack manipulation
+        var url = location.href.match(/vincejacklinforever\.com\/(.*?)$/)[1];
+        console.log('history move to: ' + url);
+        pageUpdatesModifyHistory = false;
         $.fn.fullpage.moveTo(1, $('[data-url="' + url + '"]').data('index'));
-        slideMovesAddToHistory = true;
+        pageUpdatesModifyHistory = true;
     });
     
-    // Toggles tour stories
+    // Togglifies tour stories
+    // http://stackoverflow.com/questions/7672556/how-to-add-an-opacity-fading-effect-to-to-the-jquery-slidetoggle/7672911#7672911
     $('#tour .row').on('click', function(e)
     {
         $(this).find('.storycontain').animate(
@@ -139,4 +148,11 @@ $(function()
             opacity: "toggle"
         });
     });
+    
+    //// Supposed to make the main scroll to top when status bar is tapped
+    //window.addEventListener('scroll', function()
+    //{
+    //    var elem = document.getElementById('temp');
+    //    elem.scrollTo(0, 0, 0);
+    //}, false);
 });
