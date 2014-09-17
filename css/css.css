@@ -1,6 +1,5 @@
 @font-face { font-family: theanoDidot;        src: url('../fonts/TheanoDidot-Regular.ttf'); }
 @font-face { font-family: monsieurLaDoulaise; src: url('../fonts/MonsieurLaDoulaise-Regular.ttf'); }
-@font-face { font-family: knockout;           src: url('../fonts/knockout-htf-48-featherweight-1361516727.ttf'); }
 
 body { background-color: black; }
 
@@ -21,7 +20,7 @@ a:hover { text-decoration: underline; }
 #fullpage
 {
     background: url('../images/fox-stage.jpg') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;
-    font-family: knockout, "Trebuchet MS", Helvetica, sans-serif;
+    font-family: "Knockout 48 A", "Knockout 48 B", "Trebuchet MS", Helvetica, sans-serif;
     letter-spacing: 0.125em;
 }
 
@@ -32,7 +31,7 @@ a:hover { text-decoration: underline; }
     top: 0;
     left: 0;
     z-index: 70;
-    font-family: knockout, "Trebuchet MS", Helvetica, sans-serif;
+    font-family: "Knockout 48 A", "Knockout 48 B", "Trebuchet MS", Helvetica, sans-serif;
     font-size: 20px;
     letter-spacing: 0.075em;
     text-transform: uppercase;
@@ -69,7 +68,6 @@ a:hover { text-decoration: underline; }
 {
     text-align: center;
     font-size: 40px;
-    font-weight: bold;
     color: white;
 }
 
@@ -115,6 +113,7 @@ a:hover { text-decoration: underline; }
     border-bottom: 1px solid black;
     padding: 43px 0 12px;
     font-size: 67px;
+    font-weight: normal;
     text-transform: uppercase;
 }
 #tour .row
@@ -131,7 +130,12 @@ a:hover { text-decoration: underline; }
 #tour .col { float: left; }
 
 #tour .date { width: 16%; }
-#tour .indate { display: inline-block; text-align: center; }
+#tour .indate
+{
+    display: inline-block;
+    text-align: center;
+    line-height: 1.2em;
+}
 #tour .month,
 #tour .year { font-size: 20px; }
 #tour .day  { font-size: 40px; }

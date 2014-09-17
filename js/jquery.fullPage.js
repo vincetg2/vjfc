@@ -477,7 +477,7 @@
 					touchEndX = touchEvents['x'];
 
 					//if movement in the X axys is greater than in the Y and the currect section has slides...
-					if (activeSection.find('.fp-slides').length && Math.abs(touchStartX - touchEndX) > (Math.abs(touchStartY - touchEndY))) {
+					if (activeSection.find('.fp-slides').length && Math.abs(touchStartX - touchEndX) > 2 * (Math.abs(touchStartY - touchEndY))) {
 
 					    //is the movement greater than the minimum resistance to scroll?
 					    if (Math.abs(touchStartX - touchEndX) > ($(window).width() / 100 * options.touchSensitivity)) {

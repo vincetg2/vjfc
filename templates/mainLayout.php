@@ -10,6 +10,7 @@
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="stylesheet" href="/css/jquery.fullPage.css" />
         <link rel="stylesheet" href="/css/jquery.fullPage.css" />
+        <link rel="stylesheet" href="/css/knockout.css" />
         <link rel="stylesheet" href="/css/css.css" />
         
         <title><?php echo $title; ?></title>
