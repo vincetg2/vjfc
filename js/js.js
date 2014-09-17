@@ -142,11 +142,22 @@ $(function()
     // http://stackoverflow.com/questions/7672556/how-to-add-an-opacity-fading-effect-to-to-the-jquery-slidetoggle/7672911#7672911
     $('#tour .row').on('click', function(e)
     {
-        $(this).find('.storycontain').animate(
+        $(this).find('.story').animate(
         {
-            height: "toggle",
+            height:  "toggle",
             opacity: "toggle"
         });
+    });
+    var allStoriesShown = false;
+    $('#tour h1').on('click', function(e)
+    {
+        var showOrHide = allStoriesShown ? "hide" : "show";
+        $(this).parent('main').find('.story').finish().animate(
+        {
+            height:  showOrHide,
+            opacity: showOrHide,
+        });
+        allStoriesShown = !allStoriesShown;
     });
     
     //// Supposed to make the main scroll to top when status bar is tapped

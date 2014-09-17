@@ -1,5 +1,6 @@
-@font-face { font-family: theanoDidot; src: url('fonts/TheanoDidot-Regular.ttf'); }
-@font-face { font-family: monsieurLaDoulaise; src: url('fonts/MonsieurLaDoulaise-Regular.ttf'); }
+@font-face { font-family: theanoDidot;        src: url('../fonts/TheanoDidot-Regular.ttf'); }
+@font-face { font-family: monsieurLaDoulaise; src: url('../fonts/MonsieurLaDoulaise-Regular.ttf'); }
+@font-face { font-family: knockout;           src: url('../fonts/knockout-htf-48-featherweight-1361516727.ttf'); }
 
 body { background-color: black; }
 
@@ -20,7 +21,8 @@ a:hover { text-decoration: underline; }
 #fullpage
 {
     background: url('../images/fox-stage.jpg') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;
-    font-family: sans-serif;
+    font-family: knockout, "Trebuchet MS", Helvetica, sans-serif;
+    letter-spacing: 0.125em;
 }
 
 #menu
@@ -30,7 +32,10 @@ a:hover { text-decoration: underline; }
     top: 0;
     left: 0;
     z-index: 70;
-    font-family: sans-serif;
+    font-family: knockout, "Trebuchet MS", Helvetica, sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.075em;
+    text-transform: uppercase;
 }
 
 #menu ul
@@ -101,8 +106,7 @@ a:hover { text-decoration: underline; }
     -webkit-overflow-scrolling: touch;
     position: relative;
     text-align: left;
-    font-family: sans-serif;
-    font-size: 16px;
+    font-size: 24px;
     color: black;
 }
 #tour h1
@@ -110,7 +114,7 @@ a:hover { text-decoration: underline; }
     margin: 0 36px 31px;
     border-bottom: 1px solid black;
     padding: 43px 0 12px;
-    font-size: 16px;
+    font-size: 67px;
     text-transform: uppercase;
 }
 #tour .row
@@ -128,25 +132,28 @@ a:hover { text-decoration: underline; }
 
 #tour .date { width: 16%; }
 #tour .indate { display: inline-block; text-align: center; }
-#tour .month { font-size: 13px; }
-#tour .day   { font-size: 30px; }
-#tour .year  { font-size: 13px; }
+#tour .month,
+#tour .year { font-size: 20px; }
+#tour .day  { font-size: 40px; }
 
 #tour .location { width: 65%; }
 #tour .city  { width: 50%; float: left; }
 #tour .place { width: 50%; float: left; }
-#tour .storycontain
+#tour .story
 {
     display: none;
     clear: both;
     border-top: 1px solid black;
     padding-top: 9px;
 }
-#tour .story
+#tour .instory
 {
     text-transform: none;
     max-width: 600px;
     padding-left: 50px;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: 18px;
+    letter-spacing: 0;
 }
 
 #tour .tickets
@@ -245,13 +252,17 @@ a:hover { text-decoration: underline; }
     }
     
     /* tour */
-    #tour h1 { margin: 0 18px 18px; padding: 18px 0 0; }
-    #tour .row { padding-left: 18px; padding-right: 18px; }
+    #tour h1 { margin: 0 15px 15px; padding: 15px 0 0; }
+    #tour .row { padding-left: 15px; padding-right: 15px; }
     #tour .col.location { width: 50%; }
     #tour .city  { width: 100%; float: none; }
     #tour .place { width: 100%; float: none; }
-    #tour .storycontain { max-width: 420px; width: 158%; }
-    #tour .story { padding-left: 0; }
+    #tour .story { max-width: 420px; width: 158%; }
+    #tour .instory
+    {
+        padding-left: 0;
+        font-size: 16px;
+    }
     
     #venue img { width: 200px; }
     #merch img { width: 200px; }
@@ -307,7 +318,11 @@ a:hover { text-decoration: underline; }
     .maincontain { width: 720px; padding-bottom: 48px; }
     
     /* tour */
-    #tour .story { padding-left: 0; }
+    #tour .instory
+    {
+        padding-left: 0;
+        font-size: 16px;
+    }
 }
 
 @media (min-width: 845px) and (max-width: 991px)
@@ -325,7 +340,11 @@ a:hover { text-decoration: underline; }
     /* tour */
     #tour .col.date { width: 16%; }
     #tour .col.city { width: 33%; }
-    #tour .story { padding-left: 0; }
+    #tour .instory
+    {
+        padding-left: 0;
+        font-size: 16px;
+    }
 }
 
 @media (min-width: 992px) and (max-width: 1079px)
@@ -341,7 +360,7 @@ a:hover { text-decoration: underline; }
     .maincontain { width: 840px; }
     
     /* tour */
-    #tour .story { padding-left: 0; }
+    #tour .instory { padding-left: 0; }
 }
 
 @media (min-width: 1080px) and (max-width: 1259px)
@@ -357,7 +376,7 @@ a:hover { text-decoration: underline; }
     .maincontain { width: 940px; }
     
     /* tour */
-    #tour .story { padding-left: 0; }
+    #tour .instory { padding-left: 0; }
 }
 
 @media (max-device-width: 767px) and (orientation: landscape)
