@@ -140,8 +140,10 @@ $(function()
     
     // Togglifies tour stories
     // http://stackoverflow.com/questions/7672556/how-to-add-an-opacity-fading-effect-to-to-the-jquery-slidetoggle/7672911#7672911
-    $('#tour .row').on('click', function(e)
+    $('#tour .row').click(function(e)
     {
+        if(e.target.localName == 'a') return true;
+        
         $(this).find('.story').animate(
         {
             height:  "toggle",
@@ -149,7 +151,7 @@ $(function()
         });
     });
     var allStoriesShown = false;
-    $('#tour h1').on('click', function(e)
+    $('#tour h1').click(function(e)
     {
         var showOrHide = allStoriesShown ? "hide" : "show";
         $(this).parent('main').find('.story').finish().animate(

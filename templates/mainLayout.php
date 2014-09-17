@@ -113,7 +113,7 @@
                                         'date'  => array('month' => 'May', 'day' => '05', 'year' => 2012),
                                         'city'  => 'San Francisco, CA',
                                         'place' => 'Rock Bottom',
-                                        'story' => "Jacklin and Vincent host the first annual Kentucky Derby Party.",
+                                        'story' => "Jacklin and Vincent host their first annual Kentucky Derby Party.",
                                     ),
                                     array
                                     (
@@ -127,7 +127,7 @@
                                         'date'  => array('month' => 'Apr', 'day' => '20', 'year' => 2013),
                                         'city'  => 'Santa Cruz, CA',
                                         'place' => 'Santa Cruz Mountains',
-                                        'story' => "Vincent and Jacklin go wine tasting for the first time.",
+                                        'story' => "Vincent and Jacklin go wine tasting for their first time ever.",
                                     ),
                                     array
                                     (
@@ -141,7 +141,12 @@
                                         'date'  => array('month' => 'Jul', 'day' => '13', 'year' => 2013),
                                         'city'  => 'Sacramento, CA',
                                         'place' => 'The Ranch',
-                                        'story' => "Known as D-Day, Vincent and Jacklin add a new member to their small family by adopting @DoodleOfTheMission.",
+                                        'story' => "Known as D-Day, Vincent and Jacklin add a new member to their small family by adopting --DOODLE--.",
+                                        'replace' => array
+                                        (
+                                            '--DOODLE--' => '<a href="http://instagram.com/doodleofthemission" target="_blank">@doodleofthemission</a>',
+                                            //'--DOODLE--' => '<a href="instagram://user?username=doodleofthemission" target="_blank">@doodleofthemission</a>',
+                                        ),
                                     ),
                                     array
                                     (
@@ -181,8 +186,18 @@
                                 );
                                 
                                 foreach($dateInfos as &$dateInfo)
+                                {
                                     if(!isset($dateInfo['story']))
                                         $dateInfo['story'] = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+                                    
+                                    $dateInfo['story'] = htmlspecialchars($dateInfo['story']);
+                                    
+                                    if(isset($dateInfo['replace']))
+                                    {
+                                        $dateInfo['story'] = str_replace(array_keys($dateInfo['replace']),
+                                            array_values($dateInfo['replace']), $dateInfo['story']);
+                                    }
+                                }
                                 unset($dateInfo); // safety net
                             ?>
                             <?php foreach($dateInfos as $dateInfo) { ?>
@@ -198,9 +213,7 @@
                                         <div class="city"><?php  echo $dateInfo['city'];  ?></div>
                                         <div class="place"><?php echo $dateInfo['place']; ?></div>
                                         <div class="story">
-                                            <div class="instory"><?php
-                                                echo htmlspecialchars($dateInfo['story']);
-                                            ?></div>
+                                            <div class="instory"><?php echo $dateInfo['story']; ?></div>
                                         </div>
                                     </div>
                                     <div class="tickets col">More Info</div>
