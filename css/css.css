@@ -135,6 +135,7 @@ a:hover { text-decoration: underline; }
 }
 #tour h1           span { transition: color 0.2s ease-in-out; }
 #tour h1 div:hover span { color: #953310; cursor: pointer; }
+
 #tour .row
 {
     padding: 11px 36px;
@@ -142,26 +143,18 @@ a:hover { text-decoration: underline; }
     clear: both;
     text-transform: uppercase;
 }
-#tour .row:nth-child(2n)
-{
-    background-color: rgba(255, 255, 255, 0.2);
-}
-#tour .col { float: left; }
+#tour .row:nth-child(2n) { background-color: rgba(255, 255, 255, 0.2); }
 
+#tour .col  { float: left; }
 #tour .date { width: 16%; }
-#tour .indate
-{
-    display: inline-block;
-    text-align: center;
-}
-#tour .month,
-#tour .year { font-size: 20px; }
-#tour .day  { font-size: 40px; }
-
-#tour .location { width: 65%; }
-#tour .city  { width: 50%; float: left; }
-#tour .place { width: 50%; float: left; }
-#tour .story
+#tour   .indate { display: inline-block; text-align: center; }
+#tour     .month,
+#tour     .year { font-size: 20px; }
+#tour     .day  { font-size: 40px; }
+#tour   .location { width: 65%; }
+#tour     .city  { width: 50%; float: left; }
+#tour     .place { width: 50%; float: left; }
+#tour     .story
 {
     display: none;
     clear: both;
@@ -178,7 +171,6 @@ a:hover { text-decoration: underline; }
     line-height: normal;
     letter-spacing: 0;
 }
-
 #tour .tickets
 {
     float: right;
@@ -196,7 +188,7 @@ a:hover { text-decoration: underline; }
 
 
 /*\
-| | Handheld devices - No menu, edge-to-edge content
+| | Handheld devices - No menu, space for navigation dots, edge-to-edge content
 \*/
 
 @media (max-width: 767px)
@@ -210,21 +202,29 @@ a:hover { text-decoration: underline; }
         margin: 0;
         padding-left: 0;
         padding-right: 0;
-        padding-bottom: 48px;
         width: 100%;
     }
     
     /* tour */
     #tour h1 { margin: 0 15px 15px; padding: 15px 0 9px; }
     #tour .row { padding-left: 15px; padding-right: 15px; }
-    #tour .location { width: 50%; }
-    #tour .city  { width: 100%; float: none; }
-    #tour .place { width: 100%; float: none; }
-    #tour .story { max-width: 420px; width: 158%; }
-    #tour .instory { padding-left: 0; font-size: 16px; }
+    #tour   .location { width: 50%; }
+    #tour     .city  { width: 100%; float: none; }
+    #tour     .place { width: 100%; float: none; }
+    #tour     .story { max-width: 420px; width: 158%; }
     
     #venue img { width: 200px; }
     #merch img { width: 200px; }
+}
+
+/*\
+| | Landscape handheld devices - No navigation dots (messes with iOS7 browser)
+\*/
+
+@media (max-device-width: 767px) and (orientation: landscape)
+{
+    .fp-slidesNav.bottom { display: none; } /* fullPage navigation */
+    .inslide { padding-bottom: 30px; } /* slides */
 }
 
 /*\
@@ -269,6 +269,9 @@ a:hover { text-decoration: underline; }
         border-color: rgba(0, 0, 0, 0.8);
     }
     .fp-slidesNav .active span { background-color: rgba(0, 0, 0, 0.8); }
+    
+    /* slides */
+    .inslide { padding-bottom: 48px; }
 }
 
 /*\
@@ -278,48 +281,40 @@ a:hover { text-decoration: underline; }
 @media (min-width: 768px) and (max-width: 844px)
 {
     /* slides */
-    .inslide { width: 720px; padding-bottom: 48px; }
-    /* tour */
-    #tour .instory { padding-left: 0; font-size: 16px; }
+    .inslide { width: 720px; }
 }
 
 /*\
-| | Handheld devices and tablets - :active works better than :hover on iOS7
-\*/
-
-@media (max-width: 991px)
-{
-    #tour h1 div:hover  span { color: black; }
-    #tour h1 div:active span { color: #953310; }
-    #tour .row:hover  .tickets { color: #da4a18; }
-    #tour .row:active .tickets { color: #953310; }
-}
-
-/*\
-| | Landscape tablets - Narrowest content
+| | Medium devices - Narrowest content
 \*/
 
 @media (min-width: 845px) and (max-width: 991px)
 {
     /* slides */
     .inslide { width: 720px; }
-    
-    /* tour */
-    #tour .col.date { width: 16%; }
-    #tour .col.city { width: 33%; }
-    #tour .instory { padding-left: 0; font-size: 16px; }
 }
 
+/* Handheld devices and medium devices - Smaller story font */
+@media (max-width: 991px) { #tour .instory { font-size: 16px; } }
+
 /*\
-| | Desktop - Narrow content
+| | Landscape tablets - Narrow content
 \*/
 
 @media (min-width: 992px) and (max-width: 1079px)
 {
     /* slides */
     .inslide { width: 840px; }
-    /* tour */
-    #tour .instory { padding-left: 0; }
+}
+
+/* Handheld devices and tablets - :active works better than :hover on iOS7 */
+@media (max-device-width: 844px) and (orientation: portrait),
+    (max-device-width: 1079px) and (orientation: landscape)
+{
+    #tour h1 div:hover  span { color: black; }
+    #tour h1 div:active span { color: #953310; }
+    #tour .row:hover  .tickets { color: #da4a18; }
+    #tour .row:active .tickets { color: #953310; }
 }
 
 /*\
@@ -330,17 +325,7 @@ a:hover { text-decoration: underline; }
 {
     /* slides */
     .inslide { width: 940px; }
-    /* tour */
-    #tour .instory { padding-left: 0; }
 }
 
-
-
-
-
-/* Landscape handheld devices - No navigation dots (messes with iOS7 browser) */
-@media (max-device-width: 767px) and (orientation: landscape)
-{
-    .fp-slidesNav.bottom { display: none; } /* fullPage navigation */
-    .inslide { padding-bottom: 30px; } /* slides */
-}
+/* Non-wide content - No story indent */
+@media (max-width: 991px) { #tour .instory { padding-left: 0; } }
