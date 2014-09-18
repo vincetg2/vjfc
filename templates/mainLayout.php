@@ -54,7 +54,7 @@
         <div id="fullpage"><div class="section">
             <?php $slideInfo = reset($slideInfos); ?>
             <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
-                <div id="headliners" />
+                <div id="headliners"><div id="headlinersoverlay"></div></div>
             </div>
             
             <?php $slideInfo = next($slideInfos); ?>

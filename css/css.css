@@ -122,14 +122,50 @@ a:hover { text-decoration: underline; }
 /* headliners */
 #headliners
 {
+    position: relative;
     width:  100%;
     height: 100%;
     background: url('../images/fox-sign.jpg') no-repeat center 80% fixed;
     -webkit-background-size: cover;
-    -moz-background-size:    cover;
-    -o-background-size:      cover;
-    background-size:         cover;
+       -moz-background-size: cover;
+         -o-background-size: cover;
+            background-size: cover;
+    -webkit-transition: all 3.5s cubic-bezier(.34,.02,.29,.99);
+       -moz-transition: all 3.5s cubic-bezier(.34,.02,.29,.99);
+         -o-transition: all 3.5s cubic-bezier(.34,.02,.29,.99);
+            transition: all 3.5s cubic-bezier(.34,.02,.29,.99);
+    -webkit-transform: scale(1, 1);
+        -ms-transform: scale(1, 1);
+            transform: scale(1, 1);
 }
+.slide.active #headliners
+{
+    -webkit-transform: scale(1.2, 1.2);
+        -ms-transform: scale(1.2, 1.2);
+            transform: scale(1.2, 1.2);
+    background-position: center 0%;
+}
+#headliners #headlinersoverlay
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    width:  100%;
+    height: 100%;
+    -webkit-transition: all 4s ease-in-out;
+       -moz-transition: all 4s ease-in-out;
+         -o-transition: all 4s ease-in-out;
+            transition: all 4s ease-in-out;
+    -webkit-background-size: cover;
+       -moz-background-size: cover;
+         -o-background-size: cover;
+            background-size: cover;
+    pointer-events: none;
+    background-color: rgba(0, 0, 0, 0);
+}
+.slide.active #headliners #headlinersoverlay { background-color: #000; }
+.slide #headliners.loaded #headlinersoverlay { background-color: rgba(0, 0, 0, 0); }
 
 /* tour */
 #tour main

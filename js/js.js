@@ -28,7 +28,7 @@ var updatePageAndHistory = function(anchorLink, index, prevSlideIndex, slideInde
     
     // Updates page data with data from destination page
     console.log('loading page data from ' + url);
-    $.get(url, function(html)
+    $.post(url, function(html)
     {
         // http://rosspenman.com/pushstate-jquery/
         document.title = html
@@ -100,7 +100,14 @@ $(function()
     // Fixes fullpage.js' full-page background image issues
     fp.css('background', fp.css('background'));
     var hl = $('#headliners');
-    hl.css('background', hl.css('background'));
+    hl.css('background', hl.css('background'))
+        .addClass('loaded')
+        .css({
+            'background-position': 'center 80%',
+            '-webkit-transform': 'scale(1, 1)',
+            '-ms-transform':     'scale(1, 1)',
+            'transform':         'scale(1, 1)',
+            'background-size': 'cover'});
     
     // Nicer scrollbars for non-iOS browsers
     if(!navigator.userAgent.match(/(iPod|iPhone|iPad)/i))
@@ -166,12 +173,9 @@ $(function()
         return false;
     });
     
-    //// test going to back/forward to other/external pages
     // Scrolls when the back/forward buttons are pressed
     $(window).on('popstate', function(e)
     {
-        if(!popstatesMoveToSlide) return;
-        
         // Moves to slide specified by data-url
         //   without performing history stack manipulation
         var url = location.href.match(/vincejacklinforever\.com\/(.*?)$/)[1];
