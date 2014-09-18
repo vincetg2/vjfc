@@ -220,55 +220,72 @@
                                 </div>
                             <?php } ?>
                         </main>
-                    </div><!-- .incontent -->
-                </div><!-- #tour.maincontent -->
-            </div>
+                    </div><!-- .maincontain -->
+                </div><!-- #tour.inslide -->
+            </div><!-- .slide -->
             
             <?php $slideInfo = next($slideInfos); ?>
             <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
                 <div id="openers" class="inslide">
-                    <div id="tmain" style="-webkit-overflow-scrolling: touch; height: 200px; border: 1px solid white; overflow: scroll;">
-                        openers<br />
-                        openers<br />
-                        openers<br />
-                        openers<br />
-                        openers<br />
-                        openers<br />
-                        openers<br />
-                        openers<br />
-                        openers<br />
-                        openers<br />
-                        openers<br />
-                        openers<br />
-                        openers<br />
-                        openers<br />
-                    </div>
-                </div>
-            </div>
+                    <div class="maincontain">
+                        <main>
+                            <h1>openers</h1>
+                            <h1>openers</h1>
+                            <h1>openers</h1>
+                            <h1>openers</h1>
+                            <h1>openers</h1>
+                            <h1>openers</h1>
+                            <h1>openers</h1>
+                            <h1>openers</h1>
+                            <h1>openers</h1>
+                            <h1>openers</h1>
+                            <h1>openers</h1>
+                            <h1>openers</h1>
+                            <h1>openers</h1>
+                        </main>
+                    </div><!-- .maincontain -->
+                </div><!-- #openers.inslide -->
+            </div><!-- .slide -->
             
             <?php $slideInfo = next($slideInfos); ?>
             <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
                 <div id="venue" class="inslide">
-                    venue<br />
-                    <img src="images/hecker-pass-4.jpg" />
-                </div>
-            </div>
+                    <div class="maincontain">
+                        <main>
+                            <h1>venue</h1>
+                            <img src="images/hecker-pass-4.jpg" />
+                        </main>
+                    </div><!-- .maincontain -->
+                </div><!-- #venue.inslide -->
+            </div><!-- .slide -->
             
             <?php $slideInfo = next($slideInfos); ?>
             <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
                 <div id="accommodations" class="inslide">
-                    accommodations
-                </div>
-            </div>
+                    <div class="maincontain">
+                        <main>
+                            <h1>accommodations</h1>
+                        </main>
+                    </div><!-- .maincontain -->
+                </div><!-- #accommodations.inslide -->
+            </div><!-- .slide -->
             
             <?php $slideInfo = next($slideInfos); ?>
             <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
                 <div id="merch" class="inslide">
-                    merch<br />
-                    <a href="https://www.bedbathandbeyond.com:443/store/giftregistry/view_registry_guest.jsp?registryId=541530851&eventType=Wedding" target="_blank"><img src="images/merch-table-bbb.jpg" /></a><br />
-                    <a href="http://www.amazon.com/registry/wedding/1ZHJUPNCOM84Y" target="_blank"><img src="images/merch-booth-2-azc.jpg" /></a>
-                </div>
-            </div>
+                    <div class="maincontain">
+                        <main>
+                            <h1>merch</h1>
+                            <a href="https://www.bedbathandbeyond.com:443/store/giftregistry/view_registry_guest.jsp?registryId=541530851&eventType=Wedding" target="_blank">
+                                <img src="images/merch-table-bbb.jpg" />
+                            </a>
+                            <a href="http://www.amazon.com/registry/wedding/1ZHJUPNCOM84Y" target="_blank">
+                                <img src="images/merch-booth-2-azc.jpg" />
+                            </a>
+                        </main>
+                    </div><!-- .maincontain -->
+                </div><!-- #merch.inslide -->
+            </div><!-- .slide -->
         </div>
     </body>
 </html>

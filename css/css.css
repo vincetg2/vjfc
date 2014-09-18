@@ -9,7 +9,18 @@
 | | All
 \*/
 
-body { background-color: black; line-height: 1;}
+body { background-color: black; line-height: 1; font-family: "Knockout 48 A", "Knockout 48 B", "Trebuchet MS", Helvetica, sans-serif; }
+h1
+{
+    margin: 0;
+    font-size: 67px;
+    line-height: 0.75;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+/* //// temp or perm? */
+h1 { margin: 0 36px 31px; padding: 39px 0 12px; }
 
 a,
 a:visited,
@@ -57,15 +68,18 @@ a:hover { text-decoration: underline; }
     background: rgba(255, 255, 255, 0.5);
     color: black;
     border-radius: 10px;
+    transition: background 0.2s ease-in-out;
 }
-#menu li.active { background: #666; background: rgba(0, 0, 0, 0.5); color: white; }
-#menu li:hover,
-#menu li.active:hover { background: rgba(255, 255, 255, 0.8); }
-#menu li.active:hover { color: black; }
+#menu li:hover { background: rgba(255, 255, 255, 0.8); }
+#menu li.active       { background: rgba(0, 0, 0, 0.5); color: white; }
+#menu li.active:hover { background: rgba(255, 255, 255, 0.5); }
 
 /* fullPage navigation */
 .fp-controlArrow.fp-prev { border-right-color: rgba(255, 255, 255, 0.5); }
 .fp-controlArrow.fp-next { border-left-color:  rgba(255, 255, 255, 0.5); }
+.fp-controlArrow { transition: border-color 0.2s ease-in-out; }
+.fp-controlArrow.fp-prev:hover { border-right-color: rgba(255, 255, 255, 0.8); }
+.fp-controlArrow.fp-next:hover { border-left-color:  rgba(255, 255, 255, 0.8); }
 .fp-slidesNav.bottom { display: none; }
 
 /* slides */
@@ -88,9 +102,21 @@ a:hover { text-decoration: underline; }
 .inslide
 {
     margin: 56px auto 0;
-    /*border: 1px solid white;*/
     padding: 15px 18px 35px;
     width: 1140px;
+}
+.maincontain { padding: 3px 0; }
+.maincontain main
+{
+    overflow: scroll;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+.maincontain main > *
+{
+    display: block;
+    overflow: hidden;
+    clear: both;
 }
 
 /* headliners */
@@ -106,41 +132,20 @@ a:hover { text-decoration: underline; }
 }
 
 /* tour */
-.maincontain
-{
-    /*border: 1px solid white;*/
-    padding: 3px 0;
-    background-color: rgba(255, 255, 255, 0.67);
-    position: relative;
-}
 #tour main
 {
-    overflow: scroll;
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
-    position: relative;
     text-align: left;
     font-size: 24px;
     color: black;
 }
-#tour h1
-{
-    margin: 0 36px 31px;
-    border-bottom: 1px solid black;
-    padding: 39px 0 12px;
-    font-size: 67px;
-    line-height: 0.75;
-    font-weight: normal;
-    text-transform: uppercase;
-}
+#tour .maincontain { background-color: rgba(255, 255, 255, 0.67); }
+#tour h1 { margin: 0 36px 31px; border-bottom: 1px solid black; padding: 39px 0 12px; }
 #tour h1           span { transition: color 0.2s ease-in-out; }
 #tour h1 div:hover span { color: #953310; cursor: pointer; }
 
 #tour .row
 {
     padding: 11px 36px;
-    overflow: auto;
-    clear: both;
     text-transform: uppercase;
 }
 #tour .row:nth-child(2n) { background-color: rgba(255, 255, 255, 0.2); }
@@ -183,6 +188,12 @@ a:hover { text-decoration: underline; }
     cursor: pointer;
 }
 
+#venue img { margin: 0 auto; }
+
+#merch a { margin-bottom: 15px; }
+#merch img { display: block; }
+#merch img { margin: 0 auto; }
+
 
 
 
@@ -193,6 +204,9 @@ a:hover { text-decoration: underline; }
 
 @media (max-width: 767px)
 {
+    /* //// temp or perm? */
+    h1 { margin: 0 15px 15px; padding: 15px 0 9px; }
+
     /* menu */
     #menu { display: none; }
     
@@ -218,22 +232,14 @@ a:hover { text-decoration: underline; }
 }
 
 /*\
-| | Landscape handheld devices - No navigation dots (messes with iOS7 browser)
-\*/
-
-@media (max-device-width: 767px) and (orientation: landscape)
-{
-    .fp-slidesNav.bottom { display: none; } /* fullPage navigation */
-    .inslide { padding-bottom: 30px; } /* slides */
-}
-
-/*\
 | | Handheld devices & Portrait tablets - Navigation dots, no navigation arrows
 \*/
 
 @media (max-width: 844px)
 {
     /* fullPage navigation */
+    /* flag for fullPage to not show arrows */
+    .fp-controlArrow { text-align: center; }
     .fp-controlArrow { display: none; }
     .fp-slidesNav.bottom
     {
@@ -311,6 +317,14 @@ a:hover { text-decoration: underline; }
 @media (max-device-width: 844px) and (orientation: portrait),
     (max-device-width: 1079px) and (orientation: landscape)
 {
+    #menu li:hover  { background: rgba(255, 255, 255, 0.5); }
+    #menu li:active { background: rgba(255, 255, 255, 0.8); }
+    #menu li.active:hover  { background: rgba(0, 0, 0, 0.5); }
+    #menu li.active:active { background: rgba(255, 255, 255, 0.5); }
+    .fp-controlArrow.fp-prev:hover  { border-right-color: rgba(255, 255, 255, 0.5); }
+    .fp-controlArrow.fp-prev:active { border-right-color: rgba(255, 255, 255, 0.8); }
+    .fp-controlArrow.fp-next:hover  { border-left-color:  rgba(255, 255, 255, 0.5); }
+    .fp-controlArrow.fp-next:active { border-left-color:  rgba(255, 255, 255, 0.8); }
     #tour h1 div:hover  span { color: black; }
     #tour h1 div:active span { color: #953310; }
     #tour .row:hover  .tickets { color: #da4a18; }
@@ -328,4 +342,14 @@ a:hover { text-decoration: underline; }
 }
 
 /* Non-wide content - No story indent */
-@media (max-width: 991px) { #tour .instory { padding-left: 0; } }
+@media (max-width: 1259px) { #tour .instory { padding-left: 0; } }
+
+/*\
+| | Landscape handheld devices - No navigation dots (messes with iOS7 browser)
+\*/
+
+@media (max-device-width: 767px) and (orientation: landscape)
+{
+    .fp-slidesNav.bottom { display: none; } /* fullPage navigation */
+    .inslide { padding-bottom: 30px; } /* slides */
+}

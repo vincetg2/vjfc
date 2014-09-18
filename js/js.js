@@ -3,7 +3,7 @@ String.prototype.decodeHTML = function()
 { return $('<div>', {html: '' + this}).html(); };
 
 // Elements whose contents are allowed to scroll
-var scrollables = 'main, #tmain';
+var scrollables = '.maincontain main, #tmain';
 
 // Declared here so that it can be used in updatePageAndHistory
 //   Defined in ready() so it can re-use a reference to the DOM
@@ -46,6 +46,34 @@ var updatePageAndHistory = function(anchorLink, index, prevSlideIndex, slideInde
     });
 };
 
+// Adjusts main elements by .inslide and .maincontain properties, or
+//   by main children properties (whichever is less)
+var resizeMainElements = function()
+{
+    var main = $('.maincontain main');
+    var windowsHeight = $(window).height();
+    main.each(function()
+    {
+        var extraHeight = 0;
+        var heights = $(this).closest('.inslide').css(
+            ['margin-top',  'margin-bottom', 'padding-top', 'padding-bottom']);
+        $.each(heights, function(property, value)
+            { extraHeight += Number(value.substring(0, value.length - 2)); });
+        var heights = $(this).closest('.maincontain').css(
+            ['margin-top',  'margin-bottom', 'padding-top', 'padding-bottom']);
+        $.each(heights, function(property, value)
+            { extraHeight += Number(value.substring(0, value.length - 2)); });
+        var newHeight = windowsHeight - extraHeight;
+        var children = $(this).children();
+        var childrenHeight = 0;
+        $.each(children, function()
+            { childrenHeight += $(this).outerHeight(true); });
+        if(childrenHeight < newHeight) newHeight = childrenHeight;
+        $(this).css('height', newHeight + 'px');
+        $(this).closest('.slimScrollDiv').css('height', newHeight + 'px');
+    });
+};
+
 // Once the dom has loaded
 $(function()
 {
@@ -64,6 +92,8 @@ $(function()
     ({
         slidesNavigation: true,
         verticalCentered: false,
+        loopHorizontal: false,
+        afterResize: resizeMainElements,
         onSlideLeave: updatePageAndHistory,
         normalScrollElements: scrollables
     });
@@ -75,7 +105,7 @@ $(function()
     // Nicer scrollbars for non-iOS browsers
     if(!navigator.userAgent.match(/(iPod|iPhone|iPad)/i))
     {
-        $('main').slimScroll(
+        $('.maincontain main').slimScroll(
         {
             height: 'auto',
             distance: '3px'
@@ -114,10 +144,23 @@ $(function()
     // Moves to slide when a navigation menu item is pressed
     $('#menu a').click(function()
     {
-        // Moves to slide specified by the href
         var url = $(this).attr('href');
-        console.log('menu move to: ' + url);
-        $.fn.fullpage.moveTo(1, $('[data-url="' + url + '"]').data('index'));
+        
+        // If the slide is already active, scrolls to the top of its main element
+        if($(this).find('li').hasClass('active'))
+        {
+            var main = $('#' + url + ' main');
+            if(main.closest('.slimScrollDiv').length)
+                main.slimScroll({scrollTo: '0px'});
+            else
+                main.scrollTop(0);
+        }
+        // Moves to slide specified by the href
+        else
+        {
+            console.log('menu move to: ' + url);
+            $.fn.fullpage.moveTo(1, $('[data-url="' + url + '"]').data('index'));
+        }
         
         // Cancels the normal anchor operation
         return false;
@@ -169,3 +212,6 @@ $(function()
     //    elem.scrollTo(0, 0, 0);
     //}, false);
 });
+
+// Once the dom and all images have loaded
+$(window).load(function() { resizeMainElements(); });
