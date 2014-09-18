@@ -201,24 +201,25 @@
 
 			$(this).css('height', windowsHeight + 'px');
             
-            // Adjusts main elements by .maincontain properties
+            // Adjusts main elements by .inslide and .maincontain properties, or
+            //   by main children properties (whichever is less)
             var extraHeight = 0;
+            var heights = $(this).find('.inslide').css(
+                ['margin-top',  'margin-bottom', 'padding-top', 'padding-bottom']);
+            $.each(heights, function(property, value)
+                { extraHeight += Number(value.substring(0, value.length - 2)); });
             var heights = $(this).find('.maincontain').css(
                 ['margin-top',  'margin-bottom', 'padding-top', 'padding-bottom']);
             $.each(heights, function(property, value)
                 { extraHeight += Number(value.substring(0, value.length - 2)); });
-            var heights = $(this).find('.incontain').css(
-                ['margin-top',  'margin-bottom', 'padding-top', 'padding-bottom']);
-            $.each(heights, function(property, value)
-                { extraHeight += Number(value.substring(0, value.length - 2)); });
             var newHeight = windowsHeight - extraHeight;
-            var children = $(this).find('main').children();
-            console.log(children);
+            var main = $(this).find('main');
+            var children = main.children();
             var childrenHeight = 0;
             $.each(children, function()
                 { childrenHeight += $(this).outerHeight(true); });
             if(childrenHeight < newHeight) newHeight = childrenHeight;
-            $(this).find('main').css('height', newHeight + 'px');
+            main.css('height', newHeight + 'px');
             $(this).find('.slimScrollDiv').css('height', newHeight + 'px');
 
 			if(options.paddingTop || options.paddingBottom){
@@ -1114,24 +1115,25 @@
 
 				$(this).css('height', windowsHeight + 'px');
                 
-                // Adjusts main elements by .maincontain properties
+                // Adjusts main elements by .inslide and .maincontain properties, or
+                //   by main children properties (whichever is less)
                 var extraHeight = 0;
+                var heights = $(this).find('.inslide').css(
+                    ['margin-top',  'margin-bottom', 'padding-top', 'padding-bottom']);
+                $.each(heights, function(property, value)
+                    { extraHeight += Number(value.substring(0, value.length - 2)); });
                 var heights = $(this).find('.maincontain').css(
                     ['margin-top',  'margin-bottom', 'padding-top', 'padding-bottom']);
                 $.each(heights, function(property, value)
                     { extraHeight += Number(value.substring(0, value.length - 2)); });
-                var heights = $(this).find('.incontain').css(
-                    ['margin-top',  'margin-bottom', 'padding-top', 'padding-bottom']);
-                $.each(heights, function(property, value)
-                    { extraHeight += Number(value.substring(0, value.length - 2)); });
                 var newHeight = windowsHeight - extraHeight;
-                var children = $(this).find('main').children();
-                console.log(children);
+                var main = $(this).find('main');
+                var children = main.children();
                 var childrenHeight = 0;
                 $.each(children, function()
                     { childrenHeight += $(this).outerHeight(true); });
                 if(childrenHeight < newHeight) newHeight = childrenHeight;
-                $(this).find('main').css('height', newHeight + 'px');
+                main.css('height', newHeight + 'px');
                 $(this).find('.slimScrollDiv').css('height', newHeight + 'px');
 
 				//resizing the scrolling divs

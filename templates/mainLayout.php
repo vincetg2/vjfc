@@ -54,15 +54,15 @@
         <div id="fullpage"><div class="section">
             <?php $slideInfo = reset($slideInfos); ?>
             <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
-                <div id="headimg" />
+                <div id="headliners" />
             </div>
             
             <?php $slideInfo = next($slideInfos); ?>
             <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
-                <div id="tour" class="maincontain">
-                    <div class="incontain">
+                <div id="tour" class="inslide">
+                    <div class="maincontain">
                         <main>
-                            <h1>Tour</h1>
+                            <h1><div><span>Tour</span></div></h1>
                             <?php
                                 $dateInfos = array
                                 (
@@ -226,7 +226,7 @@
             
             <?php $slideInfo = next($slideInfos); ?>
             <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
-                <div id="openers" class="maincontain">
+                <div id="openers" class="inslide">
                     <div id="tmain" style="-webkit-overflow-scrolling: touch; height: 200px; border: 1px solid white; overflow: scroll;">
                         openers<br />
                         openers<br />
@@ -248,7 +248,7 @@
             
             <?php $slideInfo = next($slideInfos); ?>
             <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
-                <div id="venue" class="maincontain">
+                <div id="venue" class="inslide">
                     venue<br />
                     <img src="images/hecker-pass-4.jpg" />
                 </div>
@@ -256,14 +256,14 @@
             
             <?php $slideInfo = next($slideInfos); ?>
             <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
-                <div id="accommodations" class="maincontain">
+                <div id="accommodations" class="inslide">
                     accommodations
                 </div>
             </div>
             
             <?php $slideInfo = next($slideInfos); ?>
             <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
-                <div id="merch" class="maincontain">
+                <div id="merch" class="inslide">
                     merch<br />
                     <a href="https://www.bedbathandbeyond.com:443/store/giftregistry/view_registry_guest.jsp?registryId=541530851&eventType=Wedding" target="_blank"><img src="images/merch-table-bbb.jpg" /></a><br />
                     <a href="http://www.amazon.com/registry/wedding/1ZHJUPNCOM84Y" target="_blank"><img src="images/merch-booth-2-azc.jpg" /></a>

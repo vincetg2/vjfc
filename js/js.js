@@ -69,8 +69,8 @@ $(function()
     });
     // Fixes fullpage.js' full-page background image issues
     fp.css('background', fp.css('background'));
-    var hi = $('#headimg');
-    hi.css('background', hi.css('background'));
+    var hl = $('#headliners');
+    hl.css('background', hl.css('background'));
     
     // Nicer scrollbars for non-iOS browsers
     if(!navigator.userAgent.match(/(iPod|iPhone|iPad)/i))
@@ -151,10 +151,10 @@ $(function()
         });
     });
     var allStoriesShown = false;
-    $('#tour h1').click(function(e)
+    $('#tour h1 div').click(function(e)
     {
         var showOrHide = allStoriesShown ? "hide" : "show";
-        $(this).parent('main').find('.story').finish().animate(
+        $(this).closest('main').find('.story').finish().animate(
         {
             height:  showOrHide,
             opacity: showOrHide,

@@ -1,7 +1,8 @@
 @font-face { font-family: theanoDidot;        src: url('../fonts/TheanoDidot-Regular.ttf'); }
 @font-face { font-family: monsieurLaDoulaise; src: url('../fonts/MonsieurLaDoulaise-Regular.ttf'); }
 
-body { background-color: black; }
+/* all */
+body { background-color: black; line-height: 1;}
 
 a,
 a:hover,
@@ -17,13 +18,7 @@ a:hover { text-decoration: underline; }
 
 
 
-#fullpage
-{
-    background: url('../images/fox-stage.jpg') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;
-    font-family: "Knockout 48 A", "Knockout 48 B", "Trebuchet MS", Helvetica, sans-serif;
-    letter-spacing: 0.125em;
-}
-
+/* menu */
 #menu
 {
     position: fixed;
@@ -36,14 +31,12 @@ a:hover { text-decoration: underline; }
     letter-spacing: 0.075em;
     text-transform: uppercase;
 }
-
 #menu ul
 {
     margin: 0;
     padding: 0;
     text-align: center;
 }
-
 #menu li
 {
     display: inline-block;
@@ -54,43 +47,55 @@ a:hover { text-decoration: underline; }
     color: black;
     border-radius: 10px;
 }
-#menu li.active
-{
-    background: #666;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-}
+#menu li.active { background: #666; background: rgba(0, 0, 0, 0.5); color: white; }
 #menu li:hover,
 #menu li.active:hover { background: rgba(255, 255, 255, 0.8); }
 #menu li.active:hover { color: black; }
-
-.slide
-{
-    text-align: center;
-    font-size: 40px;
-    color: white;
-}
 
 /* fullPage navigation */
 .fp-controlArrow.fp-prev { border-right-color: rgba(255, 255, 255, 0.5); }
 .fp-controlArrow.fp-next { border-left-color:  rgba(255, 255, 255, 0.5); }
 .fp-slidesNav.bottom { display: none; }
 
-#headimg
+/* main */
+#fullpage
 {
-    width: 100%;
-    height: 100%;
-    background: url('../images/fox-sign.jpg') no-repeat center 80% fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;
+    background: url('../images/fox-stage.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size:    cover;
+    -o-background-size:      cover;
+    background-size:         cover;
+    font-family: "Knockout 48 A", "Knockout 48 B", "Trebuchet MS", Helvetica, sans-serif;
+    letter-spacing: 0.125em;
 }
-
-.maincontain
+.slide
+{
+    text-align: center;
+    font-size: 40px;
+    color: white;
+}
+.inslide
 {
     margin: 56px auto 0;
     /*border: 1px solid white;*/
     padding: 15px 18px 35px;
     width: 1140px;
 }
-.incontain
+
+/* headliners */
+#headliners
+{
+    width:  100%;
+    height: 100%;
+    background: url('../images/fox-sign.jpg') no-repeat center 80% fixed;
+    -webkit-background-size: cover;
+    -moz-background-size:    cover;
+    -o-background-size:      cover;
+    background-size:         cover;
+}
+
+/* tour */
+.maincontain
 {
     /*border: 1px solid white;*/
     padding: 3px 0;
@@ -111,11 +116,15 @@ a:hover { text-decoration: underline; }
 {
     margin: 0 36px 31px;
     border-bottom: 1px solid black;
-    padding: 43px 0 12px;
+    padding: 39px 0 12px;
     font-size: 67px;
+    line-height: 0.75;
     font-weight: normal;
     text-transform: uppercase;
 }
+#tour h1 div       { transition: color 0.2s ease-in-out; }
+#tour h1 div:hover { color: #953310; }
+#tour h1 div:hover span { cursor: pointer; }
 #tour .row
 {
     padding: 11px 36px;
@@ -134,7 +143,6 @@ a:hover { text-decoration: underline; }
 {
     display: inline-block;
     text-align: center;
-    line-height: 1.2em;
 }
 #tour .month,
 #tour .year { font-size: 20px; }
@@ -157,6 +165,7 @@ a:hover { text-decoration: underline; }
     padding-left: 50px;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     font-size: 18px;
+    line-height: normal;
     letter-spacing: 0;
 }
 
@@ -164,17 +173,18 @@ a:hover { text-decoration: underline; }
 {
     float: right;
     color: #da4a18;
+    transition: color 0.2s ease-in-out;
 }
-#tour .tickets:hover
+#tour .row:hover .tickets
 {
     color: #953310;
-    transition: all 0.2s ease-in-out;
     cursor: pointer;
 }
 
 
 
 
+/* std */
 #img
 {
     margin: 0 auto;
@@ -246,7 +256,7 @@ a:hover { text-decoration: underline; }
     .fp-slidesNav .active span { background-color: rgba(0, 0, 0, 0.8); }
     
     /* main */
-    .maincontain
+    .inslide
     {
         margin: 0;
         padding-left: 0;
@@ -319,7 +329,7 @@ a:hover { text-decoration: underline; }
     .fp-slidesNav .active span { background-color: rgba(0, 0, 0, 0.8); }
     
     /* main */
-    .maincontain { width: 720px; padding-bottom: 48px; }
+    .inslide { width: 720px; padding-bottom: 48px; }
     
     /* tour */
     #tour .instory
@@ -339,7 +349,7 @@ a:hover { text-decoration: underline; }
     .normaltext { font-size: 25px; letter-spacing: 7px; line-height: 3em; }
     
     /* main */
-    .maincontain { width: 720px; }
+    .inslide { width: 720px; }
     
     /* tour */
     #tour .col.date { width: 16%; }
@@ -361,7 +371,7 @@ a:hover { text-decoration: underline; }
     .normaltext { font-size: 25px; letter-spacing: 7px; line-height: 3em; }
     
     /* main */
-    .maincontain { width: 840px; }
+    .inslide { width: 840px; }
     
     /* tour */
     #tour .instory { padding-left: 0; }
@@ -377,7 +387,7 @@ a:hover { text-decoration: underline; }
     .normaltext { font-size: 25px; letter-spacing: 7px; line-height: 3em; }
     
     /* main */
-    .maincontain { width: 940px; }
+    .inslide { width: 940px; }
     
     /* tour */
     #tour .instory { padding-left: 0; }
@@ -389,5 +399,5 @@ a:hover { text-decoration: underline; }
     .fp-slidesNav.bottom { display: none; }
     
     /* main */
-    .maincontain { padding-bottom: 30px; }
+    .inslide { padding-bottom: 30px; }
 }
