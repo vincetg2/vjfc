@@ -1,22 +1,33 @@
 @font-face { font-family: theanoDidot;        src: url('../fonts/TheanoDidot-Regular.ttf'); }
 @font-face { font-family: monsieurLaDoulaise; src: url('../fonts/MonsieurLaDoulaise-Regular.ttf'); }
 
-/* all */
+
+
+
+
+/*\
+| | All
+\*/
+
 body { background-color: black; line-height: 1;}
 
 a,
-a:hover,
 a:visited,
+a:hover,
 a:active { color: #da4a18; }
 
 a,
-a:visited,
-a:active { text-decoration: none; }
+a:active,
+a:visited { text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 
 
 
+
+/*\
+| | Desktop - Wide content
+\*/
 
 /* menu */
 #menu
@@ -57,7 +68,7 @@ a:hover { text-decoration: underline; }
 .fp-controlArrow.fp-next { border-left-color:  rgba(255, 255, 255, 0.5); }
 .fp-slidesNav.bottom { display: none; }
 
-/* main */
+/* slides */
 #fullpage
 {
     background: url('../images/fox-stage.jpg') no-repeat center center fixed;
@@ -122,9 +133,8 @@ a:hover { text-decoration: underline; }
     font-weight: normal;
     text-transform: uppercase;
 }
-#tour h1 div       { transition: color 0.2s ease-in-out; }
-#tour h1 div:hover { color: #953310; }
-#tour h1 div:hover span { cursor: pointer; }
+#tour h1           span { transition: color 0.2s ease-in-out; }
+#tour h1 div:hover span { color: #953310; cursor: pointer; }
 #tour .row
 {
     padding: 11px 36px;
@@ -184,78 +194,17 @@ a:hover { text-decoration: underline; }
 
 
 
-/* std */
-#img
-{
-    margin: 0 auto;
-    text-align: center;
-    width: 500px; height: 500px;
-    background-image: url('images/sutro.jpg');
-    font-family: "Times New Roman", serif; font-weight: 100;
-    color: rgb(255, 255, 255);
-    box-shadow: 1px 1px 8px #777777;
-}
 
-.nice_block_font { font-family: theanoDidot, "Times New Roman", serif; font-weight: 100; font-size: 0.95em; }
-
-.post_letter_spacing { letter-spacing: 35px; }
-.bigtext { font-size: 70px; line-height: 90px; }
-.uppercase { text-transform: uppercase; }
-.cursive { font-family: monsieurLaDoulaise, theanoDidot, "Times New Roman", serif; }
-.cursive .post_letter_spacing { letter-spacing: 15px; }
-
-.littleline { line-height: 1em; }
-.normaltext { letter-spacing: 2px; line-height: 2.5em; }
+/*\
+| | Handheld devices - No menu, edge-to-edge content
+\*/
 
 @media (max-width: 767px)
 {
-    /* std */
-    #img { width: 600px; height: 600px; background-image: url('images/sutro.600.jpg'); }
-    .bigtext {  font-size: 95px; line-height: 106px; }
-    .littleline { line-height: 2em; }
-    .normaltext { letter-spacing: 4px; line-height: 3em; }
-    
     /* menu */
     #menu { display: none; }
     
-    /* fullPage navigation */
-    .fp-controlArrow { display: none; }
-    .fp-slidesNav.bottom
-    {
-        display: block;
-        width: 100%;
-        left: auto;
-        bottom: 9px;
-        text-align: center;
-    }
-    .fp-slidesNav ul
-    {
-        display: inline-block;
-        margin: 0;
-        padding: 0 7px;
-        height: 28px;
-        background-color: rgba(255, 255, 255, 0.5);
-        border-radius: 10px;
-    }
-    .fp-slidesNav a { display: inline-block; }
-    .fp-slidesNav li
-    {
-        display: block;
-        width: auto;
-        height: auto;
-        margin: 0;
-        padding: 9px;
-    }
-    .fp-slidesNav span
-    {
-        display: block;
-        margin: 0;
-        position: static;
-        border-color: rgba(0, 0, 0, 0.8);
-    }
-    .fp-slidesNav .active span { background-color: rgba(0, 0, 0, 0.8); }
-    
-    /* main */
+    /* slides */
     .inslide
     {
         margin: 0;
@@ -266,31 +215,24 @@ a:hover { text-decoration: underline; }
     }
     
     /* tour */
-    #tour h1 { margin: 0 15px 15px; padding: 15px 0 0; }
+    #tour h1 { margin: 0 15px 15px; padding: 15px 0 9px; }
     #tour .row { padding-left: 15px; padding-right: 15px; }
-    #tour .col.location { width: 50%; }
+    #tour .location { width: 50%; }
     #tour .city  { width: 100%; float: none; }
     #tour .place { width: 100%; float: none; }
     #tour .story { max-width: 420px; width: 158%; }
-    #tour .instory
-    {
-        padding-left: 0;
-        font-size: 16px;
-    }
+    #tour .instory { padding-left: 0; font-size: 16px; }
     
     #venue img { width: 200px; }
     #merch img { width: 200px; }
 }
 
-@media (min-width: 768px) and (max-width: 844px)
+/*\
+| | Handheld devices & Portrait tablets - Navigation dots, no navigation arrows
+\*/
+
+@media (max-width: 844px)
 {
-    /* std */
-    #img { width: 1000px; height: 1000px; background-image: url('images/sutro.1000.jpg'); }
-    .bigtext { font-size: 190px; line-height: 174px; }
-    .cursive .post_letter_spacing { letter-spacing: 20px; }
-    .littleline { line-height: 4em; }
-    .normaltext { font-size: 25px; letter-spacing: 7px; line-height: 3em; }
-    
     /* fullPage navigation */
     .fp-controlArrow { display: none; }
     .fp-slidesNav.bottom
@@ -327,77 +269,78 @@ a:hover { text-decoration: underline; }
         border-color: rgba(0, 0, 0, 0.8);
     }
     .fp-slidesNav .active span { background-color: rgba(0, 0, 0, 0.8); }
-    
-    /* main */
-    .inslide { width: 720px; padding-bottom: 48px; }
-    
-    /* tour */
-    #tour .instory
-    {
-        padding-left: 0;
-        font-size: 16px;
-    }
 }
+
+/*\
+| | Portrait tablets - Narrowest content
+\*/
+
+@media (min-width: 768px) and (max-width: 844px)
+{
+    /* slides */
+    .inslide { width: 720px; padding-bottom: 48px; }
+    /* tour */
+    #tour .instory { padding-left: 0; font-size: 16px; }
+}
+
+/*\
+| | Handheld devices and tablets - :active works better than :hover on iOS7
+\*/
+
+@media (max-width: 991px)
+{
+    #tour h1 div:hover  span { color: black; }
+    #tour h1 div:active span { color: #953310; }
+    #tour .row:hover  .tickets { color: #da4a18; }
+    #tour .row:active .tickets { color: #953310; }
+}
+
+/*\
+| | Landscape tablets - Narrowest content
+\*/
 
 @media (min-width: 845px) and (max-width: 991px)
 {
-    /* std */
-    #img { width: 1000px; height: 1000px; background-image: url('images/sutro.1000.jpg'); }
-    .bigtext { font-size: 190px; line-height: 174px; }
-    .cursive .post_letter_spacing { letter-spacing: 20px; }
-    .littleline { line-height: 4em; }
-    .normaltext { font-size: 25px; letter-spacing: 7px; line-height: 3em; }
-    
-    /* main */
+    /* slides */
     .inslide { width: 720px; }
     
     /* tour */
     #tour .col.date { width: 16%; }
     #tour .col.city { width: 33%; }
-    #tour .instory
-    {
-        padding-left: 0;
-        font-size: 16px;
-    }
+    #tour .instory { padding-left: 0; font-size: 16px; }
 }
+
+/*\
+| | Desktop - Narrow content
+\*/
 
 @media (min-width: 992px) and (max-width: 1079px)
 {
-    /* std */
-    #img { width: 1000px; height: 1000px; background-image: url('images/sutro.1000.jpg'); }
-    .bigtext { font-size: 190px; line-height: 174px; }
-    .cursive .post_letter_spacing { letter-spacing: 20px; }
-    .littleline { line-height: 4em; }
-    .normaltext { font-size: 25px; letter-spacing: 7px; line-height: 3em; }
-    
-    /* main */
+    /* slides */
     .inslide { width: 840px; }
-    
     /* tour */
     #tour .instory { padding-left: 0; }
 }
+
+/*\
+| | Desktop - Menu and navigation arrows, normal content
+\*/
 
 @media (min-width: 1080px) and (max-width: 1259px)
 {
-    /* std */
-    #img { width: 1000px; height: 1000px; background-image: url('images/sutro.1000.jpg'); }
-    .bigtext { font-size: 190px; line-height: 174px; }
-    .cursive .post_letter_spacing { letter-spacing: 20px; }
-    .littleline { line-height: 4em; }
-    .normaltext { font-size: 25px; letter-spacing: 7px; line-height: 3em; }
-    
-    /* main */
+    /* slides */
     .inslide { width: 940px; }
-    
     /* tour */
     #tour .instory { padding-left: 0; }
 }
 
+
+
+
+
+/* Landscape handheld devices - No navigation dots (messes with iOS7 browser) */
 @media (max-device-width: 767px) and (orientation: landscape)
 {
-    /* fullPage navigation */
-    .fp-slidesNav.bottom { display: none; }
-    
-    /* main */
-    .inslide { padding-bottom: 30px; }
+    .fp-slidesNav.bottom { display: none; } /* fullPage navigation */
+    .inslide { padding-bottom: 30px; } /* slides */
 }
