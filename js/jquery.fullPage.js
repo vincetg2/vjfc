@@ -1153,7 +1153,14 @@
 				//adjusting the position fo the FULL WIDTH slides...
 				var slides = $(this).find('.fp-slides');
 				if (slides.length) {
+                    if(isTouchDevice)
+                    {
+                        var oldScrollingSpeed = options.scrollingSpeed;
+                        options.scrollingSpeed = 0;
+                    }
 					landscapeScroll(slides, slides.find('.fp-slide.active'));
+                    if(isTouchDevice)
+		                options.scrollingSpeed = oldScrollingSpeed;
 				}
 			});
 
