@@ -230,20 +230,59 @@
                     <div class="maincontain">
                         <main>
                             <h1>openers</h1>
-                            <h1>openers</h1>
-                            <h1>openers</h1>
-                            <h1>openers</h1>
-                            <h1>openers</h1>
-                            <h1>openers</h1>
-                            <h1>openers</h1>
-                            <h1>openers</h1>
-                            <h1>openers</h1>
-                            <h1>openers</h1>
-                            <h1>openers</h1>
-                            <h1>openers</h1>
-                            <h1>openers</h1>
+                            <div class="polaroidcol">
+                            <div id="spice" class="polaroidcontain">
+                                <div class="polaroid">
+                                    <img src="images/spice-girls.jpg" /><br />
+                                    Spice Girls
+                                </div>
+                            </div>
+                            </div>
+                            <div class="polaroidcol">
+                            <div id="backstreet" class="polaroidcontain">
+                                <div class="polaroid">
+                                    <img src="images/backstreet-boys-square.jpg" /><br />
+                                    Backstreet Boys
+                                </div>
+                            </div>
+                            </div>
+                            <div class="polaroidcol">
+                            <div id="spice2" class="polaroidcontain">
+                                <div class="polaroid">
+                                    <img src="images/spice-girls.jpg" /><br />
+                                    Spice Girls 2
+                                </div>
+                            </div>
+                            </div>
                         </main>
                     </div><!-- .maincontain -->
+                    <div class="maincontain bg overlay">
+                        <main></main>
+                    </div>
+                    <div class="maincontain text overlay">
+                        <main>
+                            <div class="openingact spice active">
+                                <h1>Kaity</h1>
+                                <h1>Vienna</h1>
+                                <h1>Melissa</h1>
+                                <h1>Jacklin</h1>
+                                <h1>Gillian</h1>
+                            </div>
+                            <div class="openingact backstreet">
+                                <h1>Ruben</h1>
+                                <h1>Mat</h1>
+                                <h1>Kevin</h1>
+                                <h1>Vince</h1>
+                                <h1>David</h1>
+                            </div>
+                            <div class="openingact spice2">
+                                <h1>Rachel</h1>
+                                <h1>Aaron</h1>
+                                <h1>Regan</h1>
+                                <h1>Cooper</h1>
+                            </div>
+                        </main>
+                    </div>
                 </div><!-- #openers.inslide -->
             </div><!-- .slide -->
             

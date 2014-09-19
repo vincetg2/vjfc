@@ -68,28 +68,52 @@ a:hover { text-decoration: underline; }
     background: rgba(255, 255, 255, 0.5);
     color: black;
     border-radius: 10px;
-    transition: background 0.2s ease-in-out;
+    -webkit-transition: background 0.2s ease-in-out;
+            transition: background 0.2s ease-in-out;
 }
 #menu li:hover { background: rgba(255, 255, 255, 0.8); }
 #menu li.active       { background: rgba(0, 0, 0, 0.5); color: white; }
 #menu li.active:hover { background: rgba(255, 255, 255, 0.5); }
 
 /* fullPage navigation */
-.fp-controlArrow.fp-prev { border-right-color: rgba(255, 255, 255, 0.5); }
-.fp-controlArrow.fp-next { border-left-color:  rgba(255, 255, 255, 0.5); }
-.fp-controlArrow { transition: border-color 0.2s ease-in-out; }
-.fp-controlArrow.fp-prev:hover { border-right-color: rgba(255, 255, 255, 0.8); }
-.fp-controlArrow.fp-next:hover { border-left-color:  rgba(255, 255, 255, 0.8); }
+.fp-controlArrow.fp-prev,
+.fp-controlArrow.fp-next
+{
+    margin: 0;
+    border: 0;
+    padding: 600px 0;
+    width:  auto;
+    height: auto;
+    /* http://joshbroton.com/absolute-positioning-and-horizontal-vertical-centering/ */
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+}
+.fp-controlArrow .fp-inArrow
+{
+    border-style: solid;
+    -webkit-transition: border-color 0.2s ease-in-out;
+            transition: border-color 0.2s ease-in-out;
+}
+.fp-controlArrow.fp-prev .fp-inArrow
+{
+    border-width: 38.5px 34px 38.5px 0;
+    border-color: transparent rgba(255, 255, 255, 0.5) transparent transparent;
+}
+.fp-controlArrow.fp-next .fp-inArrow
+{
+    border-width: 38.5px 0 38.5px 34px;
+    border-color: transparent transparent transparent rgba(255, 255, 255, 0.5);
+}
+.fp-controlArrow.fp-prev:hover .fp-inArrow { border-right-color: rgba(255, 255, 255, 0.8); }
+.fp-controlArrow.fp-next:hover .fp-inArrow { border-left-color:  rgba(255, 255, 255, 0.8); }
 .fp-slidesNav.bottom { display: none; }
 
 /* slides */
 #fullpage
 {
-    background: url('../images/fox-stage.jpg') no-repeat center center fixed;
+    background: url('../images/fox-stage.jpg') no-repeat center center;
     -webkit-background-size: cover;
-    -moz-background-size:    cover;
-    -o-background-size:      cover;
-    background-size:         cover;
+            background-size: cover;
     font-family: "Knockout 48 A", "Knockout 48 B", "Trebuchet MS", Helvetica, sans-serif;
     letter-spacing: 0.125em;
 }
@@ -101,8 +125,7 @@ a:hover { text-decoration: underline; }
 }
 .inslide
 {
-    margin: 56px auto 0;
-    padding: 15px 18px 35px;
+    margin: 71px auto 35px;
     width: 1140px;
 }
 .maincontain { padding: 3px 0; }
@@ -125,23 +148,17 @@ a:hover { text-decoration: underline; }
     position: relative;
     width:  100%;
     height: 100%;
-    background: url('../images/fox-sign.jpg') no-repeat center 80% fixed;
+    background: url('../images/fox-sign.jpg') no-repeat center 80%;
     -webkit-background-size: cover;
-       -moz-background-size: cover;
-         -o-background-size: cover;
             background-size: cover;
     -webkit-transition: all 3.5s cubic-bezier(.34,.02,.29,.99);
-       -moz-transition: all 3.5s cubic-bezier(.34,.02,.29,.99);
-         -o-transition: all 3.5s cubic-bezier(.34,.02,.29,.99);
             transition: all 3.5s cubic-bezier(.34,.02,.29,.99);
     -webkit-transform: scale(1, 1);
-        -ms-transform: scale(1, 1);
             transform: scale(1, 1);
 }
 .slide.active #headliners
 {
     -webkit-transform: scale(1.2, 1.2);
-        -ms-transform: scale(1.2, 1.2);
             transform: scale(1.2, 1.2);
     background-position: center 0%;
 }
@@ -154,12 +171,8 @@ a:hover { text-decoration: underline; }
     width:  100%;
     height: 100%;
     -webkit-transition: all 4s ease-in-out;
-       -moz-transition: all 4s ease-in-out;
-         -o-transition: all 4s ease-in-out;
             transition: all 4s ease-in-out;
     -webkit-background-size: cover;
-       -moz-background-size: cover;
-         -o-background-size: cover;
             background-size: cover;
     pointer-events: none;
     background-color: rgba(0, 0, 0, 0);
@@ -176,7 +189,11 @@ a:hover { text-decoration: underline; }
 }
 #tour .maincontain { background-color: rgba(255, 255, 255, 0.67); }
 #tour h1 { margin: 0 36px 31px; border-bottom: 1px solid black; padding: 39px 0 12px; }
-#tour h1           span { transition: color 0.2s ease-in-out; }
+#tour h1           span
+{
+    -webkit-transition: color 0.2s ease-in-out;
+            transition: color 0.2s ease-in-out;
+}
 #tour h1 div:hover span { color: #953310; cursor: pointer; }
 
 #tour .row
@@ -216,13 +233,121 @@ a:hover { text-decoration: underline; }
 {
     float: right;
     color: #da4a18;
-    transition: color 0.2s ease-in-out;
+    -webkit-transition: color 0.2s ease-in-out;
+            transition: color 0.2s ease-in-out;
 }
 #tour .row:hover .tickets
 {
     color: #953310;
     cursor: pointer;
 }
+
+
+
+
+
+#openers { position: relative; }
+#openers .maincontain.overlay,
+#openers .maincontain.overlay main { width:  100%; height: 100%; }
+/* overlays start out "hidden" */
+#openers .maincontain.overlay
+{
+    opacity: 0;
+    width:  0;
+    height: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0;
+    overflow: hidden;
+    -webkit-transition: opacity 0.4s ease-in-out,
+        height 0 linear 0.5s,
+        width  0 linear 0.5s;
+            transition: opacity 0.4s ease-in-out,
+        height 0 linear 0.5s,
+        width  0 linear 0.5s;
+}
+/* activated overlays are shown */
+#openers .maincontain.overlay.active
+{
+    opacity: 1;
+    width:  100%;
+    height: 100%;
+    -webkit-transition: opacity 0.4s ease-in-out;
+            transition: opacity 0.4s ease-in-out;
+}
+
+#openers .maincontain.bg.overlay { box-shadow: 2px 4px 9px 3px rgba(0, 0, 0, 0.75); }
+#openers .maincontain.bg.overlay main
+{
+    /* http://stackoverflow.com/questions/12146394/background-size-cover-not-scaling-image-in-div/12146446#12146446 */
+    background: url('../images/spice-girls.jpg') no-repeat center 0%;
+    -webkit-transform: scale(1.05, 1.05);
+            transform: scale(1.05, 1.05);
+    -webkit-background-size: cover;
+            background-size: cover;
+    -webkit-transition: -webkit-filter 0 ease-in-out 0, filter 0 ease-in-out 0;
+            transition: -webkit-filter 0 ease-in-out 0, filter 0 ease-in-out 0;
+    overflow: hidden;
+}
+/* blurring is done after a delay to help slow devices */
+#openers .maincontain.bg.overlay.active main
+{
+    -webkit-filter: blur(5px);
+            filter: blur(5px);
+    -webkit-transition: -webkit-filter 0.4s ease-in-out 0.5s, filter 0.4s ease-in-out 0.5s;
+            transition: -webkit-filter 0.4s ease-in-out 0.5s, filter 0.4s ease-in-out 0.5s;
+}
+
+#openers .maincontain.text.overlay .openingact        { display: none; }
+#openers .maincontain.text.overlay .openingact.active { display: block; }
+
+#openers .polaroidcol
+{
+    height: 100%;
+    width: 33%;
+    float: left;
+    clear: none;
+    overflow: visible;
+}
+#openers .polaroidcontain
+{
+    /* http://stackoverflow.com/questions/4982480/how-to-set-the-margin-or-padding-as-percentage-of-height-or-parent-container/10018430#10018430 */
+    position: relative;
+    top: 10%;
+    font-size: 24px;
+    text-align: center;
+    overflow: visible;
+}
+#openers .polaroid
+{
+    display: inline-block;
+    padding: 10px 10px 30px;
+    background-color: white;
+    text-align: left;
+    text-transform: uppercase;
+    color: black;
+    cursor: pointer;
+    -webkit-transition: color 0.2s ease-in-out;
+            transition: color 0.2s ease-in-out;
+    -webkit-transition: transform 0.2s ease-in-out;
+            transition: transform 0.2s ease-in-out;
+    box-shadow: 1px 2px 9px 1px rgba(0, 0, 0, 0.75);
+}
+#openers .polaroidcol:nth-child(2) .polaroid { transform: rotateZ(3deg);   -webkit-transform: rotateZ(3deg);   }
+#openers .polaroidcol:nth-child(3) .polaroid { transform: rotateZ(-10deg); -webkit-transform: rotateZ(-10deg); }
+#openers .polaroidcol:nth-child(4) .polaroid { transform: rotateZ(-3deg);  -webkit-transform: rotateZ(-3deg);  }
+#openers .polaroidcol .polaroid:hover
+{
+    -webkit-transform: rotateZ(0) scale(1.1);
+            transform: rotateZ(0) scale(1.1);
+}
+#openers .polaroid:hover { color: #953310; }
+#openers img { width: 200px; }
+
+
+
+
 
 #venue img { margin: 0 auto; }
 
@@ -249,7 +374,7 @@ a:hover { text-decoration: underline; }
     /* slides */
     .inslide
     {
-        margin: 0;
+        margin-top: 15px;
         padding-left: 0;
         padding-right: 0;
         width: 100%;
@@ -265,6 +390,29 @@ a:hover { text-decoration: underline; }
     
     #venue img { width: 200px; }
     #merch img { width: 200px; }
+    #openers .polaroidcol
+    {
+        width:  100%;
+        height: auto;
+        float: none;
+    }
+    #openers .polaroidcontain
+    {
+        margin-bottom: 37px;
+        position: initial;
+        top: initial;
+        float: none;
+        clear: none;
+    }
+    #openers .polaroid
+    {
+        display: inline-block;
+        padding: 10px 10px 30px;
+        background-color: white;
+        text-align: left;
+        text-transform: uppercase;
+        color: black;
+    }
 }
 
 /*\
@@ -309,14 +457,15 @@ a:hover { text-decoration: underline; }
         margin: 0;
         position: static;
         border-color: rgba(0, 0, 0, 0.8);
-        transition: all 0.2s ease-in-out;
+        -webkit-transition: all 0.2s ease-in-out;
+                transition: all 0.2s ease-in-out;
     }
     .fp-slidesNav li:hover      span { border-color: rgba(255, 255, 255, 0.5); }
     .fp-slidesNav .active       span { background-color: rgba(0, 0, 0, 0.8); }
     .fp-slidesNav .active:hover span { background-color: rgba(255, 255, 255, 0.5); }
     
     /* slides */
-    .inslide { padding-bottom: 48px; }
+    .inslide { margin-bottom: 48px; }
 }
 
 /*\
@@ -337,6 +486,13 @@ a:hover { text-decoration: underline; }
 {
     /* slides */
     .inslide { width: 720px; }
+}
+
+@media (min-width: 768px) and (max-width: 991px)
+{
+    #openers .polaroidcol { width: 50%; height: auto; float: left; text-align: center; }
+    #openers .polaroidcol:last-child { width: 100%; clear: both; }
+    #openers .polaroidcontain { margin-bottom: 37px; position: initial; top: initial; }
 }
 
 /* Handheld devices and medium devices - Smaller story font */
@@ -360,10 +516,10 @@ a:hover { text-decoration: underline; }
     #menu li:active { background: rgba(255, 255, 255, 0.8); }
     #menu li.active:hover  { background: rgba(0, 0, 0, 0.5); }
     #menu li.active:active { background: rgba(255, 255, 255, 0.5); }
-    .fp-controlArrow.fp-prev:hover  { border-right-color: rgba(255, 255, 255, 0.5); }
-    .fp-controlArrow.fp-prev:active { border-right-color: rgba(255, 255, 255, 0.8); }
-    .fp-controlArrow.fp-next:hover  { border-left-color:  rgba(255, 255, 255, 0.5); }
-    .fp-controlArrow.fp-next:active { border-left-color:  rgba(255, 255, 255, 0.8); }
+    .fp-controlArrow.fp-prev:hover  .fp-inArrow { border-right-color: rgba(255, 255, 255, 0.5); }
+    .fp-controlArrow.fp-prev:active .fp-inArrow { border-right-color: rgba(255, 255, 255, 0.8); }
+    .fp-controlArrow.fp-next:hover  .fp-inArrow { border-left-color:  rgba(255, 255, 255, 0.5); }
+    .fp-controlArrow.fp-next:active .fp-inArrow { border-left-color:  rgba(255, 255, 255, 0.8); }
     .fp-slidesNav li:hover       span { border-color: rgba(0, 0, 0, 0.8); }
     .fp-slidesNav li:active      span { border-color: rgba(255, 255, 255, 0.5); }
     .fp-slidesNav .active:hover  span { background-color: rgba(0, 0, 0, 0.8); }
@@ -372,6 +528,11 @@ a:hover { text-decoration: underline; }
     #tour h1 div:active span { color: #953310; }
     #tour .row:hover  .tickets { color: #da4a18; }
     #tour .row:active .tickets { color: #953310; }
+    #openers .polaroid:hover  { color: black; }
+    #openers .polaroid:active { color: #953310; }
+    #openers .polaroidcol:nth-child(2) .polaroid:hover { transform: rotateZ(3deg);   -webkit-transform: rotateZ(3deg);   }
+    #openers .polaroidcol:nth-child(3) .polaroid:hover { transform: rotateZ(-10deg); -webkit-transform: rotateZ(-10deg); }
+    #openers .polaroidcol:nth-child(4) .polaroid:hover { transform: rotateZ(-3deg);  -webkit-transform: rotateZ(-3deg);  }
 }
 
 /*\
@@ -394,5 +555,5 @@ a:hover { text-decoration: underline; }
 @media (max-device-width: 767px) and (orientation: landscape)
 {
     .fp-slidesNav.bottom { display: none; } /* fullPage navigation */
-    .inslide { padding-bottom: 30px; } /* slides */
+    .inslide { margin-bottom: 30px; } /* slides */
 }

@@ -236,7 +236,7 @@
 				slides.parent().wrap('<div class="fp-slides" />');
 
 				$(this).find('.fp-slidesContainer').css('width', sliderWidth + '%');
-				$(this).find('.fp-slides').after('<div class="fp-controlArrow fp-prev"></div><div class="fp-controlArrow fp-next"></div>');
+				$(this).find('.fp-slides').after('<div class="fp-controlArrow fp-prev"><div class="fp-inArrow"></div></div><div class="fp-controlArrow fp-next"><div class="fp-inArrow"></div></div>');
 
 				if(options.controlArrowColor!='#fff'){
 					$(this).find('.fp-controlArrow.fp-next').css('border-color', 'transparent transparent transparent '+options.controlArrowColor);

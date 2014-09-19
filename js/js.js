@@ -3,7 +3,7 @@ String.prototype.decodeHTML = function()
 { return $('<div>', {html: '' + this}).html(); };
 
 // Elements whose contents are allowed to scroll
-var scrollables = '.maincontain main, #tmain';
+var scrollables = '.maincontain:not(.bg) main';
 
 // Declared here so that it can be used in updatePageAndHistory
 //   Defined in ready() so it can re-use a reference to the DOM
@@ -64,11 +64,16 @@ var resizeMainElements = function()
         $.each(heights, function(property, value)
             { extraHeight += Number(value.substring(0, value.length - 2)); });
         var newHeight = windowsHeight - extraHeight;
-        var children = $(this).children();
-        var childrenHeight = 0;
-        $.each(children, function()
-            { childrenHeight += $(this).outerHeight(true); });
-        if(childrenHeight < newHeight) newHeight = childrenHeight;
+        
+        if(!$(this).closest('.maincontain').hasClass('overlay'))
+        {
+            var children = $(this).children();
+            var childrenHeight = 0;
+            $.each(children, function()
+                { childrenHeight += $(this).outerHeight(true); });
+            if(childrenHeight < newHeight) newHeight = childrenHeight;
+        }
+        
         $(this).css('height', newHeight + 'px');
         $(this).closest('.slimScrollDiv').css('height', newHeight + 'px');
     });
@@ -98,10 +103,9 @@ $(function()
         normalScrollElements: scrollables
     });
     // Fixes fullpage.js' full-page background image issues
-    fp.css('background', fp.css('background'));
+    //fp.css('background', fp.css('background'));
     var hl = $('#headliners');
-    hl.css('background', hl.css('background'))
-        .addClass('loaded')
+    hl.addClass('loaded')
         .css({
             'background-position': 'center 80%',
             '-webkit-transform': 'scale(1, 1)',
@@ -112,7 +116,7 @@ $(function()
     // Nicer scrollbars for non-iOS browsers
     if(!navigator.userAgent.match(/(iPod|iPhone|iPad)/i))
     {
-        $('.maincontain main').slimScroll(
+        $(scrollables).slimScroll(
         {
             height: 'auto',
             distance: '3px'
@@ -207,6 +211,28 @@ $(function()
             opacity: showOrHide,
         });
         allStoriesShown = !allStoriesShown;
+    });
+    
+    // Togglifies opener overlays
+    // Uses CSS for performance
+    $('#openers .polaroid').click(function(e)
+    {
+        var inslide = $(this).closest('.inslide');
+        
+        // Sets picture
+        inslide.find('.maincontain.bg.overlay main')
+            .css('background-image', 'url(' + $(this).find('img').attr('src') + ')');
+        
+        // Sets text
+        inslide.find('.maincontain.text.overlay .openingact').removeClass('active')
+            .filter('.' + $(this).closest('.polaroidcontain').attr('id')).addClass('active');
+        
+        // Displays overlays
+        inslide.find('.maincontain.overlay').addClass('active');
+    });
+    $('#openers .maincontain.overlay').click(function(e)
+    {
+        $(this).parent().find('.maincontain.overlay').removeClass('active');
     });
     
     //// Supposed to make the main scroll to top when status bar is tapped
