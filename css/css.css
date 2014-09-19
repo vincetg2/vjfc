@@ -309,8 +309,11 @@ a:hover { text-decoration: underline; }
         margin: 0;
         position: static;
         border-color: rgba(0, 0, 0, 0.8);
+        transition: all 0.2s ease-in-out;
     }
-    .fp-slidesNav .active span { background-color: rgba(0, 0, 0, 0.8); }
+    .fp-slidesNav li:hover      span { border-color: rgba(255, 255, 255, 0.5); }
+    .fp-slidesNav .active       span { background-color: rgba(0, 0, 0, 0.8); }
+    .fp-slidesNav .active:hover span { background-color: rgba(255, 255, 255, 0.5); }
     
     /* slides */
     .inslide { padding-bottom: 48px; }
@@ -361,6 +364,10 @@ a:hover { text-decoration: underline; }
     .fp-controlArrow.fp-prev:active { border-right-color: rgba(255, 255, 255, 0.8); }
     .fp-controlArrow.fp-next:hover  { border-left-color:  rgba(255, 255, 255, 0.5); }
     .fp-controlArrow.fp-next:active { border-left-color:  rgba(255, 255, 255, 0.8); }
+    .fp-slidesNav li:hover       span { border-color: rgba(0, 0, 0, 0.8); }
+    .fp-slidesNav li:active      span { border-color: rgba(255, 255, 255, 0.5); }
+    .fp-slidesNav .active:hover  span { background-color: rgba(0, 0, 0, 0.8); }
+    .fp-slidesNav .active:active span { background-color: rgba(255, 255, 255, 0.5); }
     #tour h1 div:hover  span { color: black; }
     #tour h1 div:active span { color: #953310; }
     #tour .row:hover  .tickets { color: #da4a18; }
