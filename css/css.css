@@ -323,7 +323,7 @@ a:hover { text-decoration: underline; }
 {
     display: inline-block;
     padding: 10px 10px 30px;
-    background-color: white;
+    background-color: rgb(241, 240, 225);
     text-align: left;
     text-transform: uppercase;
     color: black;
@@ -342,7 +342,7 @@ a:hover { text-decoration: underline; }
     -webkit-transform: rotateZ(0) scale(1.1);
             transform: rotateZ(0) scale(1.1);
 }
-#openers .polaroid:hover { color: #953310; }
+#openers .polaroid:hover { color: #da4a18; }
 #openers img { width: 200px; }
 
 
@@ -493,6 +493,7 @@ a:hover { text-decoration: underline; }
     #openers .polaroidcol { width: 50%; height: auto; float: left; text-align: center; }
     #openers .polaroidcol:last-child { width: 100%; clear: both; }
     #openers .polaroidcontain { margin-bottom: 37px; position: initial; top: initial; }
+    #openers .polaroidcol:last-child .polaroidcontain { margin-bottom: 0; }
 }
 
 /* Handheld devices and medium devices - Smaller story font */
