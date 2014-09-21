@@ -54,12 +54,17 @@ var resizeMainElements = function()
     var windowsHeight = $(window).height();
     main.each(function()
     {
+        var maincontain = $(this).closest('.maincontain');
+        var inslide = maincontain.closest('.inslide');
+        if($(this).closest('.maincontain').hasClass('overlay'))
+            var maincontain = inslide.find('.maincontain:not(.overlay)');
+            
         var extraHeight = 0;
-        var heights = $(this).closest('.inslide').css(
+        var heights = inslide.css(
             ['margin-top',  'margin-bottom', 'padding-top', 'padding-bottom']);
         $.each(heights, function(property, value)
             { extraHeight += Number(value.substring(0, value.length - 2)); });
-        var heights = $(this).closest('.maincontain').css(
+        var heights = maincontain.css(
             ['margin-top',  'margin-bottom', 'padding-top', 'padding-bottom']);
         $.each(heights, function(property, value)
             { extraHeight += Number(value.substring(0, value.length - 2)); });
@@ -98,6 +103,7 @@ $(function()
         slidesNavigation: true,
         verticalCentered: false,
         loopHorizontal: false,
+        touchSensitivity: 33,
         afterResize: resizeMainElements,
         onSlideLeave: updatePageAndHistory,
         normalScrollElements: scrollables
@@ -227,6 +233,12 @@ $(function()
         inslide.find('.maincontain.text.overlay .opener').removeClass('active')
             .filter('.' + $(this).closest('.polaroidcontain').attr('id')).addClass('active');
         
+        var main = $(this).closest('.inslide').find('.maincontain.text.overlay main');
+        if(main.closest('.slimScrollDiv').length)
+            main.slimScroll({scrollTo: '0px'});
+        else
+            main.scrollTop(0);
+        
         // Displays overlays
         inslide.find('.maincontain.overlay').addClass('active');
     });
@@ -235,12 +247,11 @@ $(function()
         $(this).parent().find('.maincontain.overlay').removeClass('active');
     });
     
-    //// Supposed to make the main scroll to top when status bar is tapped
-    //window.addEventListener('scroll', function()
-    //{
-    //    var elem = document.getElementById('temp');
-    //    elem.scrollTo(0, 0, 0);
-    //}, false);
+    // Supposed to make the main scroll to top when status bar is tapped
+    window.addEventListener('scroll', function()
+    {
+        $('main').scrollTop(0);
+    }, false);
 });
 
 // Once the dom and all images have loaded
