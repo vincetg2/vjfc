@@ -1,4 +1,4 @@
 <?php
     $url = 'venue';
-    $title = 'VJF - Venue';
+    $title = 'Venue – Vince Jacklin Forever';
     require_once('view/mainView.php');

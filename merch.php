@@ -1,4 +1,4 @@
 <?php
     $url = 'merch';
-    $title = 'VJF - Merch';
+    $title = 'Merch – Vince Jacklin Forever';
     require_once('view/mainView.php');

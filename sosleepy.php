@@ -1,4 +1,4 @@
 <?php
     $url = 'sosleepy';
-    $title = 'VJF - Accommodations';
+    $title = 'Accommodations – Vince Jacklin Forever';
     require_once('view/mainView.php');

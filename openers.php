@@ -1,4 +1,4 @@
 <?php
     $url = 'openers';
-    $title = 'VJF - Openers';
+    $title = 'Openers – Vince Jacklin Forever';
     require_once('view/mainView.php');

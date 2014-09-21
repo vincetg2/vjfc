@@ -261,21 +261,51 @@
                     </div>
                     <div class="maincontain text overlay">
                         <main>
-                            <div class="openingact spice active">
-                                <h1>Kaity</h1>
-                                <h1>Vienna</h1>
-                                <h1>Melissa</h1>
-                                <h1>Jacklin</h1>
-                                <h1>Gillian</h1>
-                            </div>
-                            <div class="openingact backstreet">
+                            <article class="opener spice active">
+                                <header><!--
+                                    --><h1>Kaitlyn Crain</h1><!--
+                                    --><p>The BFFF</p><!--
+                                --></header>
+                                <table class="body">
+                                    <tr><td class="label">Years Active</td><td>2007 - Present</td></tr>
+                                    <tr><td class="label">Parts</td><td>High School Partners in Crime, Matron of Honor</td></tr>
+                                </table>
+                                
+                                <header><!--
+                                    --><h1>Melissa Carter</h1><!--
+                                    --><p>The Flirty Girl</p><!--
+                                --></header>
+                                <table class="body">
+                                    <tr><td class="label">Years Active</td><td>1992 - Present</td></tr>
+                                    <tr><td class="label">Parts</td><td>Childhood Neighbors,  Bridesmaid</td></tr>
+                                </table>
+                                
+                                <header><!--
+                                    --><h1>Vienna Brunt</h1><!--
+                                    --><p>The Musketeer</p><!--
+                                --></header>
+                                <table class="body">
+                                    <tr><td class="label">Years Active</td><td>2006 - Present</td></tr>
+                                    <tr><td class="label">Parts</td><td>Sorority Sisters, Bridesmaid</td></tr>
+                                </table>
+                                
+                                <header><!--
+                                    --><h1>Gillian Sammis</h1><!--
+                                    --><p>The Pill</p><!--
+                                --></header>
+                                <table class="body">
+                                    <tr><td class="label">Years Active</td><td>1997 - Present</td></tr>
+                                    <tr><td class="label">Parts</td><td>Actual Sisters, Bridesmaid</td></tr>
+                                </table>
+                            </article>
+                            <div class="opener backstreet">
                                 <h1>Ruben</h1>
                                 <h1>Mat</h1>
                                 <h1>Kevin</h1>
                                 <h1>Vince</h1>
                                 <h1>David</h1>
                             </div>
-                            <div class="openingact spice2">
+                            <div class="opener spice2">
                                 <h1>Rachel</h1>
                                 <h1>Aaron</h1>
                                 <h1>Regan</h1>

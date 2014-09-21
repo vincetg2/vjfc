@@ -224,7 +224,7 @@ $(function()
             .css('background-image', 'url(' + $(this).find('img').attr('src') + ')');
         
         // Sets text
-        inslide.find('.maincontain.text.overlay .openingact').removeClass('active')
+        inslide.find('.maincontain.text.overlay .opener').removeClass('active')
             .filter('.' + $(this).closest('.polaroidcontain').attr('id')).addClass('active');
         
         // Displays overlays
