@@ -2,6 +2,8 @@
 String.prototype.decodeHTML = function()
 { return $('<div>', {html: '' + this}).html(); };
 
+var isTouchDevice = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|BB10|Windows Phone|Tizen|Bada)/i);
+
 // Elements whose contents are allowed to scroll
 var scrollables = '.maincontain:not(.bg) main';
 
@@ -120,7 +122,7 @@ $(function()
             'background-size': 'cover'});
     
     // Nicer scrollbars for non-iOS browsers
-    if(!navigator.userAgent.match(/(iPod|iPhone|iPad)/i))
+    if(!isTouchDevice)
     {
         $(scrollables).slimScroll(
         {
@@ -246,6 +248,11 @@ $(function()
     {
         $(this).parent().find('.maincontain.overlay').removeClass('active');
     });
+    
+    var person = 'vince';
+    $('.' + person + '.email').prop('href', 'mailto:' + person + '@vincejacklinforever.com').html(person + '@vincejacklinforever.com');
+    person = 'jacklin';
+    $('.' + person + '.email').prop('href', 'mailto:' + person + '@vincejacklinforever.com').html(person + '@vincejacklinforever.com');
     
     // Supposed to make the main scroll to top when status bar is tapped
     window.addEventListener('scroll', function()

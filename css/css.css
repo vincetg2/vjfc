@@ -23,6 +23,7 @@ h1
     text-transform: uppercase;
 }
 
+a { -webkit-transition: color 0.2s ease-in-out; transition: color 0.2s ease-in-out; }
 a,
 a:visited,
 a:hover,
@@ -31,7 +32,7 @@ a:active { color: #da4a18; }
 a,
 a:active,
 a:visited { text-decoration: none; }
-a:hover { text-decoration: underline; }
+a:hover { color: #953310; }
 
 
 
@@ -54,26 +55,19 @@ a:hover { text-decoration: underline; }
     letter-spacing: 0.075em;
     text-transform: uppercase;
 }
-#menu ul
-{
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
+#menu ul { margin: 0; padding: 0; text-align: center; }
 #menu li
 {
     display: inline-block;
     padding: 9px 18px;
     margin: 14px 10px 10px;
-    background: white;
-    background: rgba(255, 255, 255, 0.5);
-    color: black;
     border-radius: 10px;
     -webkit-transition: background 0.2s ease-in-out;
             transition: background 0.2s ease-in-out;
 }
-#menu li:hover { background: rgba(255, 255, 255, 0.8); }
-#menu li.active       { background: rgba(0, 0, 0, 0.5); color: white; }
+#menu li              { background: rgba(255, 255, 255, 0.5); color: black; }
+#menu li:hover        { background: rgba(255, 255, 255, 0.8); }
+#menu li.active       { background: rgba(  0,   0,   0, 0.5); color: white; }
 #menu li.active:hover { background: rgba(255, 255, 255, 0.5); }
 
 /* fullPage navigation */
@@ -85,6 +79,7 @@ a:hover { text-decoration: underline; }
     padding: 600px 0;
     width:  auto;
     height: auto;
+    z-index: 71;
     /* http://joshbroton.com/absolute-positioning-and-horizontal-vertical-centering/ */
     -webkit-transform: translate(0, -50%);
             transform: translate(0, -50%);
@@ -118,17 +113,8 @@ a:hover { text-decoration: underline; }
     font-family: "Knockout 48 A", "Knockout 48 B", "Trebuchet MS", Helvetica, sans-serif;
     letter-spacing: 0.125em;
 }
-.slide
-{
-    text-align: center;
-    font-size: 40px;
-    color: white;
-}
-.inslide
-{
-    margin: 71px auto 35px;
-    width: 1140px;
-}
+.slide { text-align: center; font-size: 40px; color: white; }
+.inslide { margin: 71px auto 35px; width: 1140px; }
 .maincontain { padding: 3px 0; }
 .maincontain main
 {
@@ -136,12 +122,11 @@ a:hover { text-decoration: underline; }
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
 }
-.maincontain main > *
-{
-    display: block;
-    overflow: hidden;
-    clear: both;
-}
+.maincontain main > * { display: block; overflow: hidden; clear: both; }
+
+
+
+
 
 /* headliners */
 #headliners
@@ -152,16 +137,16 @@ a:hover { text-decoration: underline; }
     background: url('../images/fox-sign.jpg') no-repeat center 80%;
     -webkit-background-size: cover;
             background-size: cover;
-    -webkit-transition: all 3.5s cubic-bezier(.34,.02,.29,.99);
-            transition: all 3.5s cubic-bezier(.34,.02,.29,.99);
     -webkit-transform: scale(1, 1);
             transform: scale(1, 1);
+    -webkit-transition: all 3.5s cubic-bezier(.34,.02,.29,.99);
+            transition: all 3.5s cubic-bezier(.34,.02,.29,.99);
 }
 .slide.active #headliners
 {
+    background-position: center 0%;
     -webkit-transform: scale(1.2, 1.2);
             transform: scale(1.2, 1.2);
-    background-position: center 0%;
 }
 #headliners #headlinersoverlay
 {
@@ -171,37 +156,33 @@ a:hover { text-decoration: underline; }
     content: '';
     width:  100%;
     height: 100%;
-    -webkit-transition: all 4s ease-in-out;
-            transition: all 4s ease-in-out;
     -webkit-background-size: cover;
             background-size: cover;
     pointer-events: none;
     background-color: rgba(0, 0, 0, 0);
+    -webkit-transition: all 4s ease-in-out;
+            transition: all 4s ease-in-out;
 }
-.slide.active #headliners #headlinersoverlay { background-color: #000; }
-.slide #headliners.loaded #headlinersoverlay { background-color: rgba(0, 0, 0, 0); }
+.slide.active #headliners        #headlinersoverlay { background-color: #000; }
+.slide        #headliners.loaded #headlinersoverlay { background-color: rgba(0, 0, 0, 0); }
+
+
+
+
 
 /* tour */
-#tour main
-{
-    text-align: left;
-    font-size: 24px;
-    color: black;
-}
 #tour .maincontain { background-color: rgba(255, 255, 255, 0.67); }
-#tour h1 { margin: 0 36px 31px; border-bottom: 1px solid black; padding: 39px 0 12px; }
-#tour h1           span
+#tour main { text-align: left; font-size: 24px; color: black; }
+
+#tour h1 { border-bottom: 1px solid black; }
+#tour h1 span
 {
     -webkit-transition: color 0.2s ease-in-out;
             transition: color 0.2s ease-in-out;
 }
 #tour h1 div:hover span { color: #953310; cursor: pointer; }
 
-#tour .row
-{
-    padding: 11px 36px;
-    text-transform: uppercase;
-}
+#tour .row { padding: 11px 36px; text-transform: uppercase; }
 #tour .row:nth-child(2n) { background-color: rgba(255, 255, 255, 0.2); }
 
 #tour .col  { float: left; }
@@ -283,14 +264,14 @@ a:hover { text-decoration: underline; }
 {
     /* http://stackoverflow.com/questions/12146394/background-size-cover-not-scaling-image-in-div/12146446#12146446 */
     background: url('../images/spice-girls.jpg') no-repeat center 0%;
-    -webkit-transform: scale(1.05, 1.05);
-            transform: scale(1.05, 1.05);
     -webkit-background-size: cover;
             background-size: cover;
+    overflow: hidden;
+    -webkit-transform: scale(1.05, 1.05);
+            transform: scale(1.05, 1.05);
     /* blurring is done after a delay to help slow devices */
     -webkit-transition: -webkit-filter 0 ease-in-out 0, filter 0 ease-in-out 0;
             transition: -webkit-filter 0 ease-in-out 0, filter 0 ease-in-out 0;
-    overflow: hidden;
 }
 #openers .maincontain.bg.overlay.active main
 {
@@ -303,23 +284,27 @@ a:hover { text-decoration: underline; }
 #openers .maincontain .theEX
 {
     position: absolute;
-    top: 19px;
+    top:   19px;
     right: 19px;
-    width: 40px;
+    width:  40px;
     height: 40px;
     z-index: 600;
     cursor: pointer;
     background-size: cover;
-    -webkit-transition: -webkit-filter 0.4s ease, filter 0.4s ease;
-            transition: -webkit-filter 0.4s ease, filter 0.4s ease;
     -webkit-filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 3px #fff);
             filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 3px #fff);
+    -webkit-transition: -webkit-filter 0.4s ease, filter 0.4s ease;
+            transition: -webkit-filter 0.4s ease, filter 0.4s ease;
 }
 #openers .maincontain .theEX:hover
 {
     -webkit-filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 3px #fff) drop-shadow(0 0 3px #fff);
             filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 3px #fff) drop-shadow(0 0 3px #fff);
 }
+
+
+
+
 
 /* Openers - Polaroids Layer */
 #openers .polaroidcol
@@ -348,11 +333,11 @@ a:hover { text-decoration: underline; }
     text-transform: uppercase;
     color: black;
     cursor: pointer;
+    box-shadow: 1px 2px 9px 1px rgba(0, 0, 0, 0.75);
     -webkit-transition: color 0.2s ease-in-out;
             transition: color 0.2s ease-in-out;
     -webkit-transition: transform 0.2s ease-in-out;
             transition: transform 0.2s ease-in-out;
-    box-shadow: 1px 2px 9px 1px rgba(0, 0, 0, 0.75);
 }
 #openers .polaroidcol:nth-child(2) .polaroid { transform: rotateZ(3deg);   -webkit-transform: rotateZ(3deg);   }
 #openers .polaroidcol:nth-child(3) .polaroid { transform: rotateZ(-10deg); -webkit-transform: rotateZ(-10deg); }
@@ -405,8 +390,101 @@ a:hover { text-decoration: underline; }
 
 
 
-#venue img { margin: 0 auto; }
+/* Vanue */
+#venue .maincontain { background-color: rgba(255, 255, 255, 0.67); }
+#venue main { text-align: left; font-size: 24px; color: black; }
 
+#venue p,
+#venue .iframe-rwd,
+#venue .door { margin-left: 36px; margin-right: 36px; }
+#venue .vcard { padding-left: 36px; padding-right: 36px; }
+#venue h1 { border-bottom: 1px solid black; }
+#venue img.summary
+{
+    display: inline-block;
+    margin-left: 36px;
+    width: 365px;
+    vertical-align: middle;
+}
+#venue p.summary
+{
+    display: inline-block;
+    margin: 0 0 0 36px;
+    vertical-align: middle;
+    font-size: 40px;
+    text-transform: uppercase;
+}
+#venue .summary .name
+{
+    font-size: 50px;
+    color: rgb(0, 20, 126);
+}
+#venue .vcard
+{
+    margin: 22px 0;
+    padding-top:    7px;
+    padding-bottom: 7px;
+    font-size: 30px;
+    background-color: rgba(255, 255, 255, 0.2);
+    text-align: center;
+    text-transform: uppercase;
+}
+#venue .vcard .org { display: none; }
+#venue .plaingroup { text-align: center; }
+#venue .plain
+{
+    text-align: left;
+    display: inline-block; vertical-align: middle;
+    margin: 0;
+    width: 50%;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: normal;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+#venue .door
+{
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0 0 36px;
+    width: 30%;
+}
+/* http://stackoverflow.com/questions/12676725/responsive-iframe-google-maps-and-weird-resizing/12678294#12678294 */
+#venue .iframe-rwd
+{
+    position: relative;
+    margin-top: 36px;
+    margin-bottom: 36px;
+    padding: 0 0 200px;
+    height: 0;
+    overflow: hidden;
+}
+#venue .iframe-rwd iframe
+{
+    position: absolute;
+    top:  0;
+    left: 0;
+    width:  100%;
+    height: 100%;
+}
+
+/* Afterparty */
+#afterparty .maincontain { background-color: rgba(255, 255, 255, 0.67); }
+#afterparty main { text-align: left; font-size: 24px; color: black; }
+
+#afterparty p,
+#afterparty .vcard { margin-left: 36px; margin-right: 36px; }
+#afterparty h1 { border-bottom: 1px solid black; }
+#afterparty .summary
+{
+    font-size: 50px;
+    color: rgb(0, 20, 126);
+    text-transform: uppercase;
+}
+#afterparty .vcard { margin-top: 36px; margin-bottom: 36px; text-transform: uppercase; }
+#afterparty .vcard .org { display: none; }
+
+/* Merch */
 #merch a { margin-bottom: 15px; }
 #merch img { display: block; }
 #merch img { margin: 0 auto; }
@@ -415,7 +493,7 @@ a:hover { text-decoration: underline; }
 
 
 
-/* Portrait handheld devices - Smaller header column */
+/* Portrait handheld devices - Smaller opener label column */
 @media (max-width: 568px) and (orientation: portrait)
 { #openers .opener .label { width: 76px; } }
 
@@ -425,8 +503,9 @@ a:hover { text-decoration: underline; }
 
 @media (max-width: 767px)
 {
-    /* //// temp or perm? */
     h1 { margin: 0 15px 15px; padding: 15px 0 9px; }
+    a:hover  { color: #da4a18; }
+    a:active { color: #953310; }
 
     /* menu */
     #menu { display: none; }
@@ -441,7 +520,6 @@ a:hover { text-decoration: underline; }
     }
     
     /* tour */
-    #tour h1 { margin: 0 15px 15px; padding: 15px 0 9px; }
     #tour .row { padding-left: 15px; padding-right: 15px; }
     #tour   .location { width: 50%; }
     #tour     .city  { width: 100%; float: none; }
@@ -481,6 +559,16 @@ a:hover { text-decoration: underline; }
     #openers .opener header h1 { margin: 0 0 12px; }
     #openers .opener .info { margin: 0 15px 18px; }
     #openers .opener { margin-bottom: 41px; }
+    
+    /* Venue */
+    #venue p,
+    #venue .vcard,
+    #venue .iframe-rwd,
+    #venue .door { margin-left: 15px; margin-right: 15px; }
+    #venue iframe { width: 290px; }
+    
+    /* Afterparty */
+    #afterparty p { margin-left: 15px; margin-right: 15px; }
 }
 
 /*\
@@ -618,7 +706,11 @@ a:hover { text-decoration: underline; }
 }
 
 /* Non-wide content - No story indent */
-@media (max-width: 1259px) { #tour .instory { padding-left: 0; } }
+@media (max-width: 1259px)
+{
+    #tour .instory { padding-left: 0; }
+    #venue .plain { padding-left: 0; }
+}
 
 /*\
 | | Landscape handheld devices - No navigation dots (messes with iOS7 browser)

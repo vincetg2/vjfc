@@ -25,24 +25,6 @@
     
     <body>
         <nav id="menu"><ul>
-            <?php
-                $slideInfos = array
-                (
-                    array('url' => 'headliners', 'navtext' => 'Headliners',    ),
-                    array('url' => 'tour',       'navtext' => 'Tour',          ),
-                    array('url' => 'openers',    'navtext' => 'Openers',       ),
-                    array('url' => 'venue',      'navtext' => 'Venue',         ),
-                    array('url' => 'sosleepy',   'navtext' => 'Accommodations',),
-                    array('url' => 'merch',      'navtext' => 'Merch',         ),
-                );
-                foreach($slideInfos as $key => &$slideInfo)
-                {
-                    $slideInfo['index']  = $key;
-                    $slideInfo['id']     = "slide$key";
-                    $slideInfo['active'] = $slideInfo['url'] == $url;
-                }
-                unset($slideInfo); // safety net
-            ?>
             <?php foreach($slideInfos as $slideInfo) { ?>
                 <a href="<?php echo $slideInfo['url']; ?>"><!--
                     --><li<?php if($slideInfo['active']) { ?> class="active"<?php } ?>><!--
@@ -50,16 +32,19 @@
                     --></li><!--
                 --></a>
             <?php } ?>
-        </ul></nav>
+        </ul></nav><!-- #menu -->
+        
         <div id="fullpage"><div class="section">
+            <!-- Headliners -->
             <?php $slideInfo = reset($slideInfos); ?>
             <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
-                <div id="headliners"><div id="headlinersoverlay"></div></div>
+                <div id="<?php echo $slideInfo['url']; ?>"><div id="headlinersoverlay"></div></div>
             </div>
             
+            <!-- Tour Dates -->
             <?php $slideInfo = next($slideInfos); ?>
             <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
-                <div id="tour" class="inslide">
+                <div id="<?php echo $slideInfo['url']; ?>" class="inslide">
                     <div class="maincontain">
                         <main>
                             <h1><div><span>Tour</span></div></h1>
@@ -87,9 +72,10 @@
                 </div><!-- #tour.inslide -->
             </div><!-- .slide -->
             
+            <!-- Openers -->
             <?php $slideInfo = next($slideInfos); ?>
             <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
-                <div id="openers" class="inslide">
+                <div id="<?php echo $slideInfo['url']; ?>" class="inslide">
                     <div class="maincontain">
                         <main>
                             <h1>Openers</h1>
@@ -139,32 +125,87 @@
                 </div><!-- #openers.inslide -->
             </div><!-- .slide -->
             
+            <!-- Venue -->
             <?php $slideInfo = next($slideInfos); ?>
             <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
-                <div id="venue" class="inslide">
+                <div id="<?php echo $slideInfo['url']; ?>" class="inslide">
                     <div class="maincontain">
                         <main>
                             <h1>Venue</h1>
-                            <img src="images/hecker-pass-4.jpg" />
+                            
+                            <img class="summary" src="images/hecker-pass-1.jpg" /><!--
+                            --><p class="summary">
+                                <span class="name">Hecker Pass Winery</span><br />
+                                Ceremony at 4<br />
+                                Dinner/dancing to follow<br />
+                            </p><br />
+                            
+                            <div class="vcard"><a href="https://www.google.com/maps/place/Hecker+Pass+Winery/@37.0062073,-121.7078231,10z" target="_blank">
+                                <span class="fn org">Hecker Pass Winery</span>
+                                <div class="adr">
+                                    <span class="street-address">4605 Hecker Pass Road</span><br />
+                                    <span class="locality">Gilroy</span>,
+                                    <abbr class="region" title="California">CA<abbr>
+                                    <span class="postal-code">95020<span>
+                                </div>
+                            </a></div>
+                            
+                            <div class="plaingroup"><!--
+                            --><p class="plain">
+                                The ceremony will being promptly at 4pm.
+                                A cocktail hour will begin around 4:30pm and dinner and dancing will follow directly after.
+                                The entire event will take place outside, so please don't forget a light jacket in case it gets cold in the evening!
+                                
+                                There is a large, free parking lot at the venue for your convenience.<br /><br />
+                                
+                                The tasting room is open from 10am to 4:30pm Monday - Friday, and 10am to 5pm Saturday and Sunday.<br /><br />
+                                If you have any questions, concerns, or accommodation inquiries, feel free to contact us at <a class="vince email"></a> or <a class="jacklin email"></a>.
+                            </p><!--
+                            --><img class="door" src="images/hecker-pass-4.jpg" /><!--
+                            --></div>
+                            
+                            <div class="iframe-rwd">
+                                <iframe frameborder="0" style="border:0"
+                                    src="https://www.google.com/maps/embed/v1/place?q=Hecker+Pass+Winery,+Hecker+Pass+Road,+Gilroy,+CA,+United+States&zoom=8&key=AIzaSyBQiL4aCIr4i8Gx0v2GmmtANgTc9QH_WpM"></iframe>
+                            </div>
                         </main>
                     </div><!-- .maincontain -->
                 </div><!-- #venue.inslide -->
             </div><!-- .slide -->
             
+            <!-- Afterparty -->
             <?php $slideInfo = next($slideInfos); ?>
             <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
-                <div id="accommodations" class="inslide">
+                <div id="<?php echo $slideInfo['url']; ?>" class="inslide">
                     <div class="maincontain">
                         <main>
-                            <h1>Accommodations</h1>
+                            <h1>Afterparty</h1>
+                            <p class="summary">
+                                Best Western Plus Forest Park Inn<br />
+                            </p>
+                            
+                            <div class="vcard">
+                                <span class="fn org">Best Western Plus Forest Park Inn</span>
+                                <div class="adr"><a href="https://www.google.com/maps/place/BEST+WESTERN+PLUS+Forest+Park+Inn/@37.021421,-121.570439,10z" target="_blank">
+                                    <span class="street-address">375 Leavesley Road</span><br />
+                                    <span class="locality">Gilroy</span>, <span class="region">CA<span> <span class="postal-code">95020<span>
+                                </a></div>
+                                <span class="tel">(408) 848-5144</span><br />
+                                <a class="email" href="mailto:info@bestwesterngilroy.com">info@bestwesterngilroy.com</a><br />
+                                <a class="url" href="http://www.bestwesterngilroy.com/" target="_blank">http://www.bestwesterngilroy.com/</a><br />
+                            </div>
+                            <p>
+                                4.5mi from Hecker Pass Winery
+                            </p>
                         </main>
                     </div><!-- .maincontain -->
-                </div><!-- #accommodations.inslide -->
+                </div><!-- #afterparty.inslide -->
             </div><!-- .slide -->
             
+            <!-- Merch -->
             <?php $slideInfo = next($slideInfos); ?>
             <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
-                <div id="merch" class="inslide">
+                <div id="<?php echo $slideInfo['url']; ?>" class="inslide">
                     <div class="maincontain">
                         <main>
                             <h1>Merch</h1>
@@ -178,6 +219,6 @@
                     </div><!-- .maincontain -->
                 </div><!-- #merch.inslide -->
             </div><!-- .slide -->
-        </div>
+        </div><!-- .section --></div><!-- #fullpage -->
     </body>
 </html>

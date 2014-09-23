@@ -6,6 +6,28 @@
     
     
     
+    // Slides
+    $slideInfos = array
+    (
+        array('url' => 'headliners', 'navtext' => 'Headliners', ),
+        array('url' => 'tour',       'navtext' => 'Tour',       ),
+        array('url' => 'openers',    'navtext' => 'Openers',    ),
+        array('url' => 'venue',      'navtext' => 'Venue',      ),
+        array('url' => 'afterparty', 'navtext' => 'Afterparty', ),
+        array('url' => 'merch',      'navtext' => 'Merch',      ),
+    );
+    foreach($slideInfos as $key => &$slideInfo)
+    {
+        $slideInfo['index']  = $key;
+        $slideInfo['id']     = "slide$key";
+        $slideInfo['active'] = $slideInfo['url'] == $url;
+    }
+    unset($slideInfo); // safety net
+    
+    
+    
+    
+    
     // Tour
     $dateInfos = array
     (
