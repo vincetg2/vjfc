@@ -12,21 +12,14 @@
 body { background-color: black; line-height: 1; font-family: "Knockout 48 A", "Knockout 48 B", "Trebuchet MS", Helvetica, sans-serif; }
 table, tbody, tr, td { border-spacing: 0; vertical-align: top; }
 table, tbody, tr, td,
-p { margin: 0; border: 0; padding: 0; }
-h1
-{
-    margin: 0 36px 31px;
-    padding: 39px 0 12px;
-    font-size: 67px;
-    line-height: 0.75;
-    font-weight: normal;
-    text-transform: uppercase;
-}
+p, h2 { margin: 0; border: 0; padding: 0; }
+h1, h2 { line-height: 0.75; font-weight: normal; text-transform: uppercase; }
+h1 { margin: 0 36px 31px; padding: 39px 0 12px; font-size: 67px; }
+h2 { margin: 0 36px 12px; padding: 18px 0 12px; font-size: 50px; }
 
 a { -webkit-transition: color 0.2s ease-in-out; transition: color 0.2s ease-in-out; }
 a,
 a:visited,
-a:hover,
 a:active { color: #da4a18; }
 
 a,
@@ -172,7 +165,7 @@ a:hover { color: #953310; }
 
 /* tour */
 #tour .maincontain { background-color: rgba(255, 255, 255, 0.67); }
-#tour main { text-align: left; font-size: 24px; color: black; }
+#tour main { text-align: left; font-size: 24px; letter-spacing: 0.05em; color: black; }
 
 #tour h1 { border-bottom: 1px solid black; }
 #tour h1 span
@@ -321,6 +314,7 @@ a:hover { color: #953310; }
     position: relative;
     top: 10%;
     font-size: 24px;
+    letter-spacing: 0.05em;
     text-align: center;
     overflow: visible;
 }
@@ -367,9 +361,10 @@ a:hover { color: #953310; }
 #openers .maincontain.overlay { opacity: 1; width:  100%; height: 100%; }
 #openers .maincontain.bg.overlay { -webkit-filter: blur(5px); filter: blur(5px); }
 */
+#openers .opener header,
+#openers .opener .info { margin: 0 auto 18px; width: 768px; }
 #openers .opener header
 {
-    margin: 0 36px 18px;
     border-bottom: 1px solid rgb(255, 250, 244);
     padding: 39px 0 12px;
     font-size: 67px;
@@ -383,7 +378,7 @@ a:hover { color: #953310; }
 #openers .opener header p  { display: inline-block; }
 #openers .opener header h1 { margin: 0 0.15em 0 0; padding: 0; }
 #openers .opener header p  { font-size: 32px; }
-#openers .opener .info { margin: 0 36px 18px; }
+#openers .opener .info { padding-left: 50px; }
 #openers .opener .label { width: 130px; }
 
 
@@ -392,45 +387,36 @@ a:hover { color: #953310; }
 
 /* Vanue */
 #venue .maincontain { background-color: rgba(255, 255, 255, 0.67); }
-#venue main { text-align: left; font-size: 24px; color: black; }
+#venue main { text-align: left; font-size: 24px; letter-spacing: 0.05em; color: black; }
 
 #venue p,
 #venue .iframe-rwd,
-#venue .door { margin-left: 36px; margin-right: 36px; }
-#venue .vcard { padding-left: 36px; padding-right: 36px; }
+#venue img.door { margin-left: 36px; margin-right: 36px; }
 #venue h1 { border-bottom: 1px solid black; }
-#venue img.summary
-{
-    display: inline-block;
-    margin-left: 36px;
-    width: 365px;
-    vertical-align: middle;
-}
+#venue img.summary { display: inline-block; width: 416px; vertical-align: middle; }
+#venue div.summary { display: none; }
+#venue .sumblock { text-align: center; }
 #venue p.summary
 {
     display: inline-block;
     margin: 0 0 0 36px;
     vertical-align: middle;
-    font-size: 40px;
+    font-size: 49px;
+    text-align: left;
     text-transform: uppercase;
 }
-#venue .summary .name
-{
-    font-size: 50px;
-    color: rgb(0, 20, 126);
-}
+#venue .summary .name { font-size: 62px; color: rgb(0, 20, 126); }
 #venue .vcard
 {
-    margin: 22px 0;
-    padding-top:    7px;
-    padding-bottom: 7px;
-    font-size: 30px;
+    margin: 31px 0;
+    padding: 15px;
+    font-size: 36px;
     background-color: rgba(255, 255, 255, 0.2);
     text-align: center;
     text-transform: uppercase;
 }
 #venue .vcard .org { display: none; }
-#venue .plaingroup { text-align: center; }
+#venue .plaingroup { margin: 0 auto; max-width: 940px; text-align: center; }
 #venue .plain
 {
     text-align: left;
@@ -442,7 +428,7 @@ a:hover { color: #953310; }
     line-height: normal;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
-#venue .door
+#venue img.door
 {
     display: inline-block;
     vertical-align: middle;
@@ -470,19 +456,51 @@ a:hover { color: #953310; }
 
 /* Afterparty */
 #afterparty .maincontain { background-color: rgba(255, 255, 255, 0.67); }
-#afterparty main { text-align: left; font-size: 24px; color: black; }
+#afterparty main { text-align: left; font-size: 24px; letter-spacing: 0.05em; color: black; }
 
+#afterparty div.summary,
+#afterparty div.summary div { height: 250px; }
+#afterparty div.summary { display: block; width: 100%; }
+#afterparty div.summary div
+{
+    margin: 0 36px;
+    background: url('../images/hotel.jpg') no-repeat center 89%;
+    -webkit-background-size: cover;
+            background-size: cover;
+}
+#afterparty h2,
 #afterparty p,
 #afterparty .vcard { margin-left: 36px; margin-right: 36px; }
 #afterparty h1 { border-bottom: 1px solid black; }
-#afterparty .summary
+#afterparty h2
 {
-    font-size: 50px;
     color: rgb(0, 20, 126);
-    text-transform: uppercase;
+    border-bottom: 1px solid rgb(0, 20, 126);
+}
+#afterparty .words
+{
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: normal;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
 }
 #afterparty .vcard { margin-top: 36px; margin-bottom: 36px; text-transform: uppercase; }
 #afterparty .vcard .org { display: none; }
+#afterparty .icons
+{
+    margin: 36px 0;
+    text-align: center;
+}
+#afterparty a.iconcontain { display: inline-block; }
+#afterparty .icon { margin: 0 15px; width: 100px; height: 100px; }
+#afterparty .map.icon       { background: center/100px 100px url('../images/mappino.png'); }
+#afterparty .map.icon:hover { background-image: url('../images/mappina.png'); }
+#afterparty .email.icon       { background: center/100px 100px url('../images/emailo.png'); }
+#afterparty .email.icon:hover { background-image: url('../images/emaila.png'); }
+#afterparty .website.icon       { background: center/100px 100px url('../images/exto.png'); }
+#afterparty .website.icon:hover { background-image: url('../images/exta.png'); }
 
 /* Merch */
 #merch a { margin-bottom: 15px; }
@@ -504,8 +522,6 @@ a:hover { color: #953310; }
 @media (max-width: 767px)
 {
     h1 { margin: 0 15px 15px; padding: 15px 0 9px; }
-    a:hover  { color: #da4a18; }
-    a:active { color: #953310; }
 
     /* menu */
     #menu { display: none; }
@@ -526,7 +542,6 @@ a:hover { color: #953310; }
     #tour     .place { width: 100%; float: none; }
     #tour     .story { max-width: 420px; width: 158%; }
     
-    #venue img { width: 200px; }
     #merch img { width: 200px; }
     
     #openers .maincontain .theEX { top: initial; bottom: 19px; }
@@ -562,13 +577,55 @@ a:hover { color: #953310; }
     
     /* Venue */
     #venue p,
-    #venue .vcard,
+    #venue p.summary,
     #venue .iframe-rwd,
-    #venue .door { margin-left: 15px; margin-right: 15px; }
+    #venue img.door { margin-left: 15px; margin-right: 15px; }
     #venue iframe { width: 290px; }
+    #venue img.summary { display: none; }
+    #venue div.summary { display: block; width: 100%; height: 100px; }
+    #venue div.summary div
+    {
+        margin: 0 15px;
+        height: 100px;
+        background: url('../images/hecker-pass-1.jpg') no-repeat center center;
+        -webkit-background-size: cover;
+                background-size: cover;
+    }
+    #venue p.summary
+    {
+        display: block;
+        margin-top: 15px;
+        margin-right: 0;
+        font-size: 36px;
+        letter-spacing: 0;
+    }
+    #venue .summary .name { font-size: 45px; }
+    #venue .vcard { margin-top: 15px; }
+    #venue img.door { display: none; }
+    #venue div.door { display: block; width: 100%; height: 100px; }
+    #venue div.door div
+    {
+        margin: 0 15px;
+        height: 100px;
+        background: url('../images/hecker-pass.JPG') no-repeat 100% 7%;
+        -webkit-background-size: cover;
+                background-size: cover;
+    }
+    #venue .plain
+    {
+        display: block;
+        margin: 15px 15px 0 15px;
+        width: auto;
+    }
+    #venue .iframe-rwd { margin-top: 25px; }
     
     /* Afterparty */
-    #afterparty p { margin-left: 15px; margin-right: 15px; }
+    #afterparty h2,
+    #afterparty div.summary div,
+    #afterparty .words { margin-left: 15px; margin-right: 15px; }
+    #afterparty div.summary,
+    #afterparty div.summary div { height: 100px; }
+    #afterparty h2 { font-size: 45px; }
 }
 
 /*\
@@ -650,10 +707,20 @@ a:hover { color: #953310; }
     #openers .polaroidcol:last-child { width: 100%; clear: both; }
     #openers .polaroidcontain { margin-bottom: 37px; position: initial; top: initial; }
     #openers .polaroidcol:last-child .polaroidcontain { margin-bottom: 0; }
+    #openers .opener header { margin-left: 36px; margin-right: 36px; width: auto; }
+    #openers .opener .info { margin-left: 36px; margin-right: 0; width: auto; }
+    #venue img.summary { width: 305px; }
+    #venue p.summary { font-size: 33px; }
+    #venue .summary .name { font-size: 42px; }
 }
 
 /* Handheld devices and medium devices - Smaller story font */
-@media (max-width: 991px) { #tour .instory { font-size: 16px; } }
+@media (max-width: 991px)
+{
+    #tour .instory { font-size: 16px; }
+    #openers .opener .info { padding-left: 0; }
+    #afterparty .words { font-size: 16px; }
+}
 
 /*\
 | | Landscape tablets - Narrow content
@@ -663,12 +730,26 @@ a:hover { color: #953310; }
 {
     /* slides */
     .inslide { width: 840px; }
+    #openers .opener header { margin-left: 36px; margin-right: 36px; width: auto; }
+    #openers .opener .info { margin-left: 36px; margin-right: 0; width: auto; }
+    #venue img.summary { width: 365px; }
+    #venue p.summary { font-size: 40px; }
+    #venue .summary .name { font-size: 50px; }
+}
+
+@media (max-width: 1079px)
+{
+    #venue .vcard { margin: 22px 0; padding: 7px 0; font-size: 30px; }
 }
 
 /* Handheld devices and tablets - :active works better than :hover on iOS7 */
 @media (max-device-width: 844px) and (orientation: portrait),
     (max-device-width: 1079px) and (orientation: landscape)
 {
+    a,
+    a:visited,
+    a:hover  { color: #da4a18; }
+    a:active { color: #953310; }
     #menu li:hover  { background: rgba(255, 255, 255, 0.5); }
     #menu li:active { background: rgba(255, 255, 255, 0.8); }
     #menu li.active:hover  { background: rgba(0, 0, 0, 0.5); }
@@ -693,6 +774,18 @@ a:hover { color: #953310; }
     #openers .maincontain .theEX:hover  { -webkit-filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 3px #fff); filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 3px #fff); }
     #openers .maincontain:active .theEX { -webkit-filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 5px #fff); filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 5px #fff); }
     #openers .maincontain .theEX:active { -webkit-filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 5px #fff); filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 5px #fff); }
+    #venue .vcard a,
+    #venue .vcard a:visited,
+    #venue .vcard a:hover,
+    #venue .vcard a:active { color: #da4a18; }
+    #venue .adr { -webkit-transition: color 0.2s ease-in-out; transition: color 0.2s ease-in-out; }
+    #venue .adr:active { color: #953310; }
+    #afterparty .map.icon:hover  { background: center/100px 100px url('../images/mappino.png'); }
+    #afterparty .map.icon:active { background-image: url('../images/mappina.png'); }
+    #afterparty .email.icon:hover  { background: center/100px 100px url('../images/emailo.png'); }
+    #afterparty .email.icon:active { background-image: url('../images/emaila.png'); }
+    #afterparty .website.icon:hover  { background: center/100px 100px url('../images/exto.png'); }
+    #afterparty .website.icon:active { background-image: url('../images/exta.png'); }
 }
 
 /*\
@@ -710,6 +803,8 @@ a:hover { color: #953310; }
 {
     #tour .instory { padding-left: 0; }
     #venue .plain { padding-left: 0; }
+    #venue .sumblock { text-align: left; }
+    #venue img.summary { margin-left: 36px; }
 }
 
 /*\

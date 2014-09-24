@@ -133,12 +133,15 @@
                         <main>
                             <h1>Venue</h1>
                             
+                            <div class="summary"><div></div></div>
+                            <div class="sumblock">
                             <img class="summary" src="images/hecker-pass-1.jpg" /><!--
                             --><p class="summary">
                                 <span class="name">Hecker Pass Winery</span><br />
                                 Ceremony at 4<br />
                                 Dinner/dancing to follow<br />
-                            </p><br />
+                            </p>
+                            </div>
                             
                             <div class="vcard"><a href="https://www.google.com/maps/place/Hecker+Pass+Winery/@37.0062073,-121.7078231,10z" target="_blank">
                                 <span class="fn org">Hecker Pass Winery</span>
@@ -148,21 +151,23 @@
                                     <abbr class="region" title="California">CA<abbr>
                                     <span class="postal-code">95020<span>
                                 </div>
-                            </a></div>
+                            </a></div><!-- .vcard -->
                             
+                            <div class="door"><div></div></div>
                             <div class="plaingroup"><!--
-                            --><p class="plain">
-                                The ceremony will being promptly at 4pm.
-                                A cocktail hour will begin around 4:30pm and dinner and dancing will follow directly after.
-                                The entire event will take place outside, so please don't forget a light jacket in case it gets cold in the evening!
-                                
-                                There is a large, free parking lot at the venue for your convenience.<br /><br />
-                                
-                                The tasting room is open from 10am to 4:30pm Monday - Friday, and 10am to 5pm Saturday and Sunday.<br /><br />
-                                If you have any questions, concerns, or accommodation inquiries, feel free to contact us at <a class="vince email"></a> or <a class="jacklin email"></a>.
-                            </p><!--
-                            --><img class="door" src="images/hecker-pass-4.jpg" /><!--
-                            --></div>
+                                --><p class="plain">
+                                    The ceremony will being promptly at 4pm.
+                                    A cocktail hour will begin around 4:30pm and dinner and dancing will follow directly after.
+                                    The entire event will take place outside, so please don't forget a light jacket in case it gets cold in the evening!<br /><br />
+                                    
+                                    Cell phone reception is limited, so printing out directions (or saving maps for <a href="https://support.google.com/gmm/answer/3273567" target="_blank">offline use</a>) could save you some time if you tend to get lost.
+                                    There is a large, free parking lot at the venue for your convenience.<br /><br />
+                                    
+                                    The tasting room is open from 10am to 4:30pm Monday - Friday, and 10am to 5pm Saturday and Sunday.<br /><br />
+                                    If you have any questions, concerns, or accommodation inquiries, feel free to contact us at <a class="vince email"></a> or <a class="jacklin email"></a>.
+                                </p><!--
+                                --><img class="door" src="images/hecker-pass-4.jpg" /><!--
+                            --></div><!-- .plaingroup -->
                             
                             <div class="iframe-rwd">
                                 <iframe frameborder="0" style="border:0"
@@ -180,10 +185,18 @@
                     <div class="maincontain">
                         <main>
                             <h1>Afterparty</h1>
-                            <p class="summary">
-                                Best Western Plus Forest Park Inn<br />
+                            <div class="summary"><div></div></div>
+                            <h2>Best Western Plus Forest Park Inn</h2>
+                            <p class="words">
+                                We are in the process of getting a block of rooms at this hotel,
+                                but it is best to book early, as there are few hotels in Gilroy.
+                                Check back in a month or so for more information if interested
+                                (or send us an email at <a class="vince email"></a>).<br /><br />
+                                
+                                Phone: (408) 848-5144
                             </p>
                             
+                            <?php /*
                             <div class="vcard">
                                 <span class="fn org">Best Western Plus Forest Park Inn</span>
                                 <div class="adr"><a href="https://www.google.com/maps/place/BEST+WESTERN+PLUS+Forest+Park+Inn/@37.021421,-121.570439,10z" target="_blank">
@@ -193,10 +206,21 @@
                                 <span class="tel">(408) 848-5144</span><br />
                                 <a class="email" href="mailto:info@bestwesterngilroy.com">info@bestwesterngilroy.com</a><br />
                                 <a class="url" href="http://www.bestwesterngilroy.com/" target="_blank">http://www.bestwesterngilroy.com/</a><br />
+                                <span class="note">4.5mi from Hecker Pass Winery</span>
                             </div>
-                            <p>
-                                4.5mi from Hecker Pass Winery
-                            </p>
+                            */ ?>
+                            
+                            <div class="icons">
+                                <a class="iconcontain" href="mailto:info@bestwesterngilroy.com" target="_blank"><!--
+                                    --><div class="email icon" title="info@bestwesterngilroy.com"></div><!--
+                                --></a>
+                                <a class="iconcontain" href="https://www.google.com/maps/place/BEST+WESTERN+PLUS+Forest+Park+Inn/@37.021421,-121.570439,10z" target="_blank"><!--
+                                    --><div class="map icon" title="375 Leavesley Road, Gilroy, CA 95020"></div><!--
+                                --></a>
+                                <a class="iconcontain" href="http://www.bestwesterngilroy.com/" target="_blank"><!--
+                                    --><div class="website icon" title="http://www.bestwesterngilroy.com/"></div><!--
+                                --></a>
+                            </div><!-- .icons -->
                         </main>
                     </div><!-- .maincontain -->
                 </div><!-- #afterparty.inslide -->

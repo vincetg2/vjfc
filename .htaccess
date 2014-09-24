@@ -1,4 +1,5 @@
 Options +SymLinksIfOwnerMatch 
+Options -Indexes
 RewriteEngine On 
 RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
