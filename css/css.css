@@ -64,6 +64,7 @@ a:hover { color: #953310; }
 #menu li.active:hover { background: rgba(255, 255, 255, 0.5); }
 
 /* fullPage navigation */
+/* http://joshbroton.com/absolute-positioning-and-horizontal-vertical-centering/ */
 .fp-controlArrow.fp-prev,
 .fp-controlArrow.fp-next
 {
@@ -73,7 +74,6 @@ a:hover { color: #953310; }
     width:  auto;
     height: auto;
     z-index: 71;
-    /* http://joshbroton.com/absolute-positioning-and-horizontal-vertical-centering/ */
     -webkit-transform: translate(0, -50%);
             transform: translate(0, -50%);
 }
@@ -225,9 +225,9 @@ a:hover { color: #953310; }
 #openers { position: relative; }
 #openers .maincontain.overlay,
 #openers .maincontain.overlay main { width:  100%; height: 100%; }
+/* overlays start out "hidden" */
 #openers .maincontain.overlay
 {
-    /* overlays start out "hidden" */
     opacity: 0;
     width:  0;
     height: 0;
@@ -243,9 +243,9 @@ a:hover { color: #953310; }
         height 0 linear 0.5s,
         width  0 linear 0.5s;
 }
+/* activated overlays are shown */
 #openers .maincontain.overlay.active
 {
-    /* activated overlays are shown */
     opacity: 1;
     width:  100%;
     height: 100%;
@@ -253,24 +253,24 @@ a:hover { color: #953310; }
             transition: opacity 0.4s ease-in-out;
 }
 #openers .maincontain.bg.overlay { box-shadow: 2px 4px 9px 3px rgba(0, 0, 0, 0.75); }
+/* http://stackoverflow.com/questions/12146394/background-size-cover-not-scaling-image-in-div/12146446#12146446 */
+/* blurring is done after a delay to help slow devices */
 #openers .maincontain.bg.overlay main
 {
-    /* http://stackoverflow.com/questions/12146394/background-size-cover-not-scaling-image-in-div/12146446#12146446 */
-    background: url('../images/spice-girls.jpg') no-repeat center 0%;
+    background: url('../images/spice-girls-fiah.jpg') no-repeat center 0%;
     -webkit-background-size: cover;
             background-size: cover;
     overflow: hidden;
     -webkit-transform: scale(1.05, 1.05);
             transform: scale(1.05, 1.05);
-    /* blurring is done after a delay to help slow devices */
     -webkit-transition: -webkit-filter 0 ease-in-out 0, filter 0 ease-in-out 0;
             transition: -webkit-filter 0 ease-in-out 0, filter 0 ease-in-out 0;
 }
+/* blurring is done after a delay to help slow devices */
 #openers .maincontain.bg.overlay.active main
 {
     -webkit-filter: blur(5px);
             filter: blur(5px);
-    /* blurring is done after a delay to help slow devices */
     -webkit-transition: -webkit-filter 0.4s ease-in-out 0.5s, filter 0.4s ease-in-out 0.5s;
             transition: -webkit-filter 0.4s ease-in-out 0.5s, filter 0.4s ease-in-out 0.5s;
 }
@@ -302,17 +302,15 @@ a:hover { color: #953310; }
 /* Openers - Polaroids Layer */
 #openers .polaroidcol
 {
-    height: 100%;
+    margin-top: 60px;
     width: 33%;
     float: left;
     clear: none;
     overflow: visible;
 }
+/* http://stackoverflow.com/questions/4982480/how-to-set-the-margin-or-padding-as-percentage-of-height-or-parent-container/10018430#10018430 */
 #openers .polaroidcontain
 {
-    /* http://stackoverflow.com/questions/4982480/how-to-set-the-margin-or-padding-as-percentage-of-height-or-parent-container/10018430#10018430 */
-    position: relative;
-    top: 10%;
     font-size: 24px;
     letter-spacing: 0.05em;
     text-align: center;
@@ -503,9 +501,52 @@ a:hover { color: #953310; }
 #afterparty .website.icon:hover { background-image: url('../images/exta.png'); }
 
 /* Merch */
-#merch a { margin-bottom: 15px; }
-#merch img { display: block; }
-#merch img { margin: 0 auto; }
+#merch .polaroidcol
+{
+    margin-top: 60px;
+    width: 33%;
+    float: left;
+    clear: none;
+    overflow: visible;
+}
+/* http://stackoverflow.com/questions/4982480/how-to-set-the-margin-or-padding-as-percentage-of-height-or-parent-container/10018430#10018430 */
+#merch .polaroidcontain
+{
+    font-size: 24px;
+    letter-spacing: 0.05em;
+    text-align: center;
+    overflow: visible;
+}
+#merch .polaroid
+{
+    display: inline-block;
+    padding: 10px 10px 30px;
+    background-color: rgb(241, 240, 225);
+    text-align: left;
+    text-transform: uppercase;
+    color: black;
+    box-shadow: 1px 2px 9px 1px rgba(0, 0, 0, 0.75);
+    -webkit-transition: color 0.2s ease-in-out;
+            transition: color 0.2s ease-in-out;
+    -webkit-transition: transform 0.2s ease-in-out;
+            transition: transform 0.2s ease-in-out;
+}
+#merch .polaroidcol:nth-child(2) .polaroid { transform: rotateZ(3deg);   -webkit-transform: rotateZ(3deg);   }
+#merch .polaroidcol:nth-child(3) .polaroid { transform: rotateZ(-10deg); -webkit-transform: rotateZ(-10deg); }
+#merch .polaroidcol:nth-child(4) .polaroid { transform: rotateZ(-3deg);  -webkit-transform: rotateZ(-3deg);  }
+#merch .polaroidcol .polaroid:hover
+{
+    -webkit-transform: rotateZ(0) scale(1.1);
+            transform: rotateZ(0) scale(1.1);
+}
+#merch .polaroidcol:last-child .polaroid:hover
+{
+    -webkit-transform: rotateZ(-3deg);
+            transform: rotateZ(-3deg);
+}
+#merch .polaroid:hover { color: #da4a18; }
+#merch .polaroidcol:last-child .polaroid:hover { color: black; }
+#merch .polaroid img { width: 200px; }
 
 
 
@@ -547,6 +588,7 @@ a:hover { color: #953310; }
     #openers .maincontain .theEX { top: initial; bottom: 19px; }
     #openers .polaroidcol
     {
+        margin-top: 0;
         width:  100%;
         height: auto;
         float: none;
@@ -568,6 +610,8 @@ a:hover { color: #953310; }
         text-transform: uppercase;
         color: black;
     }
+    #openers .opener header,
+    #openers .opener .info { width: auto; }
     #openers .opener header { margin-left: 15px; margin-right: 15px; padding-top: 18px; }
     #openers .opener header h1,
     #openers .opener header p  { display: block; }
@@ -626,6 +670,32 @@ a:hover { color: #953310; }
     #afterparty div.summary,
     #afterparty div.summary div { height: 100px; }
     #afterparty h2 { font-size: 45px; }
+    
+    /* Merch */
+    #merch .polaroidcol
+    {
+        margin-top: 0;
+        width:  100%;
+        height: auto;
+        float: none;
+    }
+    #merch .polaroidcontain
+    {
+        margin-bottom: 37px;
+        position: initial;
+        top: initial;
+        float: none;
+        clear: none;
+    }
+    #merch .polaroid
+    {
+        display: inline-block;
+        padding: 10px 10px 30px;
+        background-color: white;
+        text-align: left;
+        text-transform: uppercase;
+        color: black;
+    }
 }
 
 /*\
@@ -703,7 +773,14 @@ a:hover { color: #953310; }
 
 @media (min-width: 768px) and (max-width: 991px)
 {
-    #openers .polaroidcol { width: 50%; height: auto; float: left; text-align: center; }
+    #openers .polaroidcol
+    {
+        margin-top: 0;
+        width: 50%;
+        height: auto;
+        float: left;
+        text-align: center;
+    }
     #openers .polaroidcol:last-child { width: 100%; clear: both; }
     #openers .polaroidcontain { margin-bottom: 37px; position: initial; top: initial; }
     #openers .polaroidcol:last-child .polaroidcontain { margin-bottom: 0; }
@@ -712,6 +789,17 @@ a:hover { color: #953310; }
     #venue img.summary { width: 305px; }
     #venue p.summary { font-size: 33px; }
     #venue .summary .name { font-size: 42px; }
+    #merch .polaroidcol
+    {
+        margin-top: 0;
+        width: 50%;
+        height: auto;
+        float: left;
+        text-align: center;
+    }
+    #merch .polaroidcol:last-child { width: 100%; clear: both; }
+    #merch .polaroidcontain { margin-bottom: 37px; position: initial; top: initial; }
+    #merch .polaroidcol:last-child .polaroidcontain { margin-bottom: 0; }
 }
 
 /* Handheld devices and medium devices - Smaller story font */
@@ -786,6 +874,12 @@ a:hover { color: #953310; }
     #afterparty .email.icon:active { background-image: url('../images/emaila.png'); }
     #afterparty .website.icon:hover  { background: center/100px 100px url('../images/exto.png'); }
     #afterparty .website.icon:active { background-image: url('../images/exta.png'); }
+    #merch .polaroid:hover  { color: black; }
+    #merch .polaroid:active { color: #da4a18; }
+    #merch .polaroidcol:last-child .polaroid:active { color: black; }
+    #merch .polaroidcol:nth-child(2) .polaroid:hover { transform: rotateZ(3deg);   -webkit-transform: rotateZ(3deg);   }
+    #merch .polaroidcol:nth-child(3) .polaroid:hover { transform: rotateZ(-10deg); -webkit-transform: rotateZ(-10deg); }
+    #merch .polaroidcol:nth-child(4) .polaroid:hover { transform: rotateZ(-3deg);  -webkit-transform: rotateZ(-3deg);  }
 }
 
 /*\

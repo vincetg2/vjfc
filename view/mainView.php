@@ -175,7 +175,7 @@
         'spice' => array
         (
             'caption' => 'Spice Girls',
-            'image'   => 'images/spice-girls.jpg',
+            'image'   => 'images/spice-girls-fiah.jpg',
             'members' => array
             (
                 array
@@ -307,7 +307,7 @@
                 array
                 (
                     'name' => 'Tobías Stonehocker',
-                    'nick' => '_____',
+                    'nick' => 'Toby',
                     'info' => array
                     (
                         'Years Active' => '1997 - Present',
@@ -318,4 +318,34 @@
         ),
     );
     
+    
+    
+    
+    
+    // Merch
+    $merches = array
+    (
+        'bbb' => array
+        (
+            'caption' => 'Bed Bath & Beyond',
+            'image'   => 'images/merch-table-s.jpg',
+            'url'     => 'https://www.bedbathandbeyond.com:443/store/giftregistry/view_registry_guest.jsp?registryId=541530851&eventType=Wedding',
+        ),
+        'amazon' => array
+        (
+            'caption' => 'Amazon.com',
+            'image'   => 'images/merch-booth-s.jpg',
+            'url'     => 'http://www.amazon.com/registry/wedding/1ZHJUPNCOM84Y',
+        ),
+        'honeymoon' => array
+        (
+            'caption' => 'Honeymoon',
+            'image'   => 'images/italy-s-cs.jpg',
+        ),
+    );
+    
+
+
+
+
     require_once('templates/mainLayout.php');

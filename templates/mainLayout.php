@@ -233,12 +233,22 @@
                     <div class="maincontain">
                         <main>
                             <h1>Merch</h1>
-                            <a href="https://www.bedbathandbeyond.com:443/store/giftregistry/view_registry_guest.jsp?registryId=541530851&eventType=Wedding" target="_blank">
-                                <img src="images/merch-table-bbb.jpg" />
-                            </a>
-                            <a href="http://www.amazon.com/registry/wedding/1ZHJUPNCOM84Y" target="_blank">
-                                <img src="images/merch-booth-2-azc.jpg" />
-                            </a>
+                            <?php foreach($merches as $merch => $merchInfo) { ?>
+                                <div class="polaroidcol">
+                                    <div id="<?php echo $merch; ?>" class="polaroidcontain">
+                                        <?php if(isset($merchInfo['url'])) { ?>
+                                            <a href="<?php echo $merchInfo['url']; ?>" target="_blank">
+                                        <?php } ?>
+                                                <div class="polaroid">
+                                                    <img src="<?php echo $merchInfo['image']; ?>" /><br />
+                                                    <?php echo $merchInfo['caption']; ?>
+                                                </div>
+                                        <?php if(isset($merchInfo['url'])) { ?>
+                                            </a>
+                                        <?php } ?>
+                                    </div>
+                                </div>
+                            <?php } ?>
                         </main>
                     </div><!-- .maincontain -->
                 </div><!-- #merch.inslide -->
