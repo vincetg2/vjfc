@@ -1,3 +1,11 @@
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-55253417-1', 'auto');
+ga('send', 'pageview');
+
 // http://rosspenman.com/pushstate-jquery/
 String.prototype.decodeHTML = function()
 { return $('<div>', {html: '' + this}).html(); };
@@ -33,10 +41,11 @@ var updatePageAndHistory = function(anchorLink, index, prevSlideIndex, slideInde
     $.post(url, function(html)
     {
         // http://rosspenman.com/pushstate-jquery/
-        document.title = html
+        var title = html
             .match(/<title>(.*?)<\/title>/)[1]
             .trim()
             .decodeHTML();
+        document.title = title;
             
         // Sets the specified menu item as active, and the rest as inactive
         activateMenuItem(html
@@ -45,6 +54,8 @@ var updatePageAndHistory = function(anchorLink, index, prevSlideIndex, slideInde
         
         //// comment this better
         popstatesMoveToSlide = true;
+        
+        ga('send', 'pageview', {'page': url, 'title': title});
     });
 };
 
@@ -84,6 +95,8 @@ var resizeMainElements = function()
         $(this).css('height', newHeight + 'px');
         $(this).closest('.slimScrollDiv').css('height', newHeight + 'px');
     });
+    
+    ga('send', 'event', 'window', 'resize', 'window');
 };
 
 // Once the dom has loaded
@@ -181,6 +194,8 @@ $(function()
             $.fn.fullpage.moveTo(1, $('[data-url="' + url + '"]').data('index'));
         }
         
+        ga('send', 'event', 'button', 'click', 'nav-menu');
+        
         // Cancels the normal anchor operation
         return false;
     });
@@ -208,6 +223,8 @@ $(function()
             height:  "toggle",
             opacity: "toggle"
         });
+        
+        ga('send', 'event', 'tour-row', 'click', 'tour-row');
     });
     var allStoriesShown = false;
     $('#tour h1 div').click(function(e)
@@ -243,10 +260,14 @@ $(function()
         
         // Displays overlays
         inslide.find('.maincontain.overlay').addClass('active');
+        
+        ga('send', 'event', 'opener-overlay', 'click', 'opener-overlay-show');
     });
     $('#openers .maincontain.overlay').click(function(e)
     {
         $(this).parent().find('.maincontain.overlay').removeClass('active');
+        
+        ga('send', 'event', 'opener-overlay', 'click', 'opener-overlay-hide');
     });
     
     var person = 'vince';
@@ -255,10 +276,10 @@ $(function()
     $('.' + person + '.email').prop('href', 'mailto:' + person + '@vincejacklinforever.com').html(person + '@vincejacklinforever.com');
     
     // Supposed to make the main scroll to top when status bar is tapped
-    window.addEventListener('scroll', function()
-    {
-        $('main').scrollTop(0);
-    }, false);
+    //window.addEventListener('scroll', function()
+    //{
+    //    $('main').scrollTop(0);
+    //}, false);
 });
 
 // Once the dom and all images have loaded

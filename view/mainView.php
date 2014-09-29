@@ -1,4 +1,5 @@
 <?php
+    ini_set('display_errors', 0);
     require_once('ajax/ajaxResponseHandler.php');
     Arh::exec($url, $title);
     
@@ -68,6 +69,13 @@
         ),
         array
         (
+            'date'  => array('month' => 'Feb', 'day' => '14', 'year' => 2012),
+            'city'  => 'San Francisco, CA',
+            'place' => 'Yum Yum Hunan',
+            'story' => "Vincent and Jacklin celebrate their first Valentine's Day together and start an annual dinner tradition.",
+        ),
+        array
+        (
             'date'  => array('month' => 'Mar', 'day' => '21', 'year' => 2012),
             'city'  => 'New York, NY',
             'place' => 'Off-Broadway',
@@ -85,7 +93,18 @@
             'date'  => array('month' => 'Jun', 'day' => '07', 'year' => 2012),
             'city'  => 'San Francisco, CA',
             'place' => 'The Chateau',
-            'story' => "Vincent and Jacklin move in together.",
+            'story' => "Vincent and Jacklin move in together. This is getting serious, you guys.",
+        ),
+        array
+        (
+            'date'  => array('month' => 'Oct', 'day' => '27', 'year' => 2012),
+            'city'  => 'San Francisco, CA',
+            'place' => 'The Mission',
+            'story' => "Vincent carves his --PUMPKIN--. It is so good that Jacklin doesn't want to carve a pumpkin ever again.",
+            'replace' => array
+            (
+                '--PUMPKIN--' => '<a href="http://instagram.com/p/RT_V-yiSc2/" target="_blank">first pumpkin ever</a>',
+            ),
         ),
         array
         (
@@ -125,7 +144,14 @@
             'date'  => array('month' => 'Nov', 'day' => '18', 'year' => 2013),
             'city'  => 'San Jose, CA',
             'place' => 'The Perchoir',
-            'story' => "Vincent and Jacklin move to San Jose.",
+            'story' => "Vincent and Jacklin relocate to greener pastures.",
+        ),
+        array
+        (
+            'date'  => array('month' => 'Jan', 'day' => '06', 'year' => 2014),
+            'city'  => 'Santa Clara, CA',
+            'place' => 'AT&T',
+            'story' => "Vincent and Jacklin take pretty much the final step to becoming a fully committed couple by signing up for their own cell phone family plan.",
         ),
         array
         (
@@ -138,8 +164,23 @@
         (
             'date'  => array('month' => 'Apr', 'day' => '26', 'year' => 2014),
             'city'  => 'San Francisco, CA',
-            'place' => 'Golden Gate Park Tulip Gardens',
-            'story' => "Vincent proposes to Jacklin by the Dutch Windmill.",
+            'place' => 'Golden Gate Park',
+            'story' => "Vincent proposes to Jacklin in the tulip gardens under the Dutch Windmill. They finally become Facebook Official.",
+            'replace' => array
+            (
+                '--BR--' => '<br />',
+            ),
+        ),
+        array
+        (
+            'date'  => array('month' => 'May', 'day' => '26', 'year' => 2014),
+            'city'  => 'San Francisco, CA',
+            'place' => 'Fort Mason',
+            'story' => "Vincent and Jacklin go to see the 8th wonder of the modern world: --ACROCATS--.",
+            'replace' => array
+            (
+                '--ACROCATS--' => '<a href="http://www.circuscats.com/" target="_blank">The Acro-Cats</a>',
+            ),
         ),
         array
         (
@@ -147,6 +188,13 @@
             'city'  => 'Gilroy, CA',
             'place' => 'Hecker Pass Winery',
             'story' => "Vincent and Jacklin get married!",
+        ),
+        array
+        (
+            'date'  => array('month' => 'May', 'day' => '03', 'year' => 2015),
+            'city'  => '???',
+            'place' => '???',
+            'story' => "Vincent and Jacklin leave for their honeymoon!",
         ),
     );
     
@@ -174,8 +222,9 @@
     (
         'spice' => array
         (
-            'caption' => 'Spice Girls',
+            'caption' => 'Bridal Party',
             'image'   => 'images/spice-girls-fiah.jpg',
+            'plain'   => false,
             'members' => array
             (
                 array
@@ -184,8 +233,8 @@
                     'nick' => 'The BFFF',
                     'info' => array
                     (
-                        'Years Active' => '2007 - Present',
-                        'Parts'        => 'High School Partners in Crime, Matron of Honor',
+                        'Years Active' => '2003 - Present',
+                        'Parts'        => 'High School Partner in Crime, Matron of Honor',
                     ),
                 ),
                 array
@@ -195,7 +244,7 @@
                     'info' => array
                     (
                         'Years Active' => '1992 - Present',
-                        'Parts'        => 'Childhood Neighbors, Bridesmaid',
+                        'Parts'        => 'Practically Sisters, Bridesmaid',
                     ),
                 ),
                 array
@@ -222,8 +271,9 @@
         ),
         'backstreet' => array
         (
-            'caption' => 'Backstreet Boys',
-            'image'   => 'images/backstreet-boys-square.jpg',
+            'caption' => 'Groomsmen',
+            'image'   => 'images/backstreet-boys-fiah.jpg',
+            'plain'   => false,
             'members' => array
             (
                 array
@@ -268,10 +318,11 @@
                 ),
             ),
         ),
-        'spice2' => array
+        'vips' => array
         (
-            'caption' => 'Spice Girls 2',
-            'image'   => 'images/spice-girls.jpg',
+            'caption' => 'VIPs',
+            'image'   => 'images/chumbawamba-fiah.jpg',
+            'plain'   => false,
             'members' => array
             (
                 array
@@ -296,11 +347,21 @@
                 ),
                 array
                 (
+                    'name' => 'Cooper Sammis',
+                    'nick' => 'The Absent-Minded Professor',
+                    'info' => array
+                    (
+                        'Years Active' => '1999 - Present',
+                        'Parts'        => 'Brother, Usher',
+                    ),
+                ),
+                array
+                (
                     'name' => 'Regan Odbert',
                     'nick' => 'Button',
                     'info' => array
                     (
-                        'Years Active' => '2006 - Present',
+                        'Years Active' => '2005 - Present',
                         'Parts'        => 'Cousin, Flower Girl',
                     ),
                 ),
@@ -310,11 +371,17 @@
                     'nick' => 'Toby',
                     'info' => array
                     (
-                        'Years Active' => '1997 - Present',
+                        'Years Active' => '2009 - Present',
                         'Parts'        => 'Nephew, Ring Bearer',
                     ),
                 ),
             ),
+        ),
+        'wvsgs' => array
+        (
+            'caption' => 'With Very Special Guests',
+            'image'   => 'images/dj.jpg',
+            'plain'   => true,
         ),
     );
     

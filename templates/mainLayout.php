@@ -101,19 +101,31 @@
                             <?php $firstOpener = true; ?>
                             <?php foreach($openers as $opener => $openerInfo) { ?>
                                 <article class="opener <?php echo $opener; ?><?php if($firstOpener) { ?> active<?php } ?>">
-                                    <?php foreach($openerInfo['members'] as $member) { ?>
-                                        <header><!--
-                                            --><h1><?php echo $member['name']; ?></h1><!--
-                                            --><p><?php  echo $member['nick']; ?></p><!--
-                                        --></header>
-                                        <table class="info">
-                                            <?php foreach($member['info'] as $infoName => $infoValue) { ?>
-                                                <tr>
-                                                    <td class="label"><?php echo $infoName; ?></td>
-                                                    <td><?php echo $infoValue; ?></td>
-                                                </tr>
-                                            <?php } ?>
-                                        </table>
+                                    <?php if(!$openerInfo['plain']) { ?>
+                                        <?php foreach($openerInfo['members'] as $member) { ?>
+                                            <header><!--
+                                                --><h1><?php echo $member['name']; ?></h1><!--
+                                                --><p><?php  echo $member['nick']; ?></p><!--
+                                            --></header>
+                                            <table class="info">
+                                                <?php foreach($member['info'] as $infoName => $infoValue) { ?>
+                                                    <tr>
+                                                        <td class="label"><?php echo $infoName; ?></td>
+                                                        <td><?php echo $infoValue; ?></td>
+                                                    </tr>
+                                                <?php } ?>
+                                            </table>
+                                        <?php } ?>
+                                    <?php } else { ?>
+                                        <header><h1>Very Special Guests</h1></header>
+                                        <p class="plain">
+                                            We also wanted to give a special shout out to everyone else that has helped us along the way.
+                                            Thank you, Angelita Garcia-Stonehocker, for the role you will play in our ceremony.
+                                            Thank you, Tim Stonehocker, for being our go to guy for all of our A/V needs.
+                                            Thank you, Vanessa Hellmann, for the beautiful engagement shots that were featured on our save the dates!
+                                            Thank you, Michelle Safley and Kenneth Lee for being our 2nd set of eyes and hands on all things design and photoshop related.
+                                            Last, but not least, thank you to our parents! We appreciate all of your love and support!
+                                        </p>
                                     <?php } ?>
                                     <?php $firstOpener = false; ?>
                                 </article>

@@ -300,6 +300,7 @@ a:hover { color: #953310; }
 
 
 /* Openers - Polaroids Layer */
+#openers h1 { color: rgb(241, 240, 225); }
 #openers .polaroidcol
 {
     margin-top: 60px;
@@ -319,7 +320,9 @@ a:hover { color: #953310; }
 #openers .polaroid
 {
     display: inline-block;
-    padding: 10px 10px 30px;
+    width: 200px;
+    min-height: 252px;
+    padding: 10px 10px 6px;
     background-color: rgb(241, 240, 225);
     text-align: left;
     text-transform: uppercase;
@@ -334,13 +337,15 @@ a:hover { color: #953310; }
 #openers .polaroidcol:nth-child(2) .polaroid { transform: rotateZ(3deg);   -webkit-transform: rotateZ(3deg);   }
 #openers .polaroidcol:nth-child(3) .polaroid { transform: rotateZ(-10deg); -webkit-transform: rotateZ(-10deg); }
 #openers .polaroidcol:nth-child(4) .polaroid { transform: rotateZ(-3deg);  -webkit-transform: rotateZ(-3deg);  }
+#openers .polaroidcol:nth-child(5) .polaroid { transform: rotateZ(1deg);   -webkit-transform: rotateZ(1deg);  }
+#openers .polaroidcol:last-child { width: 100%; clear: both; }
 #openers .polaroidcol .polaroid:hover
 {
     -webkit-transform: rotateZ(0) scale(1.1);
             transform: rotateZ(0) scale(1.1);
 }
 #openers .polaroid:hover { color: #da4a18; }
-#openers .polaroid img { width: 200px; }
+#openers .polaroid img { width: 200px; height: 200px; }
 
 /* Openers - Details Layer */
 #openers .opener
@@ -361,6 +366,8 @@ a:hover { color: #953310; }
 */
 #openers .opener header,
 #openers .opener .info { margin: 0 auto 18px; width: 768px; }
+#openers .opener header,
+#openers .opener h1 { color: rgb(255, 235, 205); }
 #openers .opener header
 {
     border-bottom: 1px solid rgb(255, 250, 244);
@@ -370,7 +377,6 @@ a:hover { color: #953310; }
     vertical-align: bottom;
     font-weight: normal;
     text-transform: uppercase;
-    color: rgb(255,235,205);
 }
 #openers .opener header h1,
 #openers .opener header p  { display: inline-block; }
@@ -378,6 +384,16 @@ a:hover { color: #953310; }
 #openers .opener header p  { font-size: 32px; }
 #openers .opener .info { padding-left: 50px; }
 #openers .opener .label { width: 130px; }
+#openers p.plain
+{
+    margin: 0 auto 18px;
+    width: 718px;
+    padding-left: 50px;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: 18px;
+    line-height: normal;
+    letter-spacing: 0;
+}
 
 
 
@@ -501,6 +517,7 @@ a:hover { color: #953310; }
 #afterparty .website.icon:hover { background-image: url('../images/exta.png'); }
 
 /* Merch */
+#merch h1 { color: rgb(241, 240, 225); }
 #merch .polaroidcol
 {
     margin-top: 60px;
@@ -590,7 +607,6 @@ a:hover { color: #953310; }
     {
         margin-top: 0;
         width:  100%;
-        height: auto;
         float: none;
     }
     #openers .polaroidcontain
@@ -601,22 +617,15 @@ a:hover { color: #953310; }
         float: none;
         clear: none;
     }
-    #openers .polaroid
-    {
-        display: inline-block;
-        padding: 10px 10px 30px;
-        background-color: white;
-        text-align: left;
-        text-transform: uppercase;
-        color: black;
-    }
     #openers .opener header,
-    #openers .opener .info { width: auto; }
+    #openers .opener .info,
+    #openers .opener p.plain { width: auto; }
     #openers .opener header { margin-left: 15px; margin-right: 15px; padding-top: 18px; }
     #openers .opener header h1,
     #openers .opener header p  { display: block; }
     #openers .opener header h1 { margin: 0 0 12px; }
-    #openers .opener .info { margin: 0 15px 18px; }
+    #openers .opener .info,
+    #openers .opener p.plain { margin: 0 15px 18px; }
     #openers .opener { margin-bottom: 41px; }
     
     /* Venue */
@@ -686,15 +695,6 @@ a:hover { color: #953310; }
         top: initial;
         float: none;
         clear: none;
-    }
-    #merch .polaroid
-    {
-        display: inline-block;
-        padding: 10px 10px 30px;
-        background-color: white;
-        text-align: left;
-        text-transform: uppercase;
-        color: black;
     }
 }
 
@@ -781,10 +781,11 @@ a:hover { color: #953310; }
         float: left;
         text-align: center;
     }
-    #openers .polaroidcol:last-child { width: 100%; clear: both; }
-    #openers .polaroidcontain { margin-bottom: 37px; position: initial; top: initial; }
+    #openers .polaroidcol:last-child { width: 50%; clear: none; }
+    #openers .polaroidcontain { margin-bottom: 73px; position: initial; top: initial; }
     #openers .polaroidcol:last-child .polaroidcontain { margin-bottom: 0; }
-    #openers .opener header { margin-left: 36px; margin-right: 36px; width: auto; }
+    #openers .opener header,
+    #openers .opener p.plain { margin-left: 36px; margin-right: 36px; width: auto; }
     #openers .opener .info { margin-left: 36px; margin-right: 0; width: auto; }
     #venue img.summary { width: 305px; }
     #venue p.summary { font-size: 33px; }
@@ -806,7 +807,8 @@ a:hover { color: #953310; }
 @media (max-width: 991px)
 {
     #tour .instory { font-size: 16px; }
-    #openers .opener .info { padding-left: 0; }
+    #openers .opener .info,
+    #openers .opener p.plain { padding-left: 0; }
     #afterparty .words { font-size: 16px; }
 }
 
@@ -859,6 +861,7 @@ a:hover { color: #953310; }
     #openers .polaroidcol:nth-child(2) .polaroid:hover { transform: rotateZ(3deg);   -webkit-transform: rotateZ(3deg);   }
     #openers .polaroidcol:nth-child(3) .polaroid:hover { transform: rotateZ(-10deg); -webkit-transform: rotateZ(-10deg); }
     #openers .polaroidcol:nth-child(4) .polaroid:hover { transform: rotateZ(-3deg);  -webkit-transform: rotateZ(-3deg);  }
+    #openers .polaroidcol:nth-child(5) .polaroid:hover { transform: rotateZ(1deg);   -webkit-transform: rotateZ(1deg);  }
     #openers .maincontain .theEX:hover  { -webkit-filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 3px #fff); filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 3px #fff); }
     #openers .maincontain:active .theEX { -webkit-filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 5px #fff); filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 5px #fff); }
     #openers .maincontain .theEX:active { -webkit-filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 5px #fff); filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 5px #fff); }
