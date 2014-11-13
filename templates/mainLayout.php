@@ -168,7 +168,7 @@
                             <div class="door"><div></div></div>
                             <div class="plaingroup"><!--
                                 --><p class="plain">
-                                    The ceremony will being promptly at 4pm.
+                                    The ceremony will begin promptly at 4pm.
                                     A cocktail hour will begin around 4:30pm and dinner and dancing will follow directly after.
                                     The entire event will take place outside, so please don't forget a light jacket in case it gets cold in the evening!<br /><br />
                                     
@@ -200,12 +200,21 @@
                             <div class="summary"><div></div></div>
                             <h2>Best Western Plus Forest Park Inn</h2>
                             <p class="words">
-                                We are in the process of getting a block of rooms at this hotel,
-                                but it is best to book early, as there are few hotels in Gilroy.
-                                Check back in a month or so for more information if interested
-                                (or send us an email at <a class="vince email"></a>).<br /><br />
+                                We've reserved a block of rooms at the Best Western Plus Forest Park Inn in Gilroy
+                                for your convenience. The hotel is 5.3 miles from the venue and is one of the
+                                highest rated in the area. If you are planning on staying at the hotel on May 1st
+                                or 2nd, you can reserve a room with either two queen beds or one king bed for $140.
+                                If you are reserving multiple rooms and you would like them to be adjoining, please
+                                mention that while you are making the reservation.<br /><br />
                                 
-                                Phone: (408) 848-5144
+                                To reserve a room in the block, please call (408) 848-5144 and let them know that
+                                you will be attending the Garcia/Sammis wedding.<br /><br />
+                                
+                                Please keep in mind that all reservations must be made by March 15, 2015.<br /><br />
+                                
+                                If you try to book a room before March 15th and you are told that there are no more
+                                available in the block, please contact us at <a class="vince email"></a>
+                                ASAP so that we can reserve more rooms.
                             </p>
                             
                             <?php /*
