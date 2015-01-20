@@ -12,10 +12,11 @@
 body { background-color: black; line-height: 1; font-family: "Knockout 48 A", "Knockout 48 B", "Trebuchet MS", Helvetica, sans-serif; }
 table, tbody, tr, td { border-spacing: 0; vertical-align: top; }
 table, tbody, tr, td,
-p, h2 { margin: 0; border: 0; padding: 0; }
-h1, h2 { line-height: 0.75; font-weight: normal; text-transform: uppercase; }
+p, h2, h3 { margin: 0; border: 0; padding: 0; }
+h1, h2, h3 { line-height: 0.75; font-weight: normal; text-transform: uppercase; }
 h1 { margin: 0 36px 31px; padding: 39px 0 12px; font-size: 67px; }
 h2 { margin: 0 36px 12px; padding: 18px 0 12px; font-size: 50px; }
+h3 { margin: 0 36px 7px;  padding: 10px 0 5px;  font-size: 34px; }
 
 a { -webkit-transition: color 0.2s ease-in-out; transition: color 0.2s ease-in-out; }
 a,
@@ -565,13 +566,89 @@ a:hover { color: #953310; }
 #merch .polaroidcol:last-child .polaroid:hover { color: black; }
 #merch .polaroid img { width: 200px; }
 
+/* Tickets */
+#tickets .maincontain { background-color: rgba(255, 255, 255, 0.67); }
+#tickets main { text-align: left; font-size: 24px; letter-spacing: 0.05em; color: black; }
+
+#tickets h1 { border-bottom: 1px solid black; }
+#tickets div.summary,
+#tickets div.summary div { height: 100px; }
+#tickets div.summary { display: block; width: 100%; }
+#tickets div.summary div
+{
+    margin: 0 36px;
+    background: url('../images/tickets.jpg') no-repeat center 75%;
+    -webkit-background-size: cover;
+            background-size: cover;
+}
+
+#tickets p { margin-left: 36px; margin-right: 36px; }
+#tickets .words
+{
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: normal;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 20px;
+}
+#tickets .words.pre { margin-top: 20px; }
+
+#tickets #forms { margin-bottom: 20px; }
+#tickets h3 { padding: 0; text-align: center; }
+#tickets h3 div
+{
+    display: inline-block;
+    padding: 10px 0 5px;
+    min-width: 305px; 
+    border-bottom: 1px solid rgb(0, 6, 34);
+    color: rgb(0, 6, 34);
+}
+#tickets .field       { margin-bottom: 3px; text-align: center; }
+#tickets .field.email { margin-bottom: 20px; }
+#tickets .field label { line-height: 0.95em; text-transform: uppercase; }
+#tickets .field label,
+#tickets .field input { display: inline-block; vertical-align: bottom; }
+#tickets .field input { margin-left: 3px; }
+#tickets .field input[type=text] { width: 170px; }
+#tickets .field input[type=radio] { margin: 0 5px 4px 0; }
+#tickets .field.radio { margin: 0 auto; width: 297px; text-align: left; }
+#tickets .field.radio.one         { color: rgb(  0,  35, 0); }
+#tickets .field.radio.two         { color: rgb( 25,   0, 0); }
+#tickets .field.radio.three       { color: rgb( 25,  25, 0); }
+#tickets .field.radio.one:hover   { color: rgb(  0, 100, 0); }
+#tickets .field.radio.two:hover   { color: rgb(120,   0, 0); }
+#tickets .field.radio.three:hover { color: rgb(100, 100, 0); }
+#tickets .field.radio label
+{
+    display: initial;
+    -webkit-transition: color 0.2s ease-in-out;
+            transition: color 0.2s ease-in-out;
+}
+#tickets .loader { margin-left: 10px; vertical-align: bottom; }
+#tickets #passwordform .loader { opacity: 0; position: absolute; }
+#tickets #rsvpform     .loader      { display: none; }
+#tickets #rsvpform     .loader.left { margin-left: 0; margin-right: 10px; }
+#tickets #rfSongsLabel { display: block; text-align: center; }
+#tickets #rfSongsAndButton { margin: 0 auto 16px; padding-left: 82px; width: 256px; }
+
 
 
 
 
 /* Portrait handheld devices - Smaller opener label column */
 @media (max-width: 568px) and (orientation: portrait)
-{ #openers .opener .label { width: 76px; } }
+{
+    #openers .opener .label { width: 76px; }
+    #tickets h3
+    {
+        margin-left: 15px;
+        margin-right: 15px;
+        border-bottom: 1px solid rgb(0, 6, 34);
+    }
+    #tickets h3 div { border: 0; min-width: initial; }
+}
 
 /*\
 | | Handheld devices - No menu, space for navigation dots, edge-to-edge content
@@ -580,9 +657,6 @@ a:hover { color: #953310; }
 @media (max-width: 767px)
 {
     h1 { margin: 0 15px 15px; padding: 15px 0 9px; }
-
-    /* menu */
-    #menu { display: none; }
     
     /* slides */
     .inslide
@@ -696,6 +770,23 @@ a:hover { color: #953310; }
         float: none;
         clear: none;
     }
+    
+    /* Tickets */
+    #tickets div.summary div,
+    #tickets .words,
+    #tickets #rfSongsLabel { margin-left: 15px; margin-right: 15px; }
+    #tickets div.summary,
+    #tickets div.summary div { height: 50px; }
+    #tickets h3 { font-size: 29px; }
+    #tickets .field label { margin-bottom: 4px; font-size: 21px; }
+    #tickets .field.radio { width: 265px; }
+    #tickets #rfSongsAndButton { padding-left: 104px; }
+}
+
+/* Portrait handheld devices - Smaller opener label column */
+@media (max-width: 568px) and (orientation: portrait)
+{
+    #tickets #rfSongsAndButton { padding-left: 40px; }
 }
 
 /*\
@@ -704,6 +795,9 @@ a:hover { color: #953310; }
 
 @media (max-width: 844px)
 {
+    /* menu */
+    #menu { display: none; }
+    
     /* fullPage navigation */
     /* flag for fullPage to not show arrows */
     .fp-controlArrow { text-align: center; }
@@ -748,7 +842,7 @@ a:hover { color: #953310; }
     .fp-slidesNav .active:hover span { background-color: rgba(255, 255, 255, 0.5); }
     
     /* slides */
-    .inslide { margin-bottom: 48px; }
+    .inslide { margin-top: 15px; margin-bottom: 48px; }
 }
 
 /*\
@@ -810,6 +904,7 @@ a:hover { color: #953310; }
     #openers .opener .info,
     #openers .opener p.plain { padding-left: 0; }
     #afterparty .words { font-size: 16px; }
+    #tickets .words { font-size: 16px; }
 }
 
 /*\
@@ -883,6 +978,12 @@ a:hover { color: #953310; }
     #merch .polaroidcol:nth-child(2) .polaroid:hover { transform: rotateZ(3deg);   -webkit-transform: rotateZ(3deg);   }
     #merch .polaroidcol:nth-child(3) .polaroid:hover { transform: rotateZ(-10deg); -webkit-transform: rotateZ(-10deg); }
     #merch .polaroidcol:nth-child(4) .polaroid:hover { transform: rotateZ(-3deg);  -webkit-transform: rotateZ(-3deg);  }
+    #tickets .field.radio.one:hover    { color: rgb(  0,  35, 0); }
+    #tickets .field.radio.one:active   { color: rgb(  0, 100, 0); }
+    #tickets .field.radio.two:hover    { color: rgb( 25,   0, 0); }
+    #tickets .field.radio.two:active   { color: rgb(120,   0, 0); }
+    #tickets .field.radio.three:hover  { color: rgb( 25,  25, 0); }
+    #tickets .field.radio.three:active { color: rgb(100, 100, 0); }
 }
 
 /*\

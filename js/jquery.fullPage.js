@@ -253,27 +253,37 @@
 				}
 
 				slides.each(function(index) {
-					var startingSlide = that.find('.fp-slide.active');
-
-					//if the slide won#t be an starting point, the default will be the first one
-					if(!index && startingSlide.length == 0){
-						$(this).addClass('active');
-					}
-
-					//is there a starting point for a non-starting section?
-					else{
-						silentLandscapeScroll(startingSlide);
-					}
-
                     if(index == numSlides - 1)
-					    $(this).css('width', (Math.round(slideWidth * 10) - 5) / 10 + '%');
+                    {
+                        var www = (Math.round(slideWidth * 10) - 1) / 10 + '%';
+                        //console.log('old: ' + $(this).css('width'));
+					    $(this).css('width', www);
+                        //console.log('new: ' + www);
+                    }
                     else
-					    $(this).css('width', Math.round(slideWidth * 10) / 10 + '%');
+                    {
+                        var www = Math.round(slideWidth * 10) / 10 + '%';
+                        //console.log('old: ' + $(this).css('width'));
+					    $(this).css('width', www);
+                        //console.log('new: ' + www);
+                    }
 
 					if(options.verticalCentered){
 						addTableClass($(this));
 					}
 				});
+                
+                var startingSlide = that.find('.fp-slide.active');
+
+                //if the slide won#t be an starting point, the default will be the first one
+                if(!index && startingSlide.length == 0){
+                    $(this).addClass('active');
+                }
+
+                //is there a starting point for a non-starting section?
+                else{
+                    silentLandscapeScroll(startingSlide);
+                }
 			}else{
 				if(options.verticalCentered){
 					addTableClass($(this));

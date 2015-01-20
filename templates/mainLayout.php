@@ -2,8 +2,8 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <meta name="kewords"     content="wedding, wedding website, vincent garcia, jacklin sammis" />
-        <meta name="description" content="Vincent Garcia and Jacklin Sammis' wedding website" />
+        <meta name="kewords"     content="wedding, wedding website, vincent garcia, jacklin sammis, rsvp" />
+        <meta name="description" content="Vincent Garcia and Jacklin Sammis' Official wedding website" />
         <meta name="author"      content="Vincent Garcia" />
         
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
@@ -147,21 +147,21 @@
                             
                             <div class="summary"><div></div></div>
                             <div class="sumblock">
-                            <img class="summary" src="images/hecker-pass-1.jpg" /><!--
-                            --><p class="summary">
-                                <span class="name">Hecker Pass Winery</span><br />
-                                Ceremony at 4<br />
-                                Dinner/dancing to follow<br />
-                            </p>
-                            </div>
+                                <img class="summary" src="images/hecker-pass-1.jpg" /><!--
+                                --><p class="summary">
+                                    <span class="name">Hecker Pass Winery</span><br />
+                                    Ceremony at 4<br />
+                                    Dinner/dancing to follow<br />
+                                </p><!--
+                            --></div>
                             
                             <div class="vcard"><a href="https://www.google.com/maps/place/Hecker+Pass+Winery/@37.0062073,-121.7078231,10z" target="_blank">
                                 <span class="fn org">Hecker Pass Winery</span>
                                 <div class="adr">
                                     <span class="street-address">4605 Hecker Pass Road</span><br />
                                     <span class="locality">Gilroy</span>,
-                                    <abbr class="region" title="California">CA<abbr>
-                                    <span class="postal-code">95020<span>
+                                    <abbr class="region" title="California">CA</abbr>
+                                    <span class="postal-code">95020</span>
                                 </div>
                             </a></div><!-- .vcard -->
                             
@@ -183,7 +183,7 @@
                             
                             <div class="iframe-rwd">
                                 <iframe frameborder="0" style="border:0"
-                                    src="https://www.google.com/maps/embed/v1/place?q=Hecker+Pass+Winery,+Hecker+Pass+Road,+Gilroy,+CA,+United+States&zoom=8&key=AIzaSyBQiL4aCIr4i8Gx0v2GmmtANgTc9QH_WpM"></iframe>
+                                    src="<?php echo h('https://www.google.com/maps/embed/v1/place?q=Hecker+Pass+Winery,+Hecker+Pass+Road,+Gilroy,+CA,+United+States&zoom=8&key=AIzaSyBQiL4aCIr4i8Gx0v2GmmtANgTc9QH_WpM'); ?>"></iframe>
                             </div>
                         </main>
                     </div><!-- .maincontain -->
@@ -231,8 +231,8 @@
                             </div>
                             */ ?>
                             
-                            <div class="icons">
-                                <a class="iconcontain" href="mailto:info@bestwesterngilroy.com" target="_blank"><!--
+                            <div class="icons"><!--
+                                --><a class="iconcontain" href="mailto:info@bestwesterngilroy.com" target="_blank"><!--
                                     --><div class="email icon" title="info@bestwesterngilroy.com"></div><!--
                                 --></a>
                                 <a class="iconcontain" href="https://www.google.com/maps/place/BEST+WESTERN+PLUS+Forest+Park+Inn/@37.021421,-121.570439,10z" target="_blank"><!--
@@ -240,8 +240,8 @@
                                 --></a>
                                 <a class="iconcontain" href="http://www.bestwesterngilroy.com/" target="_blank"><!--
                                     --><div class="website icon" title="http://www.bestwesterngilroy.com/"></div><!--
-                                --></a>
-                            </div><!-- .icons -->
+                                --></a><!--
+                            --></div><!-- .icons -->
                         </main>
                     </div><!-- .maincontain -->
                 </div><!-- #afterparty.inslide -->
@@ -258,7 +258,7 @@
                                 <div class="polaroidcol">
                                     <div id="<?php echo $merch; ?>" class="polaroidcontain">
                                         <?php if(isset($merchInfo['url'])) { ?>
-                                            <a href="<?php echo $merchInfo['url']; ?>" target="_blank">
+                                            <a href="<?php echo h($merchInfo['url']); ?>" target="_blank">
                                         <?php } ?>
                                                 <div class="polaroid">
                                                     <img src="<?php echo $merchInfo['image']; ?>" /><br />
@@ -274,6 +274,45 @@
                     </div><!-- .maincontain -->
                 </div><!-- #merch.inslide -->
             </div><!-- .slide -->
+            
+            <!-- Tickets -->
+            <?php $slideInfo = next($slideInfos); ?>
+            <div class="slide<?php if($slideInfo['active']) { ?> active<?php } ?>" data-index="<?php echo $slideInfo['index']; ?>" data-url="<?php echo $slideInfo['url']; ?>" id="<?php echo $slideInfo['id']; ?>">
+                <div id="<?php echo $slideInfo['url']; ?>" class="inslide">
+                    <div class="maincontain">
+                        <main>
+                            <h1>Tickets</h1>
+                            <div class="summary"><div></div></div>
+                            <p class="pre words">
+                                Please enter the password printed on the back of your invitation to RSVP by
+                                April&nbsp;2nd,&nbsp;2015.
+                            </p>
+                            <div id="forms">
+                                <?php if(!(isset($_POST) && $_POST)) { ?>
+                                <form id="passwordform" method="POST" autocomplete="on" target="_blank">
+                                    <div class="field"><!--
+                                        --><label for="pfPassword">Password:</label><!--
+                                        --><input id="pfPassword" name="password" type="password" placeholder="Password" autofocus /><!--
+                                    --></div>
+                                    <div class="field"><!--
+                                        --><input type="submit" value="Enter" /><!--
+                                        --><img class="loader" src="images/ajax-loader.gif" /><!--
+                                    --></div>
+                                </form>
+                                <?php } else
+                                {
+                                    require_once('templates/rsvp.php');
+                                } ?>
+                            </div><!-- #forms -->
+                            <p class="post words">
+                                If you lost or did not receive an invitation, please contact us at
+                                <a class="vince email"></a>.
+                            </p>
+                        </main>
+                    </div><!-- .maincontain -->
+                </div><!-- #tickets.inslide -->
+            </div><!-- .slide -->
+            
         </div><!-- .section --></div><!-- #fullpage -->
     </body>
 </html>

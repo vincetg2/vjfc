@@ -19,7 +19,7 @@ var scrollables = '.maincontain:not(.bg) main';
 //   Defined in ready() so it can re-use a reference to the DOM
 var activateMenuItem = function() {};
 
-// Gets run onSlideLeave (arrow key press, moveTo(), etc)
+// This function gets run onSlideLeave (arrow key press, moveTo(), etc)
 var pageUpdatesModifyHistory = true;
 var popstatesMoveToSlide     = false;
 var updatePageAndHistory = function(anchorLink, index, prevSlideIndex, slideIndex, direction)
@@ -59,42 +59,43 @@ var updatePageAndHistory = function(anchorLink, index, prevSlideIndex, slideInde
     });
 };
 
-// Adjusts main elements by .inslide and .maincontain properties, or
+var resizeMainElement = function(main)
+{
+    var maincontain = main.closest('.maincontain');
+    var inslide = maincontain.closest('.inslide');
+    if(main.closest('.maincontain').hasClass('overlay'))
+        var maincontain = inslide.find('.maincontain:not(.overlay)');
+        
+    var extraHeight = 0;
+    var heights = inslide.css(
+        ['margin-top',  'margin-bottom', 'padding-top', 'padding-bottom']);
+    $.each(heights, function(property, value)
+        { extraHeight += Number(value.substring(0, value.length - 2)); });
+    var heights = maincontain.css(
+        ['margin-top',  'margin-bottom', 'padding-top', 'padding-bottom']);
+    $.each(heights, function(property, value)
+        { extraHeight += Number(value.substring(0, value.length - 2)); });
+    var newHeight = $(window).height() - extraHeight;
+    
+    if(!main.closest('.maincontain').hasClass('overlay'))
+    {
+        var children = main.children();
+        var childrenHeight = 0;
+        $.each(children, function()
+            { childrenHeight += $(this).outerHeight(true); });
+        if(childrenHeight < newHeight) newHeight = childrenHeight;
+    }
+    
+    main.css('height', newHeight + 'px');
+    main.closest('.slimScrollDiv').css('height', newHeight + 'px');
+};
+
+// Adjusts all main elements by .inslide and .maincontain properties, or
 //   by main children properties (whichever is less)
 var resizeMainElements = function()
 {
-    var main = $('.maincontain main');
-    var windowsHeight = $(window).height();
-    main.each(function()
-    {
-        var maincontain = $(this).closest('.maincontain');
-        var inslide = maincontain.closest('.inslide');
-        if($(this).closest('.maincontain').hasClass('overlay'))
-            var maincontain = inslide.find('.maincontain:not(.overlay)');
-            
-        var extraHeight = 0;
-        var heights = inslide.css(
-            ['margin-top',  'margin-bottom', 'padding-top', 'padding-bottom']);
-        $.each(heights, function(property, value)
-            { extraHeight += Number(value.substring(0, value.length - 2)); });
-        var heights = maincontain.css(
-            ['margin-top',  'margin-bottom', 'padding-top', 'padding-bottom']);
-        $.each(heights, function(property, value)
-            { extraHeight += Number(value.substring(0, value.length - 2)); });
-        var newHeight = windowsHeight - extraHeight;
-        
-        if(!$(this).closest('.maincontain').hasClass('overlay'))
-        {
-            var children = $(this).children();
-            var childrenHeight = 0;
-            $.each(children, function()
-                { childrenHeight += $(this).outerHeight(true); });
-            if(childrenHeight < newHeight) newHeight = childrenHeight;
-        }
-        
-        $(this).css('height', newHeight + 'px');
-        $(this).closest('.slimScrollDiv').css('height', newHeight + 'px');
-    });
+    $('.maincontain main').each( function()
+        { resizeMainElement($(this)); });
     
     ga('send', 'event', 'window', 'resize', 'window');
 };
@@ -123,6 +124,7 @@ $(function()
         onSlideLeave: updatePageAndHistory,
         normalScrollElements: scrollables
     });
+    $.fn.fullpage.reBuild();
     // Fixes fullpage.js' full-page background image issues
     //fp.css('background', fp.css('background'));
     var hl = $('#headliners');
@@ -174,7 +176,7 @@ $(function()
     });
     
     // Moves to slide when a navigation menu item is pressed
-    $('#menu a').click(function()
+    $('#menu a').click( function()
     {
         var url = $(this).attr('href');
         
@@ -214,7 +216,7 @@ $(function()
     
     // Togglifies tour stories
     // http://stackoverflow.com/questions/7672556/how-to-add-an-opacity-fading-effect-to-to-the-jquery-slidetoggle/7672911#7672911
-    $('#tour .row').click(function(e)
+    $('#tour .row').click( function(e)
     {
         if(e.target.localName == 'a') return true;
         
@@ -227,7 +229,7 @@ $(function()
         ga('send', 'event', 'tour-row', 'click', 'tour-row');
     });
     var allStoriesShown = false;
-    $('#tour h1 div').click(function(e)
+    $('#tour h1 div').click( function(e)
     {
         var showOrHide = allStoriesShown ? "hide" : "show";
         $(this).closest('main').find('.story').finish().animate(
@@ -240,7 +242,7 @@ $(function()
     
     // Togglifies opener overlays
     // Uses CSS for performance
-    $('#openers .polaroid').click(function(e)
+    $('#openers .polaroid').click( function(e)
     {
         var inslide = $(this).closest('.inslide');
         
@@ -263,11 +265,116 @@ $(function()
         
         ga('send', 'event', 'opener-overlay', 'click', 'opener-overlay-show');
     });
-    $('#openers .maincontain.overlay').click(function(e)
+    $('#openers .maincontain.overlay').click( function(e)
     {
         $(this).parent().find('.maincontain.overlay').removeClass('active');
         
         ga('send', 'event', 'opener-overlay', 'click', 'opener-overlay-hide');
+    });
+    
+    // Handles password form submission
+    var ticketsMain  = $('#tickets main');
+    var passwordForm = $('#passwordform');
+    passwordForm.submit( function(e)
+    {
+        e.preventDefault();
+        
+        var fields = passwordForm.find('input[name]');
+        var fieldValues = {};
+        fields.each( function(i, field)
+        {
+            fieldValues[field.name] = field.value;
+        });
+        $('#passwordform input').prop('disabled', true);
+        $('#passwordform .loader').stop().css('opacity', 1);
+        $.post('tickets', fieldValues, function(json)
+        {
+            //console.log('pf: ' + JSON.stringify(json));
+            if(json.success)
+            {
+                $('#forms').replaceWith('<div id="forms">' + json.html + '</div>');
+                resizeMainElement(ticketsMain);
+                $('.pre.words').html('Please RSVP by April 2nd, 2015.');
+                $('.post.words').html('If you have any questions or concerns, please ' +
+                    'contact us at <a class="vince email" href="mailto:vince@vincejacklinforever.com">' +
+                    'vince@vincejacklinforever.com</a>.');
+            }
+            else
+                alert(json.error);
+            $('#passwordform input').prop('disabled', false);
+            $('#passwordform .loader').stop().fadeTo(1000, 0);
+        }, 'json');
+    });
+    
+    // Handles adding more song fields
+    $(document).on('click', '#rsvpform button', function(e)
+    {
+        e.preventDefault();
+        
+        // Adds new field to html
+        var rsvpSongs = $('#rfSongs');
+        var numSongs = rsvpSongs.data('numsongs');
+        var newSongIndex = numSongs;
+        var newInputID = 'rfSong' + newSongIndex;
+        rsvpSongs.append('<br /><input id="' + newInputID + '" ' +
+            'name="songs[' + newSongIndex + ']" type="text" ' +
+            'placeholder="At Last by Etta James" />');
+        rsvpSongs.data('numsongs', numSongs + 1);
+        $('#rfSongsLabel').prop('for', newInputID);
+        
+        // Pluralizes text
+        if(numSongs == 1)
+            $('#thissong').html('these songs');
+        
+        resizeMainElement(ticketsMain);
+        
+        // Focuses new field
+        $('#' + newInputID).focus();
+    });
+    
+    // Handles rsvp form submission
+    $(document).on('submit', '#rsvpform', function(e)
+    {
+        e.preventDefault();
+        
+        var fields = $('#rsvpform').find('input[name]');
+        var fieldValues = {};
+        fields.each( function(i, field)
+        {
+            if(field.type != 'radio')
+                fieldValues[field.name] = field.value;
+            else if(field.checked)
+                fieldValues[field.name] = field.value;
+        });
+        $('#rsvpform input, #rsvpform button').prop('disabled', true);
+        $('#rsvpform .loader').stop().css('display', 'inline-block');
+        $.post('tickets', fieldValues, function(json)
+        {
+            //console.log('pf: ' + JSON.stringify(json));
+            if(json.success)
+            {
+                $('#forms').replaceWith('<div id="forms">' + json.html + '</div>');
+                $('#rsvpform input, #rsvpform button').prop('disabled', true);
+                $('#rsvpform .loader').stop().css('display', 'inline-block');
+                resizeMainElement(ticketsMain);
+                
+                var forms = $('#forms');
+                var numSongsAdded = forms.find('#rfSongs').data('numSongsAdded');
+                var tooManySongs  = forms.find('#rfSongs').data('tooManySongs');
+                if(numSongsAdded > 1)
+                    alert('Thank you for your rsvp!\n' + numSongsAdded + ' songs added to your suggestions!');
+                else if(numSongsAdded == 1)
+                    alert('Thank you for your rsvp and song suggestion!');
+                else
+                    alert('Thank you for your rsvp!');
+                if(tooManySongs)
+                    alert('too many songs!');
+            }
+            else
+                alert(json.error);
+            $('#rsvpform input, #rsvpform button').prop('disabled', false);
+            $('#rsvpform .loader').stop().fadeOut(1000, function() { $(this).hide(); });
+        }, 'json');
     });
     
     var person = 'vince';

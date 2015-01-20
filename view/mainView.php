@@ -1,7 +1,13 @@
 <?php
     ini_set('display_errors', 0);
+    error_reporting(0);
     require_once('ajax/ajaxResponseHandler.php');
     Arh::exec($url, $title);
+    
+    // Shortcut for htmlspecialchars()
+    function h($text) { return htmlspecialchars($text); }
+    // Canonicalizes string (after htmlspecialchars-ing)
+    function c($text) { return preg_replace('/[^a-z]/', '', strtolower(h($text))); }
     
     
     
@@ -16,6 +22,7 @@
         array('url' => 'venue',      'navtext' => 'Venue',      ),
         array('url' => 'afterparty', 'navtext' => 'Afterparty', ),
         array('url' => 'merch',      'navtext' => 'Merch',      ),
+        array('url' => 'tickets',    'navtext' => 'Tickets',    ),
     );
     foreach($slideInfos as $key => &$slideInfo)
     {
@@ -192,9 +199,9 @@
         array
         (
             'date'  => array('month' => 'May', 'day' => '03', 'year' => 2015),
-            'city'  => '???',
-            'place' => '???',
-            'story' => "Vincent and Jacklin leave for their honeymoon!",
+            'city'  => 'Rome, Italy',
+            'place' => 'Fiumicino International Airport',
+            'story' => "Vincent and Jacklin leave for their long, romantic honeymoon!",
         ),
     );
     
@@ -203,6 +210,8 @@
         if(!isset($dateInfo['story']))
             $dateInfo['story'] = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
         
+        $dateInfo['city']  = htmlspecialchars($dateInfo['city']);
+        $dateInfo['place'] = htmlspecialchars($dateInfo['place']);
         $dateInfo['story'] = htmlspecialchars($dateInfo['story']);
         
         if(isset($dateInfo['replace']))
