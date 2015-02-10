@@ -9,7 +9,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="stylesheet" href="/css/jquery.fullPage.css" />
-        <link rel="stylesheet" href="/css/jquery.fullPage.css" />
         <link rel="stylesheet" href="/css/knockout.css" />
         <link rel="stylesheet" href="/css/css.css" />
         
@@ -19,6 +18,7 @@
         <script src="/js/jquery.easings.min.js"></script>
         <script src="/js/jquery.slimscroll.min.js"></script>
         <script src="/js/jquery.fullPage.js"></script>
+        <script src="/js/jquery.lazy.min.js"></script>
         <!--<script src="/js/jquery.fullPage.min.js"></script>-->
         <script src="/js/js.js"></script>
     </head>
@@ -120,10 +120,10 @@
                                         <header><h1>Very Special Guests</h1></header>
                                         <p class="plain">
                                             We also wanted to give a special shout out to everyone else that has helped us along the way.
-                                            Thank you, Angelita Garcia-Stonehocker, for the role you will play in our ceremony.
-                                            Thank you, Tim Stonehocker, for being our go to guy for all of our A/V needs.
-                                            Thank you, Vanessa Hellmann, for the beautiful engagement shots that were featured on our save the dates!
-                                            Thank you, Michelle Safley and Kenneth Lee for being our 2nd set of eyes and hands on all things design and photoshop related.
+                                            Thank you Angelita Garcia-Stonehocker for the role you will play in our ceremony.
+                                            Thank you Tim Stonehocker for being our go-to guy for all of our A/V needs.
+                                            Thank you Vanessa Hellmann for the beautiful engagement shots that were featured on our save the dates!
+                                            Thank you Michelle Safley and Kenneth Lee for being our 2nd set of eyes and hands on all things design and photoshop related.
                                             Last, but not least, thank you to our parents! We appreciate all of your love and support!
                                         </p>
                                     <?php } ?>
@@ -170,7 +170,7 @@
                                 --><p class="plain">
                                     The ceremony will begin promptly at 4pm.
                                     A cocktail hour will begin around 4:30pm and dinner and dancing will follow directly after.
-                                    The entire event will take place outside, so please don't forget a light jacket in case it gets cold in the evening!<br /><br />
+                                    The entire event will take place outside, so please don&apos;t forget a light jacket in case it gets cold in the evening!<br /><br />
                                     
                                     Cell phone reception is limited, so printing out directions (or saving maps for <a href="https://support.google.com/gmm/answer/3273567" target="_blank">offline use</a>) could save you some time if you tend to get lost.
                                     There is a large, free parking lot at the venue for your convenience.<br /><br />
@@ -200,7 +200,7 @@
                             <div class="summary"><div></div></div>
                             <h2>Best Western Plus Forest Park Inn</h2>
                             <p class="words">
-                                We've reserved a block of rooms at the Best Western Plus Forest Park Inn in Gilroy
+                                We&apos;ve reserved a block of rooms at the Best Western Plus Forest Park Inn in Gilroy
                                 for your convenience. The hotel is 5.3 miles from the venue and is one of the
                                 highest rated in the area. If you are planning on staying at the hotel on May 1st
                                 or 2nd, you can reserve a room with either two queen beds or one king bed for $140.
@@ -257,14 +257,14 @@
                             <?php foreach($merches as $merch => $merchInfo) { ?>
                                 <div class="polaroidcol">
                                     <div id="<?php echo $merch; ?>" class="polaroidcontain">
-                                        <?php if(isset($merchInfo['url'])) { ?>
+                                        <?php if($merchInfo['url']) { ?>
                                             <a href="<?php echo h($merchInfo['url']); ?>" target="_blank">
                                         <?php } ?>
-                                                <div class="polaroid">
+                                                <div class="polaroid leaveimage">
                                                     <img src="<?php echo $merchInfo['image']; ?>" /><br />
                                                     <?php echo $merchInfo['caption']; ?>
                                                 </div>
-                                        <?php if(isset($merchInfo['url'])) { ?>
+                                        <?php if($merchInfo['url']) { ?>
                                             </a>
                                         <?php } ?>
                                     </div>
@@ -272,6 +272,67 @@
                             <?php } ?>
                         </main>
                     </div><!-- .maincontain -->
+                    
+                    <div class="maincontain bg overlay">
+                        <main></main>
+                    </div><!-- .maincontain.bg.overlay -->
+                    
+                    <div class="maincontain text overlay">
+                        <main>
+                            <article id="storefront">
+                                <h1>Honeymoon Fund</h1>
+                                <p class="description">
+                                    For our honeymoon, we are spending 20 glorious days exploring Italy!
+                                    Every day will be packed with savory Italian foods, authentic wines, and
+                                    even a little time to take in the sights. This will be Vince&apos;s first
+                                    overseas trip and we are both very excited about it. But the best part?
+                                    <em>You</em> can help us make this trip unforgettable by donating toward
+                                    one or more of the gifts listed below! You might even get a postcard from
+                                    the newlyweds while we are <span class="maplink">galavanting</span> across the Tuscan countryside!
+                                </p>
+                                <div class="iframe-rwd"></div>
+                                <div id="products"><!--
+                                    <?php foreach($products as $product) { ?>
+                                        --><div class="productWithName">
+                                            <h2><?php echo $product['name']; ?></h2>
+                                            <div class="product"><!--
+                                                --><img class="img lazy" data-src="../images/<?php echo $product['image']; ?>" src="" /><!--
+                                                --><div class="notimg">
+                                                    <div class="text">
+                                                        <p><?php echo h($product['description']); ?></p>
+                                                    </div>
+                                                    <div class="priceline">
+                                                        <div class="pricesection">
+                                                            <div class="label">Price</div>
+                                                            <div class="number">$<?php echo h($product['price']); ?></div>
+                                                        </div>
+                                                        <div class="pricesection">
+                                                            <div class="label"><?php echo h($product['stock_label']); ?></div>
+                                                            <div class="number"><?php echo h($product['stock']); ?></div>
+                                                        </div>
+                                                    </div>
+                                                    <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                                                        <input type="hidden" name="cmd" value="_s-xclick" />
+                                                        <input type="hidden" name="hosted_button_id"
+                                                            value="<?php echo $product['paypal_code']; ?>" />
+                                                        <input type="submit" class="submit" name="submit" value="Give This Gift" />
+                                                    </form>
+                                                </div><!-- .notimg --><!--
+                                            --></div><!-- .product -->
+                                        </div><!-- .product --><!--
+                                    <?php } ?>
+                                --></div><!-- #products -->
+                            </article>
+                        </main>
+                        
+                        <img class="theEX cornerbutton" src="images/x.png" />
+                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                            <input type="hidden" name="cmd" value="_s-xclick" />
+                            <input type="hidden" name="encrypted" value="<?php echo $paypalEncrypted; ?>" />
+                            <input type="image" class="thecart cornerbutton" src="images/cart.png" border="0"
+                                name="submit" alt="PayPal - The safer, easier way to pay online!" />
+                        </form>
+                    </div><!-- .maincontain.text.overlay -->
                 </div><!-- #merch.inslide -->
             </div><!-- .slide -->
             

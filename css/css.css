@@ -12,7 +12,6 @@
 body { background-color: black; line-height: 1; font-family: "Knockout 48 A", "Knockout 48 B", "Trebuchet MS", Helvetica, sans-serif; }
 table, tbody, tr, td { border-spacing: 0; vertical-align: top; }
 table, tbody, tr, td,
-p, h2, h3 { margin: 0; border: 0; padding: 0; }
 h1, h2, h3 { line-height: 0.75; font-weight: normal; text-transform: uppercase; }
 h1 { margin: 0 36px 31px; padding: 39px 0 12px; font-size: 67px; }
 h2 { margin: 0 36px 12px; padding: 18px 0 12px; font-size: 50px; }
@@ -235,7 +234,6 @@ a:hover { color: #953310; }
     position: absolute;
     top: 0;
     left: 0;
-    padding: 0;
     overflow: hidden;
     -webkit-transition: opacity 0.4s ease-in-out,
         height 0 linear 0.5s,
@@ -253,7 +251,7 @@ a:hover { color: #953310; }
     -webkit-transition: opacity 0.4s ease-in-out;
             transition: opacity 0.4s ease-in-out;
 }
-#openers .maincontain.bg.overlay { box-shadow: 2px 4px 9px 3px rgba(0, 0, 0, 0.75); }
+#openers .maincontain.bg.overlay { padding: 0; box-shadow: 2px 4px 9px 3px rgba(0, 0, 0, 0.75); }
 /* http://stackoverflow.com/questions/12146394/background-size-cover-not-scaling-image-in-div/12146446#12146446 */
 /* blurring is done after a delay to help slow devices */
 #openers .maincontain.bg.overlay main
@@ -354,7 +352,7 @@ a:hover { color: #953310; }
     display: none;
     text-shadow: 1px 1px 2px rgba(1, 25, 197, 0.8);
     text-shadow: 1px 1px 2px black;
-    font-size: 30px;
+    font-size: 28px;
     letter-spacing: 0.054em;
     color: rgb(255, 251, 244);
     text-align: left;
@@ -382,8 +380,9 @@ a:hover { color: #953310; }
 #openers .opener header h1,
 #openers .opener header p  { display: inline-block; }
 #openers .opener header h1 { margin: 0 0.15em 0 0; padding: 0; }
-#openers .opener header p  { font-size: 32px; }
+#openers .opener header p  { margin: 0; font-size: 32px; }
 #openers .opener .info { padding-left: 50px; }
+#openers .opener td { line-height: 0.85;; }
 #openers .opener .label { width: 130px; }
 #openers p.plain
 {
@@ -517,7 +516,181 @@ a:hover { color: #953310; }
 #afterparty .website.icon       { background: center/100px 100px url('../images/exto.png'); }
 #afterparty .website.icon:hover { background-image: url('../images/exta.png'); }
 
-/* Merch */
+
+
+
+
+/* Merch - Layers */
+#merch { position: relative; }
+#merch .maincontain.overlay,
+#merch .maincontain.overlay main { width:  100%; height: 100%; }
+/* overlays start out "hidden" */
+#merch .maincontain.overlay
+{
+    opacity: 0;
+    width:  0;
+    height: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    -webkit-transition: opacity 0.4s ease-in-out,
+        height 0 linear 0.5s,
+        width  0 linear 0.5s;
+            transition: opacity 0.4s ease-in-out,
+        height 0 linear 0.5s,
+        width  0 linear 0.5s;
+}
+/* activated overlays are shown */
+#merch .maincontain.overlay.active
+{
+    opacity: 1;
+    width:  100%;
+    height: 100%;
+    -webkit-transition: opacity 0.4s ease-in-out;
+            transition: opacity 0.4s ease-in-out;
+}
+#merch .maincontain.bg.overlay { padding: 0; box-shadow: 2px 4px 9px 3px rgba(0, 0, 0, 0.75); }
+/* http://stackoverflow.com/questions/12146394/background-size-cover-not-scaling-image-in-div/12146446#12146446 */
+#merch .maincontain.bg.overlay main
+{
+    background: url('../images/italy-s-overlay.jpg') no-repeat center 0%;
+    -webkit-background-size: cover;
+            background-size: cover;
+    overflow: hidden;
+}
+#merch .maincontain .cornerbutton
+{
+    position: absolute;
+    width:  40px;
+    height: 40px;
+    z-index: 600;
+    cursor: pointer;
+    background-size: cover;
+    -webkit-filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 3px #fff);
+            filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 3px #fff);
+    -webkit-transition: -webkit-filter 0.4s ease, filter 0.4s ease;
+            transition: -webkit-filter 0.4s ease, filter 0.4s ease;
+}
+#merch .maincontain .cornerbutton:hover
+{
+    -webkit-filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 3px #fff) drop-shadow(0 0 3px #fff);
+            filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 3px #fff) drop-shadow(0 0 3px #fff);
+}
+#merch .maincontain .theEX   { top: 19px; right: 19px; }
+#merch .maincontain .thecart { top: 75px; right: 17px; }
+#merch #storefront .description
+{
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+/* http://stackoverflow.com/questions/12676725/responsive-iframe-google-maps-and-weird-resizing/12678294#12678294 */
+#merch #storefront .iframe-rwd
+{
+    position: relative;
+    margin: 36px 85px 0;
+    padding: 0 0 200px;
+    height: 0;
+    overflow: hidden;
+}
+#merch #storefront .iframe-rwd iframe
+{
+    position: absolute;
+    top:  0;
+    left: 0;
+    width:  100%;
+    height: 100%;
+    border: 0;
+}
+#merch #products { margin-bottom: 50px; text-align: center; }
+#merch .productWithName
+{
+    display: inline-block;
+    width: 460px;
+    margin: 50px 25px 0;
+    vertical-align: top;
+}
+#merch .productWithName h2
+{
+    margin: 0 0 10px;
+    padding: 0;
+    font-size: 29px;
+    letter-spacing: 0.02em;
+    text-align: left;
+    color: rgb(241, 240, 225);
+}
+#merch .product { height: 230px; }
+#merch .product .img { vertical-align: top; width: 230px; height: 230px; }
+#merch .product .notimg
+{
+    position: relative;
+    display: inline-block;
+    width: 230px;
+    height: 100%;
+    vertical-align: top;
+    background-color: rgba(180, 180, 180, 0.4);
+}
+#merch .product .text { padding: 10px; }
+#merch .product p
+{
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.1em;
+    letter-spacing: 0;
+    text-align: left;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+#merch .product .priceline
+{
+    position: absolute;
+    bottom: 46px;
+    left: 0;
+    width: 230px;
+}
+#merch .product .pricesection
+{
+    margin: 0 16px 5px;
+    padding: 0;
+    display: inline-block;
+    vertical-align: top;
+}
+#merch .product .label { font-size: 17px; text-transform: uppercase; }
+#merch .product .number { font-size: 36px; }
+#merch .product form { font-size: 0; }
+#merch .product .submit
+{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 230px;
+    height: 46px;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font-size: 29px;
+    letter-spacing: 0.05em;
+    line-height: 1em;
+    background-color: rgb(6, 46, 118);
+    color: white;
+    font-family: "Knockout 48 A", "Knockout 48 B", "Trebuchet MS", Helvetica, sans-serif;
+    text-transform: uppercase;
+    cursor: pointer;
+    -webkit-transition: background-color 0.2s ease-in-out;
+            transition: background-color 0.2s ease-in-out;
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+#merch .product .submit:hover { background-color: rgb(29, 86, 140); }
+
+
+
+
+
+/* Merch - Polaroids Layer */
 #merch h1 { color: rgb(241, 240, 225); }
 #merch .polaroidcol
 {
@@ -556,15 +729,10 @@ a:hover { color: #953310; }
 {
     -webkit-transform: rotateZ(0) scale(1.1);
             transform: rotateZ(0) scale(1.1);
-}
-#merch .polaroidcol:last-child .polaroid:hover
-{
-    -webkit-transform: rotateZ(-3deg);
-            transform: rotateZ(-3deg);
+    cursor: pointer;
 }
 #merch .polaroid:hover { color: #da4a18; }
-#merch .polaroidcol:last-child .polaroid:hover { color: black; }
-#merch .polaroid img { width: 200px; }
+#merch .polaroid img { width: 200px; height: 200px; }
 
 /* Tickets */
 #tickets .maincontain { background-color: rgba(255, 255, 255, 0.67); }
@@ -650,6 +818,19 @@ a:hover { color: #953310; }
     #tickets h3 div { border: 0; min-width: initial; }
 }
 
+@media (max-width: 599px)
+{
+    #merch .productWithName { margin: 12px 0; }
+}
+@media (min-width: 600px) and (max-width: 767px)
+{
+    #merch .productWithName { margin: 12px; }
+}
+@media (max-width: 639px)
+{
+    #merch #storefront .description { margin-left: 20px; margin-right: 20px; }
+}
+
 /*\
 | | Handheld devices - No menu, space for navigation dots, edge-to-edge content
 \*/
@@ -673,8 +854,6 @@ a:hover { color: #953310; }
     #tour     .city  { width: 100%; float: none; }
     #tour     .place { width: 100%; float: none; }
     #tour     .story { max-width: 420px; width: 158%; }
-    
-    #merch img { width: 200px; }
     
     #openers .maincontain .theEX { top: initial; bottom: 19px; }
     #openers .polaroidcol
@@ -755,6 +934,8 @@ a:hover { color: #953310; }
     #afterparty h2 { font-size: 45px; }
     
     /* Merch */
+    #merch .maincontain .theEX   { top: initial; bottom: 19px; }
+    #merch .maincontain .thecart { top: initial; bottom: 75px; }
     #merch .polaroidcol
     {
         margin-top: 0;
@@ -770,6 +951,7 @@ a:hover { color: #953310; }
         float: none;
         clear: none;
     }
+    #merch #products { margin-bottom: 105px; }
     
     /* Tickets */
     #tickets div.summary div,
@@ -781,6 +963,7 @@ a:hover { color: #953310; }
     #tickets .field label { margin-bottom: 4px; font-size: 21px; }
     #tickets .field.radio { width: 265px; }
     #tickets #rfSongsAndButton { padding-left: 104px; }
+    #merch #storefront .iframe-rwd { margin-left: 20px; margin-right: 20px; }
 }
 
 /* Portrait handheld devices - Smaller opener label column */
@@ -895,6 +1078,8 @@ a:hover { color: #953310; }
     #merch .polaroidcol:last-child { width: 100%; clear: both; }
     #merch .polaroidcontain { margin-bottom: 37px; position: initial; top: initial; }
     #merch .polaroidcol:last-child .polaroidcontain { margin-bottom: 0; }
+    #merch #storefront .description { margin-left: 85px; margin-right: 85px; }
+    #merch .productWithName { margin: 12px; }
 }
 
 /* Handheld devices and medium devices - Smaller story font */
@@ -920,11 +1105,23 @@ a:hover { color: #953310; }
     #venue img.summary { width: 365px; }
     #venue p.summary { font-size: 40px; }
     #venue .summary .name { font-size: 50px; }
+    #merch #storefront .iframe-rwd { margin-left: 88px; margin-right: 88px; }
+    #merch .productWithName { margin: 20px 32px; }
 }
 
 @media (max-width: 1079px)
 {
     #venue .vcard { margin: 22px 0; padding: 7px 0; font-size: 30px; }
+    
+    #merch #products { margin-top: 30px; }
+    #merch .productWithName { width: 300px; }
+    #merch .product { height: initial; }
+    #merch .product .img { width: 300px; height: 300px; }
+    #merch .product .notimg { width: 300px; height: 238px; }
+    #merch .product .text { padding: 15px; }
+    #merch .product .priceline { bottom: 54px; width: 300px; }
+    #merch .product .pricesection { margin-bottom: 15px; }
+    #merch .product .submit { width: 300px; height: 54px; font-size: 34px; }
 }
 
 /* Handheld devices and tablets - :active works better than :hover on iOS7 */
@@ -974,10 +1171,12 @@ a:hover { color: #953310; }
     #afterparty .website.icon:active { background-image: url('../images/exta.png'); }
     #merch .polaroid:hover  { color: black; }
     #merch .polaroid:active { color: #da4a18; }
-    #merch .polaroidcol:last-child .polaroid:active { color: black; }
     #merch .polaroidcol:nth-child(2) .polaroid:hover { transform: rotateZ(3deg);   -webkit-transform: rotateZ(3deg);   }
     #merch .polaroidcol:nth-child(3) .polaroid:hover { transform: rotateZ(-10deg); -webkit-transform: rotateZ(-10deg); }
     #merch .polaroidcol:nth-child(4) .polaroid:hover { transform: rotateZ(-3deg);  -webkit-transform: rotateZ(-3deg);  }
+    #merch .maincontain .theEX:hover  { -webkit-filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 3px #fff); filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 3px #fff); }
+    #merch .maincontain:active .theEX { -webkit-filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 5px #fff); filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 5px #fff); }
+    #merch .maincontain .theEX:active { -webkit-filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 5px #fff); filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 5px #fff) drop-shadow(0 0 5px #fff); }
     #tickets .field.radio.one:hover    { color: rgb(  0,  35, 0); }
     #tickets .field.radio.one:active   { color: rgb(  0, 100, 0); }
     #tickets .field.radio.two:hover    { color: rgb( 25,   0, 0); }
@@ -994,6 +1193,7 @@ a:hover { color: #953310; }
 {
     /* slides */
     .inslide { width: 940px; }
+    #merch .productWithName { margin: 50px 5px 0; }
 }
 
 /* Non-wide content - No story indent */

@@ -11,6 +11,7 @@ String.prototype.decodeHTML = function()
 { return $('<div>', {html: '' + this}).html(); };
 
 var isTouchDevice = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|BB10|Windows Phone|Tizen|Bada)/i);
+var isPhone       = navigator.userAgent.match(/(iPhone|iPod|Android|BlackBerry|BB10|Windows Phone|Tizen|Bada)/i);
 
 // Elements whose contents are allowed to scroll
 var scrollables = '.maincontain:not(.bg) main';
@@ -59,33 +60,55 @@ var updatePageAndHistory = function(anchorLink, index, prevSlideIndex, slideInde
     });
 };
 
+// Adjusts a main elements by .inslide and .maincontain properties, or
+//   by main children properties (whichever is less)
 var resizeMainElement = function(main)
 {
     var maincontain = main.closest('.maincontain');
     var inslide = maincontain.closest('.inslide');
+    
+    // If this main element is an overlay, uses the
+    //   non-overlay main element of the slide to determine its height
     if(main.closest('.maincontain').hasClass('overlay'))
         var maincontain = inslide.find('.maincontain:not(.overlay)');
         
+    // Determines extraHeight, which is the top/bottom margin/padding of
+    //   the main container and the inner slide element.
+    //   These properties need to be maintained.
     var extraHeight = 0;
-    var heights = inslide.css(
-        ['margin-top',  'margin-bottom', 'padding-top', 'padding-bottom']);
+    var propertiesToCheck = ['margin-top', 'margin-bottom'];
+    // BG overlays need to take up the padding space that the other main elemnts have
+    if(!main.closest('.maincontain').hasClass('bg'))
+        propertiesToCheck = propertiesToCheck.concat(['padding-top', 'padding-bottom']);
+    var heights = inslide.css(propertiesToCheck);
     $.each(heights, function(property, value)
+        // Extracts X from Xpx
         { extraHeight += Number(value.substring(0, value.length - 2)); });
-    var heights = maincontain.css(
-        ['margin-top',  'margin-bottom', 'padding-top', 'padding-bottom']);
+    var heights = maincontain.css(propertiesToCheck);
     $.each(heights, function(property, value)
+        // Extracts X from Xpx
         { extraHeight += Number(value.substring(0, value.length - 2)); });
+    
+    // Calculates the main element's newHeight, which is
+    //   the height of the window minus the extraHeight
     var newHeight = $(window).height() - extraHeight;
     
+    // Except if this is an overlay, which means it should
+    //   take up as much space as it can (newHeight)...
     if(!main.closest('.maincontain').hasClass('overlay'))
     {
+        // Calculates the heights of all of the main's children
         var children = main.children();
         var childrenHeight = 0;
         $.each(children, function()
             { childrenHeight += $(this).outerHeight(true); });
+        
+        // If the height of the children is less than
+        //   the maximum height of the slide, the lesser of the two is used
         if(childrenHeight < newHeight) newHeight = childrenHeight;
     }
     
+    // Sets the height of the main element and its slimScrollDiv element
     main.css('height', newHeight + 'px');
     main.closest('.slimScrollDiv').css('height', newHeight + 'px');
 };
@@ -136,6 +159,13 @@ $(function()
             'transform':         'scale(1, 1)',
             'background-size': 'cover'});
     
+    $('.lazy').lazy(
+    {
+        effect: 'fadeIn',
+        effectTime: 500,
+        appendScroll: $('main')
+    });
+    
     // Nicer scrollbars for non-iOS browsers
     if(!isTouchDevice)
     {
@@ -165,6 +195,7 @@ $(function()
             return;
         }
         
+        /*
         // If a scroll past the top/bottom of a scrollable element is attempted,
         //   prevent the scroll of the element
         var scrollDelta = touchStartY - e.originalEvent.touches[0].clientY;
@@ -173,6 +204,7 @@ $(function()
             scrollableAncestor.scrollHeight;
         if(scrollDelta < 0 && scrollPos == 0 || scrollDelta > 0 && atBottom)
             e.preventDefault();
+            */
     });
     
     // Moves to slide when a navigation menu item is pressed
@@ -207,7 +239,7 @@ $(function()
     {
         // Moves to slide specified by data-url
         //   without performing history stack manipulation
-        var url = location.href.match(/vincejacklinforever\.com\/(.*?)$/)[1];
+        var url = location.href.match(/vincejacklinforever\.com\/([^?#]*)/)[1];
         console.log('history move to: ' + url);
         pageUpdatesModifyHistory = false;
         $.fn.fullpage.moveTo(1, $('[data-url="' + url + '"]').data('index'));
@@ -265,12 +297,66 @@ $(function()
         
         ga('send', 'event', 'opener-overlay', 'click', 'opener-overlay-show');
     });
-    $('#openers .maincontain.overlay').click( function(e)
+    $('#openers .theEX').click( function(e)
     {
-        $(this).parent().find('.maincontain.overlay').removeClass('active');
+        $(this).closest('.inslide').find('.maincontain.overlay').removeClass('active');
         
         ga('send', 'event', 'opener-overlay', 'click', 'opener-overlay-hide');
     });
+    
+    // Opens merch overlay if showHoneyfund=1
+    var honeymoonMapAdded = false;
+    if(location.href.indexOf('/merch') != -1 &&
+       location.href.indexOf('showHoneyfund=1') != -1)
+    {
+        var inslide = $('#merch');
+        // Displays overlays
+        inslide.find('.maincontain.overlay').addClass('active');
+        
+        // Adds map to html
+        if(!honeymoonMapAdded)
+        {
+            if(isPhone)
+                inslide.find('.iframe-rwd').remove();
+            else
+                inslide.find('.iframe-rwd')
+                    .html('<iframe src="https://www.google.com/maps/d/u/0/embed?mid=z722SGaCaBYI.kkdJodwYFiyg"></iframe>');
+            honeymoonMapAdded = true;
+        }
+    };
+    // Togglifies merch overlay
+    // Uses CSS for performance
+    $('#merch #honeymoon .polaroid').click( function(e)
+    {
+        // Displays overlays
+        $(this).closest('.inslide').find('.maincontain.overlay').addClass('active');
+        
+        // Adds map to html
+        if(!honeymoonMapAdded)
+        {
+            if(isPhone)
+                $(this).closest('.inslide').find('.iframe-rwd').remove();
+            else
+                $(this).closest('.inslide').find('.iframe-rwd')
+                    .html('<iframe src="https://www.google.com/maps/d/u/0/embed?mid=z722SGaCaBYI.kkdJodwYFiyg"></iframe>');
+            honeymoonMapAdded = true;
+        }
+        
+        ga('send', 'event', 'merch-overlay', 'click', 'merch-overlay-show');
+    });
+    $('#merch .theEX').click( function(e)
+    {
+        $(this).closest('.inslide').find('.maincontain.overlay').removeClass('active');
+        
+        ga('send', 'event', 'merch-overlay', 'click', 'merch-overlay-hide');
+    });
+    if(isPhone)
+    {
+        var mapLink = $('.maplink');
+        mapLink.html('<a ' +
+            'href="https://www.google.com/maps/d/edit?mid=z722SGaCaBYI.kkdJodwYFiyg" ' +
+            'target="_blank">' + mapLink.html() + '</a>');
+    }
     
     // Handles password form submission
     var ticketsMain  = $('#tickets main');
@@ -300,7 +386,10 @@ $(function()
                     'vince@vincejacklinforever.com</a>.');
             }
             else
+            {
                 alert(json.error);
+                setTimeout( function() { $('#pfPassword').focus(); }, 0);
+            }
             $('#passwordform input').prop('disabled', false);
             $('#passwordform .loader').stop().fadeTo(1000, 0);
         }, 'json');
