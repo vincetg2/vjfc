@@ -10,7 +10,7 @@
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="stylesheet" href="/css/jquery.fullPage.css" />
         <link rel="stylesheet" href="/css/knockout.css" />
-        <link rel="stylesheet" href="/css/css.css" />
+        <link rel="stylesheet" href="/css/css.css?v=2" />
         
         <title><?php echo $title; ?></title>
         
@@ -20,7 +20,7 @@
         <script src="/js/jquery.fullPage.js"></script>
         <script src="/js/jquery.lazy.min.js"></script>
         <!--<script src="/js/jquery.fullPage.min.js"></script>-->
-        <script src="/js/js.js"></script>
+        <script src="/js/js.js?v=1"></script>
     </head>
     
     <body>
@@ -297,10 +297,12 @@
                                             <h2><?php echo $product['name']; ?></h2>
                                             <div class="product"><!--
                                                 --><img class="img lazy" data-src="../images/<?php echo $product['image']; ?>" src="" /><!--
+                                                
                                                 --><div class="notimg">
                                                     <div class="text">
                                                         <p><?php echo h($product['description']); ?></p>
                                                     </div>
+                                                    
                                                     <div class="priceline">
                                                         <div class="pricesection">
                                                             <div class="label">Price</div>
@@ -311,12 +313,17 @@
                                                             <div class="number"><?php echo h($product['stock']); ?></div>
                                                         </div>
                                                     </div>
-                                                    <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-                                                        <input type="hidden" name="cmd" value="_s-xclick" />
-                                                        <input type="hidden" name="hosted_button_id"
-                                                            value="<?php echo $product['paypal_code']; ?>" />
-                                                        <input type="submit" class="submit" name="submit" value="Give This Gift" />
-                                                    </form>
+                                                    
+                                                    <?php if(!$product['stock']) { ?>
+                                                        <div class="submit outOfStock" disabled><div class="insubmit">Out of Stock</div></div>
+                                                    <?php } else {?>
+                                                        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                                                            <input type="hidden" name="cmd" value="_s-xclick" />
+                                                            <input type="hidden" name="hosted_button_id"
+                                                                value="<?php echo $product['paypal_code']; ?>" />
+                                                            <input type="submit" class="submit" name="submit" value="Give This Gift" />
+                                                        </form>
+                                                    <?php } ?>
                                                 </div><!-- .notimg --><!--
                                             --></div><!-- .product -->
                                         </div><!-- .product --><!--

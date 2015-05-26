@@ -685,6 +685,15 @@ a:hover { color: #953310; }
     border-radius: 0;
 }
 #merch .product .submit:hover { background-color: rgb(29, 86, 140); }
+#merch .product .submit.outOfStock
+{
+    text-align: center;
+    cursor: initial;
+}
+#merch .product .submit.outOfStock,
+#merch .product .submit.outOfStock:hover
+{ background-color: rgb(150, 150, 150); }
+#merch .product .submit.outOfStock .insubmit { padding-top: 9px; }
 
 
 
