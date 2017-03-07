@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: http://ogp.me/ns#">
     <head>
         <meta charset="utf-8" />
         <meta name="kewords"     content="wedding, wedding website, vincent garcia, jacklin sammis, rsvp" />
-        <meta name="description" content="Vincent Garcia and Jacklin Sammis' Official wedding website" />
+        <meta name="description" content="Vincent Garcia and Jacklin Sammis' Official Wedding Website" />
         <meta name="author"      content="Vincent Garcia" />
         
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
@@ -13,6 +13,10 @@
         <link rel="stylesheet" href="/css/css.css?v=2" />
         
         <title><?php echo $title; ?></title>
+        <?php foreach($shareInfo as $property => $content) { ?>
+            <meta property="og:<?php echo $property; ?>"
+                content="<?php echo $content; ?>" />
+        <? } ?>
         
         <script src="/js/jquery-2.1.1.min.js"></script>
         <script src="/js/jquery.easings.min.js"></script>

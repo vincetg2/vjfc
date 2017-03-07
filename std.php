@@ -7,12 +7,18 @@
         exit;
     }
 ?><!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: http://ogp.me/ns#">
     <head>
         <meta charset="utf-8" />
         <meta name="kewords"     content="wedding, wedding website, vincent garcia, jacklin sammis, save the date" />
-        <meta name="description" content="Vincent Garcia and Jacklin Sammis' wedding website" />
+        <meta name="description" content="Vincent Garcia and Jacklin Sammis' Wedding Website" />
         <meta name="author"      content="Vincent Garcia" />
+        <meta property="og:title"        content="Vince Jacklin Forever – Save The Date" />
+        <meta property="og:description"  content="Vincent Garcia and Jacklin Sammis' Wedding Website" />
+        <meta property="og:url"          content="http://vincejacklinforever.com/how-many-people-have-you-given-stds-to?-LOTS-like-a-hundred" />
+        <meta property="og:image"        content="http://vincejacklinforever.com/images/sutro.jpg" />
+        <meta property="og:image:width"  content="500" />
+        <meta property="og:image:height" content="500" />
         
         <meta name="viewport" content="width=640, initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5" />
         <link rel="shortcut icon" href="/favicon.ico" />
@@ -23,6 +29,7 @@
             @font-face { font-family: monsieurLaDoulaise; src: url('fonts/MonsieurLaDoulaise-Regular.ttf'); }
             
             body { background-color: #f1f0eb; }
+            a, a:link, a:hover, a:active, a:visited { color: white; text-decoration: none; }
             
             #img
             {
@@ -80,39 +87,43 @@
         ?>
         <div id="img" title="<?php echo $brooklyn99Quote; ?>">
             <!-- big empty line -->
-            <span class="bigtext uppercase">&nbsp;</span><br />
+	    <span class="bigtext uppercase">&nbsp;</span><br />
             
-            <!-- SAVE -->
-            <span class="bigtext uppercase"><!--
-                --><span class="post_letter_spacing"><!--
-                    -->S<!--
-                    --><span class="nice_block_font">av</span><!--
-                --></span><!--
-                -->e<!--
-            --></span><br />
-            
-            <!-- the -->
-            <span class="bigtext cursive"><!--
-                --><span class="post_letter_spacing">th</span><!--
-                -->e<!--
-            --></span><br />
-            
-            <!-- DATE -->
-            <span class="bigtext uppercase"><!--
-                --><span class="post_letter_spacing"><!--
-                    -->D<!--
-                    --><span class="nice_block_font">a</span><!--
-                    -->t<!--
-                --></span><!--
-                -->e<!--
-            --></span><br />
+            <a href="/headliners">
+                <!-- SAVE -->
+                <span class="bigtext uppercase"><!--
+                    --><span class="post_letter_spacing"><!--
+                        -->S<!--
+                        --><span class="nice_block_font">av</span><!--
+                    --></span><!--
+                    -->e<!--
+                --></span><br />
+                
+                <!-- the -->
+                <span class="bigtext cursive"><!--
+                    --><span class="post_letter_spacing">th</span><!--
+                    -->e<!--
+                --></span><br />
+                
+                <!-- DATE -->
+                <span class="bigtext uppercase"><!--
+                    --><span class="post_letter_spacing"><!--
+                        -->D<!--
+                        --><span class="nice_block_font">a</span><!--
+                        -->t<!--
+                    --></span><!--
+                    -->e<!--
+                --></span><br />
+            </a>
             
             <!-- little empty line -->
             <span class="littleline"></span><br />
             
-            <!-- Normal Text -->
-            <span class="normaltext uppercase">Vincent &amp; Jacklin / May 2, 2015</span><br />
-            <span class="normaltext uppercase">Gilroy, CA</span>
+            <a href="/headliners">
+                <!-- Normal Text -->
+                <span class="normaltext uppercase">Vincent &amp; Jacklin / May 2, 2015</span><br />
+                <span class="normaltext uppercase">Gilroy, CA</span>
+	    </a>
         </div>
     </body>
 </html>

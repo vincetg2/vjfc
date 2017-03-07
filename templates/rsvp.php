@@ -1,7 +1,7 @@
 <?php do { ?>
 <?php
     
-    $db = new SQLite3('../wedding.db');
+    $db = new SQLite3('../protected/wedding.db');
     $personTable = 'person';
     $songTable   = 'song';
     

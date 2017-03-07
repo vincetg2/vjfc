@@ -6,10 +6,13 @@
     function e($s) { echo htmlentities($s, ENT_QUOTES | ENT_HTML401); }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: http://ogp.me/ns#">
     <head>
         <meta charset="utf-8" />
         <title>Google Maps Link Maker</title>
+        <meta property="og:title"       content="Google Maps Link Maker" />
+        <meta property="og:description" content="Generates Deep Links for the Google Maps App." />
+        <meta property="og:url"         content="http://vincejacklinforever.com/gm" />
         <style>
             html,
             body
